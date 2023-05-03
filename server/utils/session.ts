@@ -40,10 +40,7 @@ export async function requireUserSession(event: H3Event) {
 let sessionConfig: any = { name: 'nuxt-session' }
 
 function _useSession (event: H3Event) {
-  sessionConfig = defu(useRuntimeConfig().session || sessionConfig)
-
-  // workaround useRuntimeConfig(event) not available yet
-  sessionConfig.password = process.env.NUXT_SESSION_PASSWORD
+  sessionConfig = defu(useRuntimeConfig(event).session || sessionConfig)
 
   if (!sessionConfig.password) {
     console.warn('No session password set, using a random password, please set NUXT_SESSION_PASSWORD in your .env file with at least 32 chars')
