@@ -18,7 +18,7 @@ pnpm i
 
 Create a GitHub Oauth Application on https://github.com/settings/applications/new
 
-With homepage url and callback url being http://localhost:3000/auth/github
+With homepage url and callback url being http://localhost:3000/api/auth/github
 
 Then, add fill the `NUXT_GITHUB_CLIENT_ID` and `NUXT_GITHUB_CLIENT_SECRET` in the `.env` file:
 
