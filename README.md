@@ -65,4 +65,8 @@ npx pnpm i --store=node_modules/.pnpm-store && npm run build
 
 And the output directory to `dist/`
 
+Lastly, in the project settings -> Functions, add the binding between your D1 database and the `DB` variable:
+
+![d1-binding](https://user-images.githubusercontent.com/904724/236021974-d77dfda6-4eb7-4094-ae36-479be73ec35f.png)
+
 That's it :fire:
