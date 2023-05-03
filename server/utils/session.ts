@@ -42,6 +42,9 @@ let sessionConfig: any = { name: 'nuxt-session' }
 function _useSession (event: H3Event) {
   sessionConfig = defu(useRuntimeConfig().session || sessionConfig)
 
+  // workaround useRuntimeConfig(event) not available yet
+  sessionConfig.password = process.env.NUXT_SESSION_PASSWORD
+
   if (!sessionConfig.password) {
     console.warn('No session password set, using a random password, please set NUXT_SESSION_PASSWORD in your .env file with at least 32 chars')
     const randomPassword = sha256(`${Date.now()}${Math.random()}`).slice(0, 32)
