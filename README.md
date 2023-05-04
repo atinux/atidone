@@ -10,24 +10,22 @@ Live demo: https://nuxt-todos.pages.dev
 
 ## Setup
 
-Make sure to install the dependencies
+Make sure to install the dependencies using [pnpm](https://pnpm.io/):
 
 ```bash
 pnpm i
 ```
 
-Create a GitHub Oauth Application on https://github.com/settings/applications/new
+Create a [GitHub Oauth Application](https://github.com/settings/applications/new) with the homepage url being `http://localhost:3000` and the callback url being `http://localhost:3000/api/auth/github`
 
-With homepage url and callback url being http://localhost:3000/api/auth/github
-
-Then, add fill the `NUXT_GITHUB_CLIENT_ID` and `NUXT_GITHUB_CLIENT_SECRET` in the `.env` file:
+Then, add the `NUXT_GITHUB_CLIENT_ID` and `NUXT_GITHUB_CLIENT_SECRET` in the `.env` file:
 
 ```bash
 NUXT_GITHUB_CLIENT_ID="my-github-oauth-app-id"
 NUXT_GITHUB_CLIENT_SECRET="my-github-oauth-app-secret"
 ```
 
-To create sealed session, you also need to add `NUXT_SESSION_SECRET` in the `.env` file with at least 32 characters:
+To create sealed sessions, you also need to add `NUXT_SESSION_SECRET` in the `.env` file with at least 32 characters:
 
 ```bash
 NUXT_SESSION_SECRET=your-super-long-secret-for-session-encryption
