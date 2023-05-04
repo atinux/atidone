@@ -4,6 +4,9 @@ overrides:
   nitropack: npm:nitropack-edge@latest
 
 dependencies:
+  '@libsql/client':
+    specifier: ^0.1.4
+    version: 0.1.4
   '@nuxtjs/tailwindcss':
     specifier: ^6.6.7
     version: 6.6.7(webpack@5.81.0)
@@ -15,7 +18,7 @@ dependencies:
     version: 0.17.6
   drizzle-orm:
     specifier: ^0.25.4
-    version: 0.25.4(better-sqlite3@8.3.0)
+    version: 0.25.4(@libsql/client@0.1.4)(better-sqlite3@8.3.0)
   h3-zod:
     specifier: ^0.5.1
     version: 0.5.1(h3@1.6.4)(zod@3.21.4)
@@ -717,6 +720,48 @@ packages:
       - supports-color
     dev: false
 
+  /@libsql/client@0.1.4:
+    resolution: {integrity: sha512-ZkHEIIhAa8dIM3Zbzfs0N2btsh9P27nFd+jHz5H2rgUWXbfZCYQDMDsWUH1x81oqvX3rm2aZKeIChRrnOSrWNw==}
+    dependencies:
+      '@libsql/hrana-client': 0.3.9
+      '@libsql/isomorphic-fetch': 0.1.1
+      better-sqlite3: 8.3.0
+      js-base64: 3.7.5
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - utf-8-validate
+    dev: false
+
+  /@libsql/hrana-client@0.3.9:
+    resolution: {integrity: sha512-vVQU+4629HI3MAaX3hbIz5kYOWVZ5syKjpkQ6oGR+WR0GwsiT4KheifO5e+wM4QKZ5FCjTVzOhA45HFvU5e4kA==}
+    dependencies:
+      '@libsql/isomorphic-ws': 0.1.3
+      js-base64: 3.7.5
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
+  /@libsql/isomorphic-fetch@0.1.1:
+    resolution: {integrity: sha512-Ib8TkSPY+aBDLl78hA0Ry5KDY4EKtKAZccCx/Xa4Qb4hc7T5sDGg+aEM+4A76TO7hCD8iLnSt1eE2t/tsu7jlw==}
+    dependencies:
+      '@types/node-fetch': 2.6.3
+      node-fetch: 2.6.9
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@libsql/isomorphic-ws@0.1.3:
+    resolution: {integrity: sha512-54dZXgYwWDKsnfWv8GCVYvhn6RDlqFDGAc8EQMd941yvGMsGzo06Gn6Iyjw//nJ1iJO97FbXgoQ1apikoFD/WA==}
+    dependencies:
+      '@types/ws': 8.5.4
+      ws: 8.13.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
   /@mapbox/node-pre-gyp@1.0.10:
     resolution: {integrity: sha512-4ySo4CjzStuprMwk35H5pPbkymjv1SF3jGLj6rAHp/xT/RF7TL7bd9CTm1xDY49K2qF7jmR/g7k+SkLETP6opA==}
     hasBin: true
@@ -1318,6 +1363,13 @@ packages:
   /@types/json-schema@7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
 
+  /@types/node-fetch@2.6.3:
+    resolution: {integrity: sha512-ETTL1mOEdq/sxUtgtOhKjyB2Irra4cjxksvcMUR5Zr4n+PxVhsCD9WS46oPbHL3et9Zde7CNRr+WUNlcHvsX+w==}
+    dependencies:
+      '@types/node': 18.16.3
+      form-data: 3.0.1
+    dev: false
+
   /@types/node@18.16.3:
     resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
 
@@ -1331,6 +1383,12 @@ packages:
   /@types/semver@7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
     dev: true
+
+  /@types/ws@8.5.4:
+    resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}
+    dependencies:
+      '@types/node': 18.16.3
+    dev: false
 
   /@typescript-eslint/eslint-plugin@5.59.2(@typescript-eslint/parser@5.59.2)(eslint@8.39.0)(typescript@4.9.5):
     resolution: {integrity: sha512-yVrXupeHjRxLDcPKL10sGQ/QlVrA8J5IYOEWVqk0lJaSZP7X5DfnP7Ns3cc74/blmbipQ1htFNVGsHX6wsYm0A==}
@@ -1986,7 +2044,6 @@ packages:
 
   /asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: true
 
   /at-least-node@1.0.0:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
@@ -2398,7 +2455,6 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
-    dev: true
 
   /commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -2729,7 +2785,6 @@ packages:
   /delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
-    dev: true
 
   /delegates@1.0.0:
     resolution: {integrity: sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ==}
@@ -2849,7 +2904,7 @@ packages:
       - supports-color
     dev: false
 
-  /drizzle-orm@0.25.4(better-sqlite3@8.3.0):
+  /drizzle-orm@0.25.4(@libsql/client@0.1.4)(better-sqlite3@8.3.0):
     resolution: {integrity: sha512-vURs2SqDh5pk81WWE4hR8gFKDTRmCK4FbaUGsZoljKnjKvMrjlA5xFPGiCih4/1XKqnOgSuh+I6T9KGBjYcPAA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -2908,6 +2963,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
+      '@libsql/client': 0.1.4
       better-sqlite3: 8.3.0
     dev: false
 
@@ -3609,6 +3665,15 @@ packages:
       cross-spawn: 7.0.3
       signal-exit: 4.0.1
     dev: true
+
+  /form-data@3.0.1:
+    resolution: {integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==}
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.35
+    dev: false
 
   /form-data@4.0.0:
     resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
@@ -4384,6 +4449,10 @@ packages:
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
     dev: true
+
+  /js-base64@3.7.5:
+    resolution: {integrity: sha512-3MEt5DTINKqfScXKfJFrRbxkrnk2AxPWGBL/ycjz4dK8iqiSJ06UxD8jh8xuh6p10TX4t2+7FsBYVxxQbMg+qA==}
+    dev: false
 
   /js-sdsl@4.4.0:
     resolution: {integrity: sha512-FfVSdx6pJ41Oa+CF7RDaFmTnCaFhua+SNYQX74riGOpl96x+2jQCqEfQ2bnXu/5DPCqlRuiqyvTJM0Qjz26IVg==}
@@ -7680,7 +7749,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dev: true
 
   /xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
