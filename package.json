@@ -12,10 +12,12 @@
     "@libsql/client": "^0.1.4",
     "@nuxtjs/tailwindcss": "^6.6.7",
     "better-sqlite3": "^8.3.0",
+    "bufferutil": "^4.0.7",
     "drizzle-kit": "^0.17.6",
     "drizzle-orm": "^0.25.4",
     "h3-zod": "^0.5.1",
     "nuxt": "^3.4.3",
+    "utf-8-validate": "^6.0.3",
     "zod": "^3.21.4"
   },
   "devDependencies": {

@@ -6,3 +6,5 @@ nuxt.d.ts
 .env
 .history
 db.sqlite
+dist
+.vercel
