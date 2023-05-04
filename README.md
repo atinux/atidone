@@ -1,6 +1,6 @@
 # Todo list demo using Nuxt & CloudFlare
 
-Live demo: https://nuxt-todos.pages.dev
+Live demo: https://nuxt-todos-edge.pages.dev
 
 ## Features
 
