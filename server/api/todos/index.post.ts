@@ -10,7 +10,7 @@ export default eventHandler(async (event) => {
 
   // List todos for the current user
   console.log('INsert todo')
-  const info = useDb().prepare('INSERT INTO todos (title, userId) VALUES (?, ?)').run(title, session.user.id)
+  const info = await useDb().prepare('INSERT INTO todos (title, userId) VALUES (?, ?)').run(title, session.user.id)
   console.log('info', info)
   if (!info.lastInsertRowid) {
     throw createError({
@@ -19,5 +19,5 @@ export default eventHandler(async (event) => {
     })
   }
   console.log('query todo')
-  return useDb().prepare('SELECT * FROM todos WHERE id = ? AND userId = ?').get(info.lastInsertRowid, session.user.id)
+  return await useDb().prepare('SELECT * FROM todos WHERE id = ? AND userId = ?').get(info.lastInsertRowid, session.user.id)
 })
