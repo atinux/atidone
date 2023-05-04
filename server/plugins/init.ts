@@ -1,3 +1,3 @@
 export default defineNitroPlugin(async () => {
-  await setupDb()
+  // await setupDb()
 })

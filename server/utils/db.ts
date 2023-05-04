@@ -22,7 +22,7 @@ export function useDb() {
   if (process.dev) {
     db = new Database('./db.sqlite')
   } else {
-    db = new Database(process.env.DB)
+    db = process.env.DB
   }
   return db
 }
