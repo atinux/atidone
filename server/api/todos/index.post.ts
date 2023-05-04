@@ -10,7 +10,10 @@ export default eventHandler(async (event) => {
 
   // List todos for the current user
   console.log('INsert todo')
-  const info = await useDb().prepare('INSERT INTO todos (title, userId) VALUES (?, ?)').run(title, session.user.id)
+  const info = await useDb().prepare('INSERT INTO todos (title, userId) VALUES (?, ?)').run(title, session.user.id).catch(err => {
+    console.log('err', err)
+    return {}
+  })
   console.log('info', info)
   if (!info.lastInsertRowid) {
     throw createError({
