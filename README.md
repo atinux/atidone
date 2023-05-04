@@ -6,7 +6,7 @@ Live demo: https://nuxt-todos.pages.dev
   - [Nuxt](https://nuxt.com/) - The Vue Framework for Web Architects
   - [TailwindCSS](https://tailwindcss.com/) for styling and layout.
 - Backend:
-  - Sqlite in development and [CloudFlare D1](https://developers.cloudflare.com/d1/) in production
+  - Sqlite in development and [CloudFlare D1](https://developers.cloudflare.com/d1/) in production using [drizzle-orm](https://github.com/drizzle-team/drizzle-orm)
 
 ## Setup
 
