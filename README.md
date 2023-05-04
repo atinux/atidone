@@ -2,6 +2,14 @@
 
 Live demo: https://nuxt-todos.pages.dev
 
+## Features
+
+- Server-Side Rendering on the [Edge](https://workers.cloudflare.com/)
+- Authentication backed-in
+- Leverage SQLite as database with migrations
+
+## Stack
+
 - Frontend:
   - [Nuxt](https://nuxt.com/) - The Vue Framework for Web Architects
   - [TailwindCSS](https://tailwindcss.com/) for styling and layout.
