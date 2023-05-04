@@ -11,6 +11,7 @@ export default eventHandler(async (event) => {
   // List todos for the current user
   console.log('INsert todo')
   const info = useDb().prepare('INSERT INTO todos (title, userId) VALUES (?, ?)').run(title, session.user.id)
+  console.log('info', info)
   if (!info.lastInsertRowid) {
     throw createError({
       statusCode: 500,
