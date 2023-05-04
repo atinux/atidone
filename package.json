@@ -4,11 +4,15 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "preview": "nuxt preview",
-    "lint": "eslint ."
+    "migrations": "drizzle-kit generate:sqlite",
+    "lint": "eslint .",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.6.7",
     "better-sqlite3": "^8.3.0",
+    "drizzle-kit": "^0.17.6",
+    "drizzle-orm": "^0.25.4",
     "h3-zod": "^0.5.1",
     "nuxt": "^3.4.3",
     "zod": "^3.21.4"

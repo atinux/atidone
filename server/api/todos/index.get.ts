@@ -1,16 +1,10 @@
-interface Todo {
-  id: number
-  userId: number
-  title: string
-  completed: number
-  createdAt: string
-}
+import { eq } from 'drizzle-orm'
 
 export default eventHandler(async (event) => {
   const session = await requireUserSession(event)
 
   // List todos for the current user
-  const todos = useDb().prepare('SELECT * FROM todos WHERE userId = ?').all(session.user.id) as Todo[]
+  const todos = await useDb().select().from(tables.todos).where(eq(tables.todos.userId, session.user.id)).all()
 
   return todos
 })

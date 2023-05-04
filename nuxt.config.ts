@@ -1,3 +1,7 @@
+import { createResolver } from 'nuxt/kit'
+
+const { resolve } = createResolver(import.meta.url)
+
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss'
@@ -6,6 +10,7 @@ export default defineNuxtConfig({
     enabled: true
   },
   runtimeConfig: {
+    dbDir: resolve('./server/db'),
     github: {
       clientId: '',
       clientSecret: ''

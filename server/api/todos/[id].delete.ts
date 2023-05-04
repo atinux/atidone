@@ -1,3 +1,4 @@
+import { eq, and } from 'drizzle-orm'
 import { useValidatedParams, zh } from 'h3-zod'
 
 export default eventHandler(async (event) => {
@@ -7,7 +8,16 @@ export default eventHandler(async (event) => {
   const session = await requireUserSession(event)
 
   // List todos for the current user
-  const info = useDb().prepare('DELETE FROM todos WHERE id = ? AND userId = ?').run(id, session.user.id)
+  const deletedTodo = await useDb().delete(tables.todos).where(and(
+    eq(tables.todos.id, id),
+    eq(tables.todos.userId, session.user.id)
+  )).returning().get()
   
-  return { info }
+  if (!deletedTodo) {
+    throw createError({
+      statusCode: 404,
+      message: 'Todo not found'
+    })
+  }
+  return deletedTodo
 })

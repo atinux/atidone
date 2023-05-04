@@ -1,28 +1,26 @@
+import { drizzle as drizzleD1, DrizzleD1Database } from 'drizzle-orm/d1'
+import { drizzle, BetterSQLite3Database } from 'drizzle-orm/better-sqlite3'
 // @ts-ignore
 import Database from 'better-sqlite3'
+import { join } from 'pathe'
 
-export async function setupDb() {
-  const db = useDb()
-  // Create SQLIte table if it doesn't exist
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS todos (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      userId INTEGER NOT NULL,
-      title TEXT NOT NULL,
-      completed INTEGER NOT NULL DEFAULT 0,
-      createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-    )
-  `)
-}
+export * as tables from '~/server/db/schema'
 
-let db: any | null = null
+let _db: DrizzleD1Database | BetterSQLite3Database | null = null
 
-export function useDb() {
-  if (db) return db
-  if (process.dev) {
-    db = new Database('./db.sqlite')
-  } else {
-    db = process.env.DB
+export const useDb = () => {
+  if (!_db) {
+    // local sqlite in development
+    if (process.dev) {
+      const { dbDir } = useRuntimeConfig()
+      const sqlite = new Database(join(dbDir, './db.sqlite'))
+      _db = drizzle(sqlite)
+
+    } else {
+      // d1 in production
+      _db = drizzleD1(process.env.DB)
+    }
   }
-  return db
+  return _db
 }
+
