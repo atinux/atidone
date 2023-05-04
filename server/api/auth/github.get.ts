@@ -7,6 +7,8 @@ export default eventHandler(async (event) => {
       clientSecret: process.env.NUXT_GITHUB_CLIENT_SECRET
     }
   }
+  console.log('runtimeConfig', useRuntimeConfig(event))
+  console.log('process.env.NUXT_GITHUB_CLIENT_ID', process.env.NUXT_GITHUB_CLIENT_ID)
   const { code } = getQuery(event)
 
   if (!code) {
