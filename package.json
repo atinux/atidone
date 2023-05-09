@@ -16,17 +16,14 @@
     "drizzle-kit": "^0.17.6",
     "drizzle-orm": "^0.25.4",
     "h3-zod": "^0.5.1",
-    "nuxt": "^3.4.3",
     "utf-8-validate": "^6.0.3",
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.4.5",
+    "@nuxt/devtools": "^0.4.6",
     "@nuxt/eslint-config": "^0.1.1",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
+    "nuxt": "^3.4.3",
     "typescript": "^5.0.4"
-  },
-  "resolutions": {
-    "nitropack": "npm:nitropack-edge@latest"
   }
 }
