@@ -1,9 +1,14 @@
 <script setup>
 const { loggedIn, user } = useUserSession()
 
+useHead({
+  htmlAttrs: { lang: 'en' },
+  link: [
+    { rel: 'icon', href: '/icon.png' }
+  ]
+})
+
 useSeoMeta({
-  lang: 'en',
-  icon: '/icon.png',
   title: () => user.value ? `${user.value.login} Todos` : 'Nuxt Todos Edge',
   description: 'A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge and using the D1 database',
   ogImage: '/social-image.png',
@@ -16,7 +21,6 @@ useSeoMeta({
   <UContainer class="min-h-screen flex flex-col justify-center">
     <TodoList v-if="loggedIn" />
     <LoginForm v-else />
-
     <footer class="text-center mt-2">
       <NuxtLink
         href="https://github.com/atinux/nuxt-todos-edge"
