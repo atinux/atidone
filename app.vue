@@ -35,6 +35,6 @@ useSeoMeta({
 
 <style lang="postcss">
 body {
-  @apply antialiased font-sans text-gray-500 bg-gray-50;
+  @apply antialiased font-sans text-gray-950 bg-gray-50 dark:bg-gray-950 dark:text-gray-50;
 }
 </style>

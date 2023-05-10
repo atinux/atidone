@@ -1,7 +1,7 @@
 <template>
   <UCard>
     <template #header>
-      <h3 class="text-lg font-semibold leading-6 text-gray-900">
+      <h3 class="text-lg font-semibold leading-6 ">
         Todo List
       </h3>
 

@@ -48,7 +48,7 @@ const items = [[{
 <template>
   <UCard @submit.prevent="addTodo">
     <template #header>
-      <h3 class="text-lg font-semibold leading-6 text-gray-900">
+      <h3 class="text-lg font-semibold leading-6">
         Todo List
       </h3>
 
@@ -71,16 +71,16 @@ const items = [[{
         autocomplete="off"
       />
 
-      <UButton type="submit" trailing-icon="i-heroicons-plus-20-solid" label="Add" />
+      <UButton type="submit" trailing-icon="i-heroicons-plus-20-solid" label="Add" :loading="loading" />
     </div>
 
-    <ul class="divide-y divide-gray-200">
+    <ul class="divide-y divide-gray-200 dark:divide-gray-800">
       <li
         v-for="todo of todos"
         :key="todo.id"
         class="flex items-center gap-4 py-2"
       >
-        <span class="flex-1 font-medium" :class="[todo.completed ? 'line-through text-gray-500' : 'text-gray-900']">{{ todo.title }}</span>
+        <span class="flex-1 font-medium" :class="[todo.completed ? 'line-through text-gray-500' : '']">{{ todo.title }}</span>
 
         <UToggle :model-value="Boolean(todo.completed)" @update:model-value="toggleTodo(todo)" />
 
