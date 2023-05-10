@@ -4,10 +4,16 @@ const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxthq/ui'
   ],
   devtools: {
     enabled: true
+  },
+  colorMode: {
+    preference: 'light'
+  },
+  ui: {
+    icons: ['heroicons', 'simple-icons']
   },
   runtimeConfig: {
     dbDir: resolve('./server/db'),

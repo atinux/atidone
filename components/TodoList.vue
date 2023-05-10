@@ -37,68 +37,61 @@ async function deleteTodo (todo) {
   await useFetch(`/api/todos/${todo.id}`, { method: 'DELETE' })
   todos.value = todos.value!.filter(t => t.id !== todo.id)
 }
+
+const items = [[{
+  label: 'Logout',
+  icon: 'i-heroicons-arrow-left-on-rectangle',
+  click: clear
+}]]
 </script>
 
 <template>
-  <div>
-    <p class="text-sm mb-4">
-      Hello {{ user.login }}!
-      <button
-        class="underline"
-        @click="clear"
-      >
-        Logout
-      </button>
-    </p>
-    <form
-      class="flex gap-2 mb-4"
-      @submit.prevent="addTodo"
-    >
-      <input
+  <UCard @submit.prevent="addTodo">
+    <template #header>
+      <h3 class="text-lg font-semibold leading-6 text-gray-900">
+        Todo List
+      </h3>
+
+      <UDropdown :items="items">
+        <UButton color="white" trailing-icon="i-heroicons-chevron-down-20-solid">
+          <UAvatar :src="`https://github.com/${user.login}.png`" :alt="user.login" size="3xs" />
+
+          {{ user.login }}
+        </UButton>
+      </UDropdown>
+    </template>
+
+    <div class="flex items-center gap-2">
+      <UInput
         v-model="newTodo"
-        type="text"
+        name="todo"
         :disabled="loading"
-        class="w-full px-2 py-1 border"
+        class="flex-1"
         placeholder="Make a Nuxt demo"
         autocomplete="off"
-      >
-      <button
-        type="submit"
-        class="bg-black hover:bg-gray-800 text-white px-4 py-1"
-      >
-        Add
-      </button>
-    </form>
-    <ul>
+      />
+
+      <UButton type="submit" trailing-icon="i-heroicons-plus-20-solid" label="Add" />
+    </div>
+
+    <ul class="divide-y divide-gray-200">
       <li
         v-for="todo of todos"
         :key="todo.id"
-        class="flex items-center gap-2 py-2 border-b border-gray-200 divide-y divide-gray-200"
+        class="flex items-center gap-4 py-2"
       >
-        <span
-          class="flex-1"
-          :class="[todo.completed ? 'line-through u-text-gray-500' : 'u-text-gray-700']"
-        >{{ todo.title }}</span>
-        <input
-          :checked="Boolean(todo.completed)"
-          type="checkbox"
-          :name="String(todo.id)"
-          @change="toggleTodo(todo)"
-        >
-        <button
-          type="button"
-          class="bg-red-200 border-none text-sm rounded px-2"
+        <span class="flex-1 font-medium" :class="[todo.completed ? 'line-through text-gray-500' : 'text-gray-900']">{{ todo.title }}</span>
+
+        <UToggle :model-value="Boolean(todo.completed)" @update:model-value="toggleTodo(todo)" />
+
+        <UButton
+          color="red"
+          variant="soft"
+          size="2xs"
+          icon="i-heroicons-x-mark-20-solid"
           @click="deleteTodo(todo)"
-        >
-          x
-        </button>
+        />
       </li>
     </ul>
-  </div>
+  </UCard>
 </template>
-
-<style lang="postcss">
-ul > li:last-child {
-  @apply border-b-0;
-}
-</style>
