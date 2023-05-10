@@ -1,6 +1,6 @@
 # Nuxt Todo List on the Edge
 
-A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge with CloudFlare Pages and SQLite with [D1](https://developers.cloudflare.com/d1/).
+A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge with CloudFlare Pages and SQLite ([D1](https://developers.cloudflare.com/d1/) or [Turso](https://turso.tech)).
 
 https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
 
@@ -16,9 +16,9 @@ Live demo: https://nuxt-todos-edge.pages.dev
 
 - Frontend:
   - [Nuxt](https://nuxt.com/) - The Vue Framework for Web Architects
-  - [TailwindCSS](https://tailwindcss.com/) for styling and layout.
+  - [TailwindCSS](https://tailwindcss.com/) for styling and layout
 - Backend:
-  - Sqlite in development and [CloudFlare D1](https://developers.cloudflare.com/d1/) in production using [drizzle-orm](https://github.com/drizzle-team/drizzle-orm)
+  - Sqlite in development and [D1](https://developers.cloudflare.com/d1/) or [Turso](https://turso.tech) in production using [drizzle-orm](https://github.com/drizzle-team/drizzle-orm)
 
 ## Setup
 
@@ -32,14 +32,14 @@ Create a [GitHub Oauth Application](https://github.com/settings/applications/new
 - Homepage url: `http://localhost:3000`
 - Callback url: `http://localhost:3000/api/auth/github`
 
-Add the `NUXT_GITHUB_CLIENT_ID` and `NUXT_GITHUB_CLIENT_SECRET` in the `.env` file:
+Add the variables in the `.env` file:
 
 ```bash
 NUXT_GITHUB_CLIENT_ID="my-github-oauth-app-id"
 NUXT_GITHUB_CLIENT_SECRET="my-github-oauth-app-secret"
 ```
 
-To create sealed sessions, you also need to add `NUXT_SESSION_SECRET` in the `.env` file with at least 32 characters:
+To create sealed sessions, you also need to add `NUXT_SESSION_SECRET` in the `.env` with at least 32 characters:
 
 ```bash
 NUXT_SESSION_SECRET=your-super-long-secret-for-session-encryption
@@ -53,13 +53,11 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-## Deploying on CloudFlare Pages
+## Deploy on CloudFlare Pages
 
-### Create your D1 database
+Create a CF pages deployment linked to your GitHub repository.
 
-- Create a D1 database on your CF account
-- Create a CF pages deployment linked to your GitHub repository
-- Add the environment variables and the ones to setup Node 18 and pnpm
+### Environment variables
 
 ```bash
 NODE_VERSION=18
@@ -69,6 +67,8 @@ NUXT_GITHUB_CLIENT_SECRET=...
 NUXT_SESSION_PASSWORD=...
 ```
 
+### Build command
+
 Set the build command to:
 
 ```bash
@@ -77,8 +77,20 @@ npx pnpm i --store=node_modules/.pnpm-store && npm run build
 
 And the output directory to `dist/`
 
+### D1 Database
 Lastly, in the project settings -> Functions, add the binding between your D1 database and the `DB` variable:
 
 ![d1-binding](https://user-images.githubusercontent.com/904724/236021974-d77dfda6-4eb7-4094-ae36-479be73ec35f.png)
 
-That's it :fire:
+### Turso Database
+
+You can also use [Turso](https://turso.tech/) database instead of CloudFlare D1 by creating a database and adding the following env variables:
+
+```
+TURSO_DB_URL=...
+TURSO_DB_TOKEN=...
+```
+
+## License
+
+[MIT License](./LICENSE)
