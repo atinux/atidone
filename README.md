@@ -1,4 +1,8 @@
-# Todo list demo using Nuxt & CloudFlare
+# Nuxt Todo List on the Edge
+
+A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge with CloudFlare Pages and SQLite with [D1](https://developers.cloudflare.com/d1/).
+
+https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
 
 Live demo: https://nuxt-todos-edge.pages.dev
 
@@ -24,9 +28,11 @@ Make sure to install the dependencies using [pnpm](https://pnpm.io/):
 pnpm i
 ```
 
-Create a [GitHub Oauth Application](https://github.com/settings/applications/new) with the homepage url being `http://localhost:3000` and the callback url being `http://localhost:3000/api/auth/github`
+Create a [GitHub Oauth Application](https://github.com/settings/applications/new) with:
+- Homepage url: `http://localhost:3000`
+- Callback url: `http://localhost:3000/api/auth/github`
 
-Then, add the `NUXT_GITHUB_CLIENT_ID` and `NUXT_GITHUB_CLIENT_SECRET` in the `.env` file:
+Add the `NUXT_GITHUB_CLIENT_ID` and `NUXT_GITHUB_CLIENT_SECRET` in the `.env` file:
 
 ```bash
 NUXT_GITHUB_CLIENT_ID="my-github-oauth-app-id"
