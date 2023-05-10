@@ -1,14 +1,5 @@
 export default eventHandler(async (event) => {
-  // const config = useRuntimeConfig(event)
-  // Workaround for Vercel Edge
-  const config = {
-    github: {
-      clientId: process.env.NUXT_GITHUB_CLIENT_ID,
-      clientSecret: process.env.NUXT_GITHUB_CLIENT_SECRET
-    }
-  }
-  console.log('runtimeConfig', useRuntimeConfig(event))
-  console.log('process.env.NUXT_GITHUB_CLIENT_ID', process.env.NUXT_GITHUB_CLIENT_ID)
+  const config = useRuntimeConfig(event)
   const { code } = getQuery(event)
 
   if (!code) {

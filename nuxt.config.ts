@@ -4,11 +4,9 @@ const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   modules: [
+    '@nuxt/devtools',
     '@nuxthq/ui'
   ],
-  devtools: {
-    enabled: true
-  },
   colorMode: {
     preference: 'light'
   },
@@ -18,12 +16,16 @@ export default defineNuxtConfig({
   runtimeConfig: {
     dbDir: resolve('./server/db'),
     github: {
-      clientId: '',
-      clientSecret: ''
+      clientId: process.env.NUXT_GITHUB_CLIENT_ID || '',
+      clientSecret: process.env.NUXT_GITHUB_CLIENT_SECRET || ''
     },
     session: {
       name: 'nuxt-session',
-      password: ''
+      password: process.env.NUXT_SESSION_PASSWORD || ''
+    },
+    turso: {
+      url: process.env.TURSO_DB_URL || '',
+      token: process.env.TURSO_DB_TOKEN || ''
     }
   }
 })

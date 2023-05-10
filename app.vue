@@ -2,8 +2,13 @@
 const { loggedIn, user } = useUserSession()
 
 useSeoMeta({
+  lang: 'en',
+  icon: '/icon.png',
   title: () => user.value ? `${user.value.login} Todos` : 'Nuxt Todos Edge',
-  description: 'A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge and using the D1 database'
+  description: 'A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge and using the D1 database',
+  ogImage: '/social-image.png',
+  twitterImage: '/social-image.png',
+  twitterCard: 'summary_large_image'
 })
 </script>
 

@@ -12,11 +12,12 @@ let _db: DrizzleD1Database | BetterSQLite3Database | LibSQLDatabase | null = nul
 
 export const useDb = () => {
   if (!_db) {
-    if (process.env.TURSO_DB_URL && process.env.TURSO_DB_TOKEN) {
+    const { turso } = useRuntimeConfig()
+    if (turso.url && turso.token) {
       // Turso in production
       _db = drizzleLibSQL(createLibSQLClient({
-        url: process.env.TURSO_DB_URL,
-        authToken: process.env.TURSO_DB_TOKEN
+        url: turso.url,
+        authToken: turso.token
       }))
     } else if (process.env.DB) {
       // d1 in production
