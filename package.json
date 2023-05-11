@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@iconify-json/simple-icons": "^1.1.52",
-    "@libsql/client": "^0.1.4",
-    "@nuxthq/ui": "npm:@nuxthq/ui-edge@2.0.0-28062278.24e7109",
+    "@libsql/client": "^0.1.5",
+    "@nuxthq/ui": "npm:@nuxthq/ui-edge@2.0.2-28063634.aabf1dd",
     "better-sqlite3": "^8.3.0",
     "bufferutil": "^4.0.7",
     "drizzle-kit": "^0.17.6",
