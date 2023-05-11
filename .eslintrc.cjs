@@ -10,7 +10,7 @@ module.exports = {
     'quote-props': ['error', 'as-needed'],
     // Vue
     'vue/multi-word-component-names': 0,
-    'vue/max-attributes-per-line': 3,
+    'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 0
   }
 }
