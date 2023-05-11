@@ -1,11 +1,6 @@
 export default eventHandler(async (event) => {
   // @ts-ignore
-  const config = {
-    github: {
-      clientId: process.env.NUXT_GITHUB_CLIENT_ID,
-      clientSecret: process.env.NUXT_GITHUB_CLIENT_SECRET,
-    }
-  }
+  const config = useRuntimeConfig(event)
   const { code } = getQuery(event)
 
   if (!code) {
