@@ -1,4 +1,5 @@
 export default eventHandler(async (event) => {
+  // @ts-ignore
   const config = useRuntimeConfig(event)
   const { code } = getQuery(event)
 

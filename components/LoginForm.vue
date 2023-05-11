@@ -1,5 +1,5 @@
 <script setup>
-const isTurso = useState('isTurso', () => Boolean(useRuntimeConfig().turso?.url))
+const isTurso = useRequestURL().host.includes('-turso')
 </script>
 
 <template>
