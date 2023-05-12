@@ -14,6 +14,11 @@ useHead({
 })
 
 useSeoMeta({
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
   title: () => user.value ? `${user.value.login} Todos` : 'Nuxt Todos Edge',
   description: 'A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge, authentication and queyring a SQLite database',
   ogImage: '/social-image.png',
