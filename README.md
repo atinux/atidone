@@ -4,7 +4,9 @@ A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the
 
 https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
 
-Live demo: https://nuxt-todos-edge.pages.dev
+Live demo:
+- CloudFlare Pages: https://nuxt-todos-edge.pages.dev
+- Lagon.app: https://nuxt-todos.lagon.dev
 
 ## Features
 
