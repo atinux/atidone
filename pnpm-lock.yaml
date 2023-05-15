@@ -1,7 +1,7 @@
 lockfileVersion: '6.0'
 
 overrides:
-  nitropack: npm:nitropack-edge@2.5.0-28064671.492343a
+  nitropack: npm:nitropack-edge@latest
 
 dependencies:
   '@iconify-json/simple-icons':
@@ -5587,8 +5587,8 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: false
 
-  /nitropack-edge@2.5.0-28064671.492343a:
-    resolution: {integrity: sha512-OhMaXLwoO56HX9p+QhwhUacvk1rPaltP2BsSMR3J/odnhwlgNsThxWqyQyWStvXfo/a8u0kzLwqNi0xBFaIaVA==}
+  /nitropack-edge@2.5.0-28064672.742dc3f:
+    resolution: {integrity: sha512-tieVx5pB5po8vyQONYG3tIj9ARwMAOs5SOKWEJwGnAnkSXMdwGZIJrpL+xOUPDtZxvZ9qnFQUtPmqya/hc3EnQ==}
     engines: {node: ^14.16.0 || ^16.11.0 || >=17.0.0}
     hasBin: true
     dependencies:
@@ -5914,7 +5914,7 @@ packages:
       local-pkg: 0.4.3
       magic-string: 0.30.0
       mlly: 1.2.0
-      nitropack: /nitropack-edge@2.5.0-28064671.492343a
+      nitropack: /nitropack-edge@2.5.0-28064672.742dc3f
       nuxi: 3.4.3
       nypm: 0.2.0
       ofetch: 1.0.1
