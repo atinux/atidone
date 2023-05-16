@@ -22,7 +22,7 @@ https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-
 
 - Frontend:
   - [Nuxt](https://nuxt.com/) - The Vue Framework for Web Architects
-  - [TailwindCSS](https://tailwindcss.com/) for styling and layout
+  - [NuxtLabs UI](https://ui.nuxtlabs.com/) for styling and layout
 - Backend:
   - Sqlite in development and [D1](https://developers.cloudflare.com/d1/) or [Turso](https://turso.tech) in production using [drizzle-orm](https://github.com/drizzle-team/drizzle-orm)
 
