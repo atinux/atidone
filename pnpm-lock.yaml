@@ -1,5 +1,8 @@
 lockfileVersion: '6.0'
 
+overrides:
+  nitropack: npm:nitropack-edge@latest
+
 dependencies:
   '@iconify-json/simple-icons':
     specifier: ^1.1.53
@@ -1390,8 +1393,8 @@ packages:
       slash: 4.0.0
     dev: true
 
-  /@rollup/plugin-commonjs@24.1.0(rollup@3.21.8):
-    resolution: {integrity: sha512-eSL45hjhCWI0jCCXcNtLVqM5N1JlBGvlFfY0m6oOYnLCJ6N0qEXoZql4sY2MOUArzhH4SA/qBpTxvvZp2Sc+DQ==}
+  /@rollup/plugin-commonjs@25.0.0(rollup@3.21.8):
+    resolution: {integrity: sha512-hoho2Kay9TZrLu0bnDsTTCaj4Npa+THk9snajP/XDNb9a9mmjTjh52EQM9sKl3HD1LsnihX7js+eA2sd2uKAhw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
@@ -1608,6 +1611,12 @@ packages:
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
+
+  /@types/http-proxy@1.17.11:
+    resolution: {integrity: sha512-HC8G7c1WmaF2ekqpnFq626xd3Zz0uvaqFmBJNRZCGEZCXkvSdJoNFn/8Ygbd9fKNQj8UzLdCETaI0UWPAjK7IA==}
+    dependencies:
+      '@types/node': 20.1.5
+    dev: true
 
   /@types/json-schema@7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
@@ -4559,6 +4568,15 @@ packages:
       toidentifier: 1.0.1
     dev: true
 
+  /http-graceful-shutdown@3.1.13:
+    resolution: {integrity: sha512-Ci5LRufQ8AtrQ1U26AevS8QoMXDOhnAHCJI3eZu1com7mZGHxREmw3dNj85ftpQokQCvak8nI2pnFS8zyM1M+Q==}
+    engines: {node: '>=4.0.0'}
+    dependencies:
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /http-proxy-agent@5.0.0:
     resolution: {integrity: sha512-n2hY8YdoRE1i7r6M0w9DIw5GgZN0G25P8zLCRQ8rjXtTU3vsNFBI/vWK/UIeE6g5MUUz6avwAPXmL6Fy9D/90w==}
     engines: {node: '>= 6'}
@@ -5646,15 +5664,15 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: false
 
-  /nitropack@2.4.0:
-    resolution: {integrity: sha512-Gk7ujq8s4oT/6V0EO8NzeEfGz66EupWGrbD8Dhxm0LOkNcBl7y6iKk3CCQTSvcr9fpBdTifLsaUdRjQxohiGpw==}
+  /nitropack-edge@2.5.0-28070636.4111798:
+    resolution: {integrity: sha512-eLHQ6dIkBXxmJLsfybhQ3etF3G1UXKVEHYToCrTkQCPizHM3Br5KWV5Ja0X+IZcFnZyNE5BxTVeC3azBKvdLzw==}
     engines: {node: ^14.16.0 || ^16.11.0 || >=17.0.0}
     hasBin: true
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.0
       '@netlify/functions': 1.6.0
       '@rollup/plugin-alias': 5.0.0(rollup@3.21.8)
-      '@rollup/plugin-commonjs': 24.1.0(rollup@3.21.8)
+      '@rollup/plugin-commonjs': 25.0.0(rollup@3.21.8)
       '@rollup/plugin-inject': 5.0.3(rollup@3.21.8)
       '@rollup/plugin-json': 6.0.0(rollup@3.21.8)
       '@rollup/plugin-node-resolve': 15.0.2(rollup@3.21.8)
@@ -5662,6 +5680,7 @@ packages:
       '@rollup/plugin-terser': 0.4.1(rollup@3.21.8)
       '@rollup/plugin-wasm': 6.1.3(rollup@3.21.8)
       '@rollup/pluginutils': 5.0.2(rollup@3.21.8)
+      '@types/http-proxy': 1.17.11
       '@vercel/nft': 0.22.6
       archiver: 5.3.1
       c12: 1.4.1
@@ -5681,6 +5700,7 @@ packages:
       gzip-size: 7.0.0
       h3: 1.6.6
       hookable: 5.5.3
+      http-graceful-shutdown: 3.1.13
       http-proxy: 1.18.1
       is-primitive: 3.0.1
       jiti: 1.18.2
@@ -5973,7 +5993,7 @@ packages:
       local-pkg: 0.4.3
       magic-string: 0.30.0
       mlly: 1.2.1
-      nitropack: 2.4.0
+      nitropack: /nitropack-edge@2.5.0-28070636.4111798
       nuxi: 3.5.0
       nypm: 0.2.0
       ofetch: 1.0.1
