@@ -1,5 +1,14 @@
 <script setup>
-const isTurso = useRequestURL().host.includes('-turso')
+const host = useRequestURL().host
+let hosting = { url: 'https://pages.cloudflare.com', title: 'CloudFlare Pages' }
+if (host.includes('.netlify.app')) {
+  hosting = { url: 'https://www.netlify.com/products/#netlify-edge-functions', title: 'Netlify Edge Functions' }
+} else if (host.includes('.vercel.app')) {
+  hosting = { url: 'https://vercel.com/features/edge-functions', title: 'Vercel Edge Functions' }
+} else if (host.includes('.lagon.dev')) {
+  hosting = { url: 'https://lagon.app', title: 'Lagon' }
+}
+const isD1 = host.includes('nuxt-todos-edge.pages.dev')
 </script>
 
 <template>
@@ -16,13 +25,14 @@ const isTurso = useRequestURL().host.includes('-turso')
         external
       />
     </template>
-    <p>
-      Welcome to Nuxt Todos Edge. A demo hosted on CloudFlare Pages with server-side rendering on the edge and using the <NuxtLink
-        :href="isTurso ? 'https://turso.tech' : 'https://developers.cloudflare.com/d1/'"
+    <p class="font-medium">Welcome to Nuxt Todos Edge.</p>
+    <p>A <a href="https://nuxt.com" target="_blank" class="text-primary-500"  rel="noopener">Nuxt</a> demo hosted on <a :href="hosting.url" target="_blank" rel="noopener" class="text-primary-500">{{ hosting.title }}</a> with server-side rendering on the edge and using <NuxtLink
+        :href="isD1 ? 'https://developers.cloudflare.com/d1/' : 'https://turso.tech'"
         target="_blank"
+        rel="noopener"
         class="text-primary-500"
       >
-        {{ isTurso ? 'Turso' : 'D1' }} database
+        {{ isD1 ? 'D1' : 'Turso' }} database
       </NuxtLink>.
     </p>
     <hr class="dark:border-gray-700">
