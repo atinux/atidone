@@ -1,10 +1,11 @@
 # Nuxt Todo List on the Edge
 
-A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database using SQLite with [CloudFlare D1](https://developers.cloudflare.com/d1/) or [Turso](https://turso.tech) in production.
+A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using SQLite with [CloudFlare D1](https://developers.cloudflare.com/d1/) or [Turso](https://turso.tech) in production.
 
 https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
 
-Live demo:
+## Live demos
+
 - CloudFlare Pages + D1: https://nuxt-todos-edge.pages.dev
 - CloudFlare Pages + Turso: https://nuxt-todos-turso.pages.dev
 - Lagon.app + Turso: https://nuxt-todos.lagon.dev
