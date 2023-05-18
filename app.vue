@@ -1,28 +1,30 @@
 <script setup>
-const colorMode = useColorMode();
+const colorMode = useColorMode()
+
 function toggleColorMode() {
-  colorMode.preference = colorMode.preference === "dark" ? "light" : "dark";
+  colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
 }
 
 useHead({
-  htmlAttrs: { lang: "en" },
-  link: [{ rel: "icon", href: "/icon.png" }],
-});
+  htmlAttrs: { lang: 'en' },
+  link: [{ rel: 'icon', href: '/icon.png' }],
+})
 
 useSeoMeta({
   viewport: {
-    width: "device-width",
+    width: 'device-width',
     initialScale: 1,
     maximumScale: 1,
   },
-  title: "Nuxt Todos Edge",
+  title: 'Nuxt Todos Edge',
   description:
-    "A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge, authentication and queyring a SQLite database",
-  ogImage: "/social-image.png",
-  twitterImage: "/social-image.png",
-  twitterCard: "summary_large_image",
-});
+    'A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge, authentication and queyring a SQLite database',
+  ogImage: '/social-image.png',
+  twitterImage: '/social-image.png',
+  twitterCard: 'summary_large_image',
+})
 </script>
+
 <template>
   <UContainer class="min-h-screen flex flex-col justify-center">
     <div class="mb-2 text-right">
@@ -34,7 +36,9 @@ useSeoMeta({
         @click="toggleColorMode"
       />
     </div>
-    <slot />
+
+    <NuxtPage />
+
     <footer class="text-center mt-2">
       <NuxtLink
         href="https://github.com/atinux/nuxt-todos-edge"
@@ -54,3 +58,9 @@ useSeoMeta({
     </footer>
   </UContainer>
 </template>
+
+<style lang="postcss">
+body {
+  @apply font-sans text-gray-950 bg-gray-50 dark:bg-gray-950 dark:text-gray-50;
+}
+</style>

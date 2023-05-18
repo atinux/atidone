@@ -9,7 +9,7 @@ if (host.includes('.netlify.app')) {
   hosting = { url: 'https://lagon.app', title: 'Lagon' }
 }
 const isD1 = host.includes('nuxt-todos-edge.pages.dev')
-const { loggedIn } = useUserSession();
+const { loggedIn } = useUserSession()
 </script>
 
 <template>
@@ -29,12 +29,16 @@ const { loggedIn } = useUserSession();
       <UButton
         v-else
         to="/todos"
+        icon="i-heroicons-list-bullet"
         label="Go to Todos"
         color="black"
       />
     </template>
-    <p class="font-medium">Welcome to Nuxt Todos Edge.</p>
-    <p>A <a href="https://nuxt.com" target="_blank" class="text-primary-500"  rel="noopener">Nuxt</a> demo hosted on <a :href="hosting.url" target="_blank" rel="noopener" class="text-primary-500">{{ hosting.title }}</a> with server-side rendering on the edge and using <NuxtLink
+    <p class="font-medium">
+      Welcome to Nuxt Todos Edge.
+    </p>
+    <p>
+      A <a href="https://nuxt.com" target="_blank" class="text-primary-500" rel="noopener">Nuxt</a> demo hosted on <a :href="hosting.url" target="_blank" rel="noopener" class="text-primary-500">{{ hosting.title }}</a> with server-side rendering on the edge and using <NuxtLink
         :href="isD1 ? 'https://developers.cloudflare.com/d1/' : 'https://turso.tech'"
         target="_blank"
         rel="noopener"

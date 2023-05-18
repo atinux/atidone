@@ -1,15 +1,9 @@
 <script setup>
 definePageMeta({
-  middleware: function () {
-    const { loggedIn } = useUserSession();
-    if (!loggedIn.value) {
-      return navigateTo("/");
-    }
-  },
-});
+  middleware: 'auth'
+})
 </script>
+
 <template>
-  <Container>
-    <TodoList />
-  </Container>
+  <TodoList />
 </template>
