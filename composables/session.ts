@@ -19,5 +19,4 @@ async function fetch() {
 async function clear() {
   await $fetch('/api/session', { method: 'DELETE' })
   useUserSessionState().value = {}
-  window.location.href = '/'
 }

@@ -54,7 +54,7 @@ const items = [[{
         </NuxtLink>
       </h3>
 
-      <UDropdown :items="items">
+      <UDropdown v-if="user" :items="items">
         <UButton color="white" trailing-icon="i-heroicons-chevron-down-20-solid">
           <UAvatar :src="`https://github.com/${user.login}.png`" :alt="user.login" size="3xs" />
 

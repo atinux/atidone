@@ -1,5 +1,12 @@
 <script setup>
+const { loggedIn } = useUserSession()
 const colorMode = useColorMode()
+
+watch(loggedIn, () => {
+  if (!loggedIn.value) {
+    navigateTo('/')
+  }
+})
 
 function toggleColorMode() {
   colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
