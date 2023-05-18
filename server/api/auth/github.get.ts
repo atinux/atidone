@@ -34,5 +34,5 @@ export default eventHandler(async (event) => {
     user: ghUser
   })
 
-  return sendRedirect(event, '/')
+  return sendRedirect(event, '/todos')
 })

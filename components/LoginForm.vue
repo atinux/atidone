@@ -9,6 +9,7 @@ if (host.includes('.netlify.app')) {
   hosting = { url: 'https://lagon.app', title: 'Lagon' }
 }
 const isD1 = host.includes('nuxt-todos-edge.pages.dev')
+const { loggedIn } = useUserSession();
 </script>
 
 <template>
@@ -18,11 +19,18 @@ const isD1 = host.includes('nuxt-todos-edge.pages.dev')
         Todo List
       </h3>
       <UButton
+        v-if="!loggedIn"
         to="/api/auth/github"
         icon="i-simple-icons-github"
         label="Login with GitHub"
         color="black"
         external
+      />
+      <UButton
+        v-else
+        to="/todos"
+        label="Go to Todos"
+        color="black"
       />
     </template>
     <p class="font-medium">Welcome to Nuxt Todos Edge.</p>

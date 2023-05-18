@@ -1,5 +1,4 @@
 import { UserSession } from '~/server/utils/session'
-
 const useUserSessionState = () => useState<UserSession>('nuxt-session', () => ({}))
 
 export const useUserSession = () => {
@@ -20,4 +19,5 @@ async function fetch() {
 async function clear() {
   await $fetch('/api/session', { method: 'DELETE' })
   useUserSessionState().value = {}
+  window.location.href = '/'
 }
