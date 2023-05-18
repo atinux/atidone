@@ -1,5 +1,4 @@
 import { UserSession } from '~/server/utils/session'
-
 const useUserSessionState = () => useState<UserSession>('nuxt-session', () => ({}))
 
 export const useUserSession = () => {

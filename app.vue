@@ -1,16 +1,20 @@
 <script setup>
-const { loggedIn, user } = useUserSession()
-
+const { loggedIn } = useUserSession()
 const colorMode = useColorMode()
+
+watch(loggedIn, () => {
+  if (!loggedIn.value) {
+    navigateTo('/')
+  }
+})
+
 function toggleColorMode() {
   colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
 }
 
 useHead({
   htmlAttrs: { lang: 'en' },
-  link: [
-    { rel: 'icon', href: '/icon.png' }
-  ]
+  link: [{ rel: 'icon', href: '/icon.png' }],
 })
 
 useSeoMeta({
@@ -19,27 +23,43 @@ useSeoMeta({
     initialScale: 1,
     maximumScale: 1,
   },
-  title: () => user.value ? `${user.value.login} Todos` : 'Nuxt Todos Edge',
-  description: 'A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge, authentication and queyring a SQLite database',
+  title: 'Nuxt Todos Edge',
+  description:
+    'A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge, authentication and queyring a SQLite database',
   ogImage: '/social-image.png',
   twitterImage: '/social-image.png',
-  twitterCard: 'summary_large_image'
+  twitterCard: 'summary_large_image',
 })
 </script>
 
 <template>
   <UContainer class="min-h-screen flex flex-col justify-center">
     <div class="mb-2 text-right">
-      <UButton square variant="ghost" color="black" :icon="$colorMode.preference === 'dark' ? 'i-heroicons-moon' : 'i-heroicons-sun'" @click="toggleColorMode" />
+      <UButton
+        square
+        variant="ghost"
+        color="black"
+        :icon="$colorMode.preference === 'dark' ? 'i-heroicons-moon' : 'i-heroicons-sun'"
+        @click="toggleColorMode"
+      />
     </div>
-    <TodoList v-if="loggedIn" />
-    <LoginForm v-else />
+
+    <NuxtPage />
+
     <footer class="text-center mt-2">
-      <NuxtLink href="https://github.com/atinux/nuxt-todos-edge" target="_blank" class="text-sm text-gray-500 hover:text-gray-700">
+      <NuxtLink
+        href="https://github.com/atinux/nuxt-todos-edge"
+        target="_blank"
+        class="text-sm text-gray-500 hover:text-gray-700"
+      >
         GitHub
       </NuxtLink>
       ·
-      <NuxtLink href="https://twitter.com/Atinux" target="_blank" class="text-sm text-gray-500 hover:text-gray-700">
+      <NuxtLink
+        href="https://twitter.com/Atinux"
+        target="_blank"
+        class="text-sm text-gray-500 hover:text-gray-700"
+      >
         Twitter
       </NuxtLink>
     </footer>
@@ -48,6 +68,6 @@ useSeoMeta({
 
 <style lang="postcss">
 body {
-  @apply antialiased font-sans text-gray-950 bg-gray-50 dark:bg-gray-950 dark:text-gray-50;
+  @apply font-sans text-gray-950 bg-gray-50 dark:bg-gray-950 dark:text-gray-50;
 }
 </style>
