@@ -26,8 +26,5 @@
     "eslint": "^8.40.0",
     "nuxt": "^3.5.0",
     "typescript": "^5.0.4"
-  },
-  "resolutions": {
-    "nitropack": "npm:nitropack-edge@latest"
   }
 }
