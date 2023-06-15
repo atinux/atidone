@@ -14,6 +14,9 @@ dependencies:
   '@nuxthq/ui':
     specifier: ^2.3.0
     version: 2.3.0(vue@3.3.4)(webpack@5.82.1)
+  '@vinejs/vine':
+    specifier: ^1.4.0
+    version: 1.4.0
   better-sqlite3:
     specifier: ^8.4.0
     version: 8.4.0
@@ -1374,6 +1377,10 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
+  /@poppinss/macroable@1.0.0-6:
+    resolution: {integrity: sha512-1m8apl4RdSIsoj/y86DPUpbnlmI7oroW1LP1HDRDhsclChNpsp1AfqycJ463/uOaTzet1VZEOt2YQRZ7f3G7DQ==}
+    dev: false
+
   /@rollup/plugin-alias@5.0.0(rollup@3.21.8):
     resolution: {integrity: sha512-l9hY5chSCjuFRPsnRm16twWBiSApl2uYFLsepQYwtBuAxNMQ/1dJqADld40P0Jkqm65GRTLy/AC6hnpVebtLsA==}
     engines: {node: '>=14.0.0'}
@@ -1637,6 +1644,10 @@ packages:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
     dev: true
 
+  /@types/validator@13.7.17:
+    resolution: {integrity: sha512-aqayTNmeWrZcvnG2MG9eGYI6b7S5fl+yKgPs6bAjOTwPS316R5SxBGKvtSExfyoJU7pIeHJfsHI0Ji41RVMkvQ==}
+    dev: false
+
   /@types/web-bluetooth@0.0.17:
     resolution: {integrity: sha512-4p9vcSmxAayx72yn70joFoL44c9MO/0+iVEBIQXe3v2h2SiAsEIo/G5v6ObFWvNKRFjbrVadNf9LqEEZeQPzdA==}
     dev: false
@@ -1857,6 +1868,23 @@ packages:
       - encoding
       - supports-color
     dev: true
+
+  /@vinejs/compiler@2.0.1:
+    resolution: {integrity: sha512-qCGjknV0owgM5ph/f9Rw3o4YG7F0LRfuirr6ll3oAG8TvkjYNBPBH77kMbGLkI1jUxpn3cR01UonjIotMJtJ1g==}
+    engines: {node: '>=18.0.0'}
+    dev: false
+
+  /@vinejs/vine@1.4.0:
+    resolution: {integrity: sha512-DJh3f5A/afrRU/d6Bg1s4Id9MXDpCMSHBwV0IYnI/0rDA3ZtPwoy7zg8qUTaSdYFLZmwMTKHwTai9VChCMtD2A==}
+    engines: {node: '>=18.16.0'}
+    dependencies:
+      '@poppinss/macroable': 1.0.0-6
+      '@types/validator': 13.7.17
+      '@vinejs/compiler': 2.0.1
+      camelcase: 7.0.1
+      normalize-url: 8.0.0
+      validator: 13.9.0
+    dev: false
 
   /@vitejs/plugin-vue-jsx@3.0.1(vite@4.3.9)(vue@3.3.4):
     resolution: {integrity: sha512-+Jb7ggL48FSPS1uhPnJbJwWa9Sr90vQ+d0InW+AhBM22n+cfuYqJZDckBc+W3QSHe1WDvewMZfa4wZOtk5pRgw==}
@@ -5960,6 +5988,11 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
 
+  /normalize-url@8.0.0:
+    resolution: {integrity: sha512-uVFpKhj5MheNBJRTiMZ9pE/7hD1QTeEvugSJW/OmLzAp78PB5O6adfMNTvmfKhXBkvCzC+rqifWcVYpGFwTjnw==}
+    engines: {node: '>=14.16'}
+    dev: false
+
   /npm-bundled@3.0.0:
     resolution: {integrity: sha512-Vq0eyEQy+elFpzsKjMss9kxqb9tG3YHg4dsyWuUENuzvSUWe1TCnW/vV9FkhvBk/brEDoDiVd+M1Btosa6ImdQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -8240,6 +8273,11 @@ packages:
     dependencies:
       builtins: 5.0.1
     dev: true
+
+  /validator@13.9.0:
+    resolution: {integrity: sha512-B+dGG8U3fdtM0/aNK4/X8CXq/EcxU2WPrPEkJGslb47qyHsxmbggTWK0yEA4qnYVNF+nxNlN88o14hIcPmSIEA==}
+    engines: {node: '>= 0.10'}
+    dev: false
 
   /vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
