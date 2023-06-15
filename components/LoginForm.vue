@@ -7,6 +7,8 @@ if (host.includes('.netlify.app')) {
   hosting = { url: 'https://vercel.com/features/edge-functions', title: 'Vercel Edge Functions' }
 } else if (host.includes('.lagon.dev')) {
   hosting = { url: 'https://lagon.app', title: 'Lagon' }
+} else if (host.includes('.deno.dev')) {
+  hosting = { url: 'https://deno.com/deploy', title: 'Deno Deploy' }
 }
 const isD1 = host.includes('nuxt-todos-edge.pages.dev')
 const { loggedIn } = useUserSession()
