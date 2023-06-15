@@ -25,7 +25,7 @@ useSeoMeta({
   },
   title: 'Nuxt Todos Edge',
   description:
-    'A Nuxt demo hosted on CloudFlare Pages with server-side rendering on the edge, authentication and queyring a SQLite database',
+    'A Nuxt demo hosted with Edge-side rendering, authentication and queyring a SQLite database',
   ogImage: '/social-image.png',
   twitterImage: '/social-image.png',
   twitterCard: 'summary_large_image',
