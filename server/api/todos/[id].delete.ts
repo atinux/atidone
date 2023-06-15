@@ -1,14 +1,13 @@
-import vine, { errors } from '@vinejs/vine'
+import { errors } from '@vinejs/vine'
 import { eq, and } from 'drizzle-orm'
-import { todoDeleteSchema } from '../../schemas/todo'
+import { deleteTodoValidator } from '../../schemas/todo'
 
 export default eventHandler(async (event) => {
   const id = event.context.params?.id
   const session = await requireUserSession(event)
 
   try {
-    const output = await vine.validate({ schema: todoDeleteSchema,
-      data: { id } })
+    const output = await deleteTodoValidator.validate({ id })
 
     const deletedTodo = await useDb().delete(tables.todos).where(and(
       eq(tables.todos.id, output.id),

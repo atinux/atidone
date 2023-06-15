@@ -1,6 +1,6 @@
-import vine, { errors } from '@vinejs/vine'
+import { errors } from '@vinejs/vine'
 import { eq, and } from 'drizzle-orm'
-import { todoPatchSchema } from '../../schemas/todo'
+import { updateTodoValidator } from '../../schemas/todo'
 
 export default eventHandler(async (event) => {
   const id = event.context.params?.id
@@ -8,7 +8,7 @@ export default eventHandler(async (event) => {
   const session = await requireUserSession(event)
 
   try {
-    const output = await vine.validate({ schema: todoPatchSchema, data: { id, ...body } })
+    const output = await updateTodoValidator.validate({ id, ...body })
 
     const todo = await useDb().update(tables.todos).set({
       completed: output.completed

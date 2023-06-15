@@ -1,12 +1,12 @@
-import vine, { errors } from '@vinejs/vine'
-import { todoPostSchema } from '../../schemas/todo'
+import { errors } from '@vinejs/vine'
+import { createTodoValidator } from '../../schemas/todo'
 
 export default eventHandler(async (event) => {
   const body = await readBody(event)
   const session = await requireUserSession(event)
 
   try {
-    const output = await vine.validate({ schema: todoPostSchema, data: body })
+    const output = await createTodoValidator.validate(body)
 
     const todo = await useDb().insert(tables.todos).values({
       userId: session.user.id,
