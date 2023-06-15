@@ -64,6 +64,7 @@ useSeoMeta({
       </NuxtLink>
     </footer>
   </UContainer>
+  <UNotifications />
 </template>
 
 <style lang="postcss">
