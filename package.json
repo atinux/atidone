@@ -15,10 +15,7 @@
     "better-sqlite3": "^8.4.0",
     "bufferutil": "^4.0.7",
     "drizzle-kit": "^0.18.1",
-    "drizzle-orm": "^0.26.5",
-    "h3-zod": "^0.5.1",
-    "utf-8-validate": "^6.0.3",
-    "zod": "^3.21.4"
+    "drizzle-orm": "^0.26.5"
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.5.5",

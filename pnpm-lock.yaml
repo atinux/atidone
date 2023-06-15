@@ -1,12 +1,16 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@iconify-json/simple-icons':
     specifier: ^1.1.56
     version: 1.1.56
   '@libsql/client':
     specifier: ^0.2.1
-    version: 0.2.1(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+    version: 0.2.1(bufferutil@4.0.7)
   '@nuxthq/ui':
     specifier: ^2.3.0
     version: 2.3.0(vue@3.3.4)(webpack@5.82.1)
@@ -22,20 +26,11 @@ dependencies:
   drizzle-orm:
     specifier: ^0.26.5
     version: 0.26.5(@libsql/client@0.2.1)(better-sqlite3@8.4.0)
-  h3-zod:
-    specifier: ^0.5.1
-    version: 0.5.1(h3@1.6.6)(zod@3.21.4)
-  utf-8-validate:
-    specifier: ^6.0.3
-    version: 6.0.3
-  zod:
-    specifier: ^3.21.4
-    version: 3.21.4
 
 devDependencies:
   '@nuxt/devtools':
     specifier: ^0.5.5
-    version: 0.5.5(bufferutil@4.0.7)(nuxt@3.5.3)(utf-8-validate@6.0.3)(vite@4.3.9)
+    version: 0.5.5(bufferutil@4.0.7)(nuxt@3.5.3)(vite@4.3.9)
   '@nuxt/eslint-config':
     specifier: ^0.1.1
     version: 0.1.1(eslint@8.42.0)
@@ -822,10 +817,10 @@ packages:
       - supports-color
     dev: false
 
-  /@libsql/client@0.2.1(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /@libsql/client@0.2.1(bufferutil@4.0.7):
     resolution: {integrity: sha512-PKU7qIjkzKe7NzuROvFbbq6MDFQjPtQCmu1q/36MJ9YFEEBsibasWntjFr14T6yVmqWc0r/RCQquRB1OYuO7BA==}
     dependencies:
-      '@libsql/hrana-client': 0.4.1(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      '@libsql/hrana-client': 0.4.1(bufferutil@4.0.7)
       better-sqlite3: 8.4.0
       js-base64: 3.7.5
     transitivePeerDependencies:
@@ -834,11 +829,11 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@libsql/hrana-client@0.4.1(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /@libsql/hrana-client@0.4.1(bufferutil@4.0.7):
     resolution: {integrity: sha512-PeqJ+W2Ceh9Mt7yS8O6YyluPmQ4d/tuP+pHNa9lLsZ0LDoycBqFMvS7jLq7Nf9JWaH3dlnUZ0EQzWIV7fAdG1w==}
     dependencies:
       '@libsql/isomorphic-fetch': 0.1.1
-      '@libsql/isomorphic-ws': 0.1.3(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      '@libsql/isomorphic-ws': 0.1.3(bufferutil@4.0.7)
       js-base64: 3.7.5
     transitivePeerDependencies:
       - bufferutil
@@ -855,11 +850,11 @@ packages:
       - encoding
     dev: false
 
-  /@libsql/isomorphic-ws@0.1.3(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /@libsql/isomorphic-ws@0.1.3(bufferutil@4.0.7):
     resolution: {integrity: sha512-54dZXgYwWDKsnfWv8GCVYvhn6RDlqFDGAc8EQMd941yvGMsGzo06Gn6Iyjw//nJ1iJO97FbXgoQ1apikoFD/WA==}
     dependencies:
       '@types/ws': 8.5.4
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      ws: 8.13.0(bufferutil@4.0.7)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -1020,7 +1015,7 @@ packages:
       semver: 7.5.1
     dev: true
 
-  /@nuxt/devtools@0.5.5(bufferutil@4.0.7)(nuxt@3.5.3)(utf-8-validate@6.0.3)(vite@4.3.9):
+  /@nuxt/devtools@0.5.5(bufferutil@4.0.7)(nuxt@3.5.3)(vite@4.3.9):
     resolution: {integrity: sha512-YJDAsjfyvPV7WVyirfIzrNi37qqLJX61ZkOMN6hplyknky7kBapcG3VNq8WfVqY2Ce02sqF4bsEGlpG/F64y0g==}
     hasBin: true
     peerDependencies:
@@ -1060,7 +1055,7 @@ packages:
       vite-plugin-vue-inspector: 3.4.2(vite@4.3.9)
       wait-on: 7.0.1
       which: 3.0.1
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      ws: 8.13.0(bufferutil@4.0.7)
     transitivePeerDependencies:
       - bluebird
       - bufferutil
@@ -3489,7 +3484,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@libsql/client': 0.2.1(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      '@libsql/client': 0.2.1(bufferutil@4.0.7)
       better-sqlite3: 8.4.0
     dev: false
 
@@ -4549,16 +4544,6 @@ packages:
     dependencies:
       duplexer: 0.1.2
     dev: true
-
-  /h3-zod@0.5.1(h3@1.6.6)(zod@3.21.4):
-    resolution: {integrity: sha512-hltUPbYv7XYAzZJIvA2lTfRBO9QyDXhALmalfRaVdjSeuCV4vLi7hULaA+n+orGR68rRLFZ2Gc9hbfQ756GZpg==}
-    peerDependencies:
-      h3: ^1.6.0
-      zod: ^3.21.0
-    dependencies:
-      h3: 1.6.6
-      zod: 3.21.4
-    dev: false
 
   /h3@1.6.6:
     resolution: {integrity: sha512-DWu2s11OuuO9suEkX99dXaJoxd1RgPXiM4iDmLdrhGV63GLoav13f3Kdd5/Rw7xNKzhzn2+F2dleQjG66SnMPQ==}
@@ -8229,13 +8214,6 @@ packages:
     dependencies:
       punycode: 2.3.0
 
-  /utf-8-validate@6.0.3:
-    resolution: {integrity: sha512-uIuGf9TWQ/y+0Lp+KGZCMuJWc3N9BHA+l/UmHd/oUHwJJDeysyTRxNQVkbzsIWfGFbRe3OcgML/i0mvVRPOyDA==}
-    engines: {node: '>=6.14.2'}
-    requiresBuild: true
-    dependencies:
-      node-gyp-build: 4.6.0
-
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -8674,7 +8652,7 @@ packages:
   /wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  /ws@8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /ws@8.13.0(bufferutil@4.0.7):
     resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -8687,7 +8665,6 @@ packages:
         optional: true
     dependencies:
       bufferutil: 4.0.7
-      utf-8-validate: 6.0.3
 
   /xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}

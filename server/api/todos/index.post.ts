@@ -1,17 +1,28 @@
-import { useValidatedBody, z } from 'h3-zod'
+import vine, { errors } from '@vinejs/vine'
+import { todoPostSchema } from '../../schemas/todo'
 
 export default eventHandler(async (event) => {
-  const { title } = await useValidatedBody(event, {
-    title: z.string().min(1).max(100)
-  })
+  const body = await readBody(event)
   const session = await requireUserSession(event)
 
-  // List todos for the current user
-  const todo = await useDb().insert(tables.todos).values({
-    userId: session.user.id,
-    title,
-    createdAt: new Date()
-  }).returning().get()
+  try {
+    const output = await vine.validate({ schema: todoPostSchema, data: body })
 
-  return todo
+    const todo = await useDb().insert(tables.todos).values({
+      userId: session.user.id,
+      title: output.title,
+      createdAt: new Date()
+    }).returning().get()
+
+    return todo
+  } catch (error) {
+    if (error instanceof errors.E_VALIDATION_ERROR) {
+      throw createError({
+        statusCode: error.status,
+        message: error.message,
+        data: error.messages
+      })
+    }
+    throw error
+  }
 })
