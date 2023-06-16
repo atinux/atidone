@@ -4,7 +4,12 @@ export default eventHandler(async (event) => {
 
   if (!code) {
     // Redirect to GitHub Oauth page
-    const redirectUrl = getRequestURL(event).href
+    let redirectUrl = getRequestURL(event).href
+    // @ts-ignore
+    if (!process.dev) {
+      redirectUrl = redirectUrl.replace('http://', 'https://')
+    }
+    
     return sendRedirect(event, `https://github.com/login/oauth/authorize?client_id=${config.github.clientId}&redirect_uri=${redirectUrl}`)
   }
 
