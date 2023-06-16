@@ -1,5 +1,8 @@
 lockfileVersion: '6.0'
 
+overrides:
+  nitropack: npm:nitropack-edge@latest
+
 dependencies:
   '@iconify-json/simple-icons':
     specifier: ^1.1.56
@@ -1327,8 +1330,8 @@ packages:
       slash: 4.0.0
     dev: true
 
-  /@rollup/plugin-commonjs@24.1.0(rollup@3.25.1):
-    resolution: {integrity: sha512-eSL45hjhCWI0jCCXcNtLVqM5N1JlBGvlFfY0m6oOYnLCJ6N0qEXoZql4sY2MOUArzhH4SA/qBpTxvvZp2Sc+DQ==}
+  /@rollup/plugin-commonjs@25.0.1(rollup@3.25.1):
+    resolution: {integrity: sha512-2DJ4kv4b1xfTJopWhu61ANdNRHvzQZ2fpaIrlgaP2jOfUv1wDJ0Ucqy8AZlbFmn/iUjiwKoqki9j55Y6L8kyNQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
@@ -4702,6 +4705,15 @@ packages:
       toidentifier: 1.0.1
     dev: true
 
+  /http-graceful-shutdown@3.1.13:
+    resolution: {integrity: sha512-Ci5LRufQ8AtrQ1U26AevS8QoMXDOhnAHCJI3eZu1com7mZGHxREmw3dNj85ftpQokQCvak8nI2pnFS8zyM1M+Q==}
+    engines: {node: '>=4.0.0'}
+    dependencies:
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /http-proxy-agent@5.0.0:
     resolution: {integrity: sha512-n2hY8YdoRE1i7r6M0w9DIw5GgZN0G25P8zLCRQ8rjXtTU3vsNFBI/vWK/UIeE6g5MUUz6avwAPXmL6Fy9D/90w==}
     engines: {node: '>= 6'}
@@ -5779,15 +5791,15 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: false
 
-  /nitropack@2.4.1:
-    resolution: {integrity: sha512-CJzt5e5E8BKreTW+iqqGSFLPc1Yblcg2fiit8L6JtpCDl3aE9/rHGsv/w9oLV4FtsoC2qjTD2qoeCGp80mHw5Q==}
+  /nitropack-edge@2.5.0-28102513.1a497c4:
+    resolution: {integrity: sha512-NVg81k/wE8N5HcGE0+NQ567TXgNRlxgI0ijjpkFV77a5N61w1E5xJ0Avy3/nPt9iaj4qZA9GHzOUbVPfpz461Q==}
     engines: {node: ^14.16.0 || ^16.11.0 || >=17.0.0}
     hasBin: true
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.0
       '@netlify/functions': 1.6.0
       '@rollup/plugin-alias': 5.0.0(rollup@3.25.1)
-      '@rollup/plugin-commonjs': 24.1.0(rollup@3.25.1)
+      '@rollup/plugin-commonjs': 25.0.1(rollup@3.25.1)
       '@rollup/plugin-inject': 5.0.3(rollup@3.25.1)
       '@rollup/plugin-json': 6.0.0(rollup@3.25.1)
       '@rollup/plugin-node-resolve': 15.1.0(rollup@3.25.1)
@@ -5815,6 +5827,7 @@ packages:
       gzip-size: 7.0.0
       h3: 1.6.6
       hookable: 5.5.3
+      http-graceful-shutdown: 3.1.13
       http-proxy: 1.18.1
       is-primitive: 3.0.1
       jiti: 1.18.2
@@ -6107,7 +6120,7 @@ packages:
       local-pkg: 0.4.3
       magic-string: 0.30.0
       mlly: 1.3.0
-      nitropack: 2.4.1
+      nitropack: /nitropack-edge@2.5.0-28102513.1a497c4
       nuxi: 3.5.3
       nypm: 0.2.1
       ofetch: 1.1.0
