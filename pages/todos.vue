@@ -26,8 +26,8 @@ async function addTodo () {
     toast.add({ title: `Todo "${todo.title}" created.` })
     newTodo.value = ''
   } catch (err) {
-    if (err.data.data?.issues) {
-      const title = err.data.data.issues.map(issue => issue.message).join('\n')
+    if (err.data.data) {
+      const title = err.data.data.map(issue => issue.message).join('\n')
       toast.add({ title, color: 'red' })
     }
   }
@@ -86,7 +86,7 @@ const items = [[{
         :ui="{ wrapper: 'flex-1' }"
       />
 
-      <UButton type="submit" icon="i-heroicons-plus-20-solid" :loading="loading" />
+      <UButton type="submit" icon="i-heroicons-plus-20-solid" :loading="loading" :disabled="!newTodo.trim()" />
     </div>
 
     <ul class="divide-y divide-gray-200 dark:divide-gray-800">
