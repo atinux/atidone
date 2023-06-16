@@ -1,4 +1,4 @@
-import vine, { errors, VineObject  } from '@vinejs/vine'
+import vine, { errors, VineObject } from '@vinejs/vine'
 import type { H3Event } from 'h3'
 
 export const v = vine
