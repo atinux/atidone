@@ -8,3 +8,4 @@ nuxt.d.ts
 db.sqlite
 dist
 .vercel
+.netlify
