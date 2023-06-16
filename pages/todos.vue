@@ -69,7 +69,6 @@ const items = [[{
       <UDropdown v-if="user" :items="items">
         <UButton color="white" trailing-icon="i-heroicons-chevron-down-20-solid">
           <UAvatar :src="`https://github.com/${user.login}.png`" :alt="user.login" size="3xs" />
-
           {{ user.login }}
         </UButton>
       </UDropdown>
@@ -86,7 +85,7 @@ const items = [[{
         :ui="{ wrapper: 'flex-1' }"
       />
 
-      <UButton type="submit" icon="i-heroicons-plus-20-solid" :loading="loading" />
+      <UButton type="submit" icon="i-heroicons-plus-20-solid" :loading="loading" :disabled="newTodo.trim().length === 0" />
     </div>
 
     <ul class="divide-y divide-gray-200 dark:divide-gray-800">
