@@ -25,7 +25,9 @@
     "@nuxt/eslint-config": "^0.1.1",
     "eslint": "^8.42.0",
     "nuxt": "^3.5.3",
-    "typescript": "5.0.4",
+    "typescript": "5.0.4"
+  },
+  "resolutions": {
     "nitropack": "npm:nitropack-edge@latest"
   }
 }
