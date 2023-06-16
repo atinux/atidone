@@ -1,13 +1,18 @@
-import vine, { errors, VineObject } from '@vinejs/vine'
+import vine, { errors, VineObject  } from '@vinejs/vine'
 import type { H3Event } from 'h3'
 
 export const v = vine
 
 async function validate (data: any, schema: any) {
-  if (schema instanceof VineObject === false) {
-    schema = v.object(schema)
-  }
   try {
+    // If pre-compiled schema (https://vinejs.dev/docs/getting_started#pre-compiling-schema)
+    if (typeof schema?.validate === 'function') {
+      return await schema.validate(data)
+    }
+    // If schema is a JS object, wrap it with VineObject
+    if (schema instanceof VineObject === false) {
+      schema = v.object(schema)
+    }
     return await v.validate({
       data,
       schema
