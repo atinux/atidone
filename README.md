@@ -11,6 +11,7 @@ https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-
 - Lagon.app + Turso: https://nuxt-todos.lagon.dev
 - Vercel Edge + Turso: https://nuxt-todos-edge.vercel.app
 - Netlify Edge + Turso: https://nuxt-todos-edge.netlify.app
+- Deno Deploy + Turso: https://nuxt-todos-edge.deno.dev
 
 ## Features
 
