@@ -4,6 +4,7 @@ definePageMeta({
 })
 const loading = ref(false)
 const newTodo = ref('')
+const newTodoInput = ref(null)
 
 const toast = useToast()
 const { user, clear } = useUserSession()
@@ -25,8 +26,11 @@ async function addTodo () {
     todos.value.push(todo)
     toast.add({ title: `Todo "${todo.title}" created.` })
     newTodo.value = ''
+    nextTick(() => {
+      newTodoInput.value?.input?.focus()
+    })
   } catch (err) {
-    if (err.data.data?.issues) {
+    if (err.data?.data?.issues) {
       const title = err.data.data.issues.map(issue => issue.message).join('\n')
       toast.add({ title, color: 'red' })
     }
@@ -76,12 +80,14 @@ const items = [[{
 
     <div class="flex items-center gap-2">
       <UInput
+        ref="newTodoInput"
         v-model="newTodo"
         name="todo"
         :disabled="loading"
         class="flex-1"
         placeholder="Make a Nuxt demo"
         autocomplete="off"
+        autofocus
         :ui="{ wrapper: 'flex-1' }"
       />
 
