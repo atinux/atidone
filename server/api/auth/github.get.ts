@@ -10,7 +10,8 @@ export default eventHandler(async (event) => {
       redirectUrl = redirectUrl.replace('http://', 'https://')
     }
     
-    return sendRedirect(event, `https://github.com/login/oauth/authorize?client_id=${config.github.clientId}&redirect_uri=${redirectUrl}`)
+    await sendRedirect(event, `https://github.com/login/oauth/authorize?client_id=${config.github.clientId}&redirect_uri=${redirectUrl}`)
+    return
   }
 
   const response: any = await $fetch(
@@ -25,7 +26,8 @@ export default eventHandler(async (event) => {
     }
   )
   if (response.error) {
-    return sendRedirect(event, '/')
+    await sendRedirect(event, '/')
+    return
   }
 
   const ghUser: any = await $fetch('https://api.github.com/user', {
@@ -39,5 +41,6 @@ export default eventHandler(async (event) => {
     user: ghUser
   })
 
-  return sendRedirect(event, '/todos')
+  await sendRedirect(event, '/todos')
+  return
 })
