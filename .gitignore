@@ -9,3 +9,4 @@ db.sqlite
 dist
 .vercel
 .netlify
+db.sqlite-*
