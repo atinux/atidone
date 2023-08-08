@@ -30,11 +30,11 @@ dependencies:
     specifier: ^0.28.0
     version: 0.28.0(@libsql/client@0.3.1)(better-sqlite3@8.5.0)
   h3:
-    specifier: 1.8.0-rc.2
-    version: 1.8.0-rc.2
+    specifier: 1.8.0-rc.3
+    version: 1.8.0-rc.3
   h3-zod:
     specifier: ^0.5.1
-    version: 0.5.1(h3@1.8.0-rc.2)(zod@3.21.4)
+    version: 0.5.1(h3@1.8.0-rc.3)(zod@3.21.4)
   utf-8-validate:
     specifier: ^6.0.3
     version: 6.0.3
@@ -4544,13 +4544,13 @@ packages:
       duplexer: 0.1.2
     dev: true
 
-  /h3-zod@0.5.1(h3@1.8.0-rc.2)(zod@3.21.4):
+  /h3-zod@0.5.1(h3@1.8.0-rc.3)(zod@3.21.4):
     resolution: {integrity: sha512-hltUPbYv7XYAzZJIvA2lTfRBO9QyDXhALmalfRaVdjSeuCV4vLi7hULaA+n+orGR68rRLFZ2Gc9hbfQ756GZpg==}
     peerDependencies:
       h3: ^1.6.0
       zod: ^3.21.0
     dependencies:
-      h3: 1.8.0-rc.2
+      h3: 1.8.0-rc.3
       zod: 3.21.4
     dev: false
 
@@ -4565,8 +4565,8 @@ packages:
       ufo: 1.2.0
       uncrypto: 0.1.3
 
-  /h3@1.8.0-rc.2:
-    resolution: {integrity: sha512-2VSDQOuVElZ7QCSTbti5fTkfyrsOIYSG9SXQQ+xO/dI3O2n2k6cbA1/rapNOJZtC2tO7cN8N/JlGhlUsFh5LoA==}
+  /h3@1.8.0-rc.3:
+    resolution: {integrity: sha512-NhDCNXhrJkt42BDQF57787yXJa2eX2Hl4OMlu+Ym9QBdBaOByUjBrovYaBc+27mtIhHvs2IqPf56to8qcNBI7Q==}
     dependencies:
       cookie-es: 1.0.0
       defu: 6.1.2
@@ -4687,15 +4687,6 @@ packages:
       setprototypeof: 1.2.0
       statuses: 2.0.1
       toidentifier: 1.0.1
-    dev: true
-
-  /http-graceful-shutdown@3.1.13:
-    resolution: {integrity: sha512-Ci5LRufQ8AtrQ1U26AevS8QoMXDOhnAHCJI3eZu1com7mZGHxREmw3dNj85ftpQokQCvak8nI2pnFS8zyM1M+Q==}
-    engines: {node: '>=4.0.0'}
-    dependencies:
-      debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /http-proxy-agent@5.0.0:
@@ -5252,7 +5243,7 @@ packages:
       consola: 3.2.3
       defu: 6.1.2
       get-port-please: 3.0.1
-      h3: 1.8.0-rc.2
+      h3: 1.8.0-rc.3
       http-shutdown: 1.2.2
       jiti: 1.19.1
       mlly: 1.4.0
@@ -5733,8 +5724,8 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: false
 
-  /nitropack-edge@2.6.0-28189973.346a61a:
-    resolution: {integrity: sha512-Kp+D7/h+2efE6ZsrqKmlGSEnBMtHe1TgADQaAloTDssigM2HP9Q4Pivt6N6BryJQsMD5q37wLSdVAoP80xobww==}
+  /nitropack-edge@2.6.0-28190904.9ba8fe9:
+    resolution: {integrity: sha512-S4KPn/GZrXyrCMaXs/o5sGwTm7q5DtGbGOf0tRM1asvMUJr15O8RfXiwmcec+fwJvTDc5ekXGw9MWGuGu9jjUw==}
     engines: {node: ^14.16.0 || ^16.11.0 || >=17.0.0}
     hasBin: true
     dependencies:
@@ -5767,9 +5758,8 @@ packages:
       fs-extra: 11.1.1
       globby: 13.2.2
       gzip-size: 7.0.0
-      h3: 1.8.0-rc.2
+      h3: 1.8.0-rc.3
       hookable: 5.5.3
-      http-graceful-shutdown: 3.1.13
       http-proxy: 1.18.1
       is-primitive: 3.0.1
       jiti: 1.19.1
@@ -5795,13 +5785,13 @@ packages:
       semver: 7.5.4
       serve-placeholder: 2.0.1
       serve-static: 1.15.0
-      source-map-support: 0.5.21
       std-env: 3.3.3
       ufo: 1.2.0
       uncrypto: 0.1.3
-      unenv: 1.6.1
+      unctx: 2.3.1
+      unenv: 1.6.2
       unimport: 3.1.3(rollup@3.27.2)
-      unstorage: 1.8.0
+      unstorage: 1.9.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -5809,11 +5799,13 @@ packages:
       - '@azure/identity'
       - '@azure/keyvault-secrets'
       - '@azure/storage-blob'
+      - '@capacitor/preferences'
       - '@planetscale/database'
       - '@upstash/redis'
       - '@vercel/kv'
       - debug
       - encoding
+      - idb-keyval
       - supports-color
     dev: true
 
@@ -6065,7 +6057,7 @@ packages:
       knitwork: 1.0.0
       magic-string: 0.30.2
       mlly: 1.4.0
-      nitropack: /nitropack-edge@2.6.0-28189973.346a61a
+      nitropack: /nitropack-edge@2.6.0-28190904.9ba8fe9
       nuxi: /nuxi-edge@3.7.0-28187089.b702adc2
       nypm: 0.2.2
       ofetch: 1.1.1
@@ -6096,12 +6088,14 @@ packages:
       - '@azure/identity'
       - '@azure/keyvault-secrets'
       - '@azure/storage-blob'
+      - '@capacitor/preferences'
       - '@planetscale/database'
       - '@upstash/redis'
       - '@vercel/kv'
       - debug
       - encoding
       - eslint
+      - idb-keyval
       - less
       - lightningcss
       - meow
@@ -7947,6 +7941,16 @@ packages:
       node-fetch-native: 1.2.0
       pathe: 1.1.1
 
+  /unenv@1.6.2:
+    resolution: {integrity: sha512-oDbB3arlgPB8Berj4nD7z9ydzF8ITInlBunf0a+3YJkLDhI1DJrUdmv2ovPXAIXvxzW4FTIGtWqng6dk7/kziA==}
+    dependencies:
+      consola: 3.2.3
+      defu: 6.1.2
+      mime: 3.0.0
+      node-fetch-native: 1.2.0
+      pathe: 1.1.1
+    dev: true
+
   /unhead@1.2.2:
     resolution: {integrity: sha512-9wDuiso7YWNe0BTA5NGsHR0dtqn0YrL/5+NumfuXDxxYykavc6N27pzZxTXiuvVHbod8tFicsxA6pC9WhQvzqg==}
     dependencies:
@@ -8026,8 +8030,8 @@ packages:
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.5.0
 
-  /unstorage@1.8.0:
-    resolution: {integrity: sha512-Wl6a0fYIIPx8yWIHAVNzsNRcIpagVnBV05UXeIFCNqPZ5tu0w0MPE+eTjpRe/yxCD60K7qX55K5Px/PeKvNntw==}
+  /unstorage@1.9.0:
+    resolution: {integrity: sha512-VpD8ZEYc/le8DZCrny3bnqKE4ZjioQxBRnWE+j5sGNvziPjeDlaS1NaFFHzl/kkXaO3r7UaF8MGQrs14+1B4pQ==}
     peerDependencies:
       '@azure/app-configuration': ^1.4.1
       '@azure/cosmos': ^3.17.3
@@ -8035,9 +8039,11 @@ packages:
       '@azure/identity': ^3.2.3
       '@azure/keyvault-secrets': ^4.7.0
       '@azure/storage-blob': ^12.14.0
-      '@planetscale/database': ^1.7.0
-      '@upstash/redis': ^1.21.0
+      '@capacitor/preferences': ^5.0.0
+      '@planetscale/database': ^1.8.0
+      '@upstash/redis': ^1.22.0
       '@vercel/kv': ^0.2.2
+      idb-keyval: ^6.2.1
     peerDependenciesMeta:
       '@azure/app-configuration':
         optional: true
@@ -8051,11 +8057,15 @@ packages:
         optional: true
       '@azure/storage-blob':
         optional: true
+      '@capacitor/preferences':
+        optional: true
       '@planetscale/database':
         optional: true
       '@upstash/redis':
         optional: true
       '@vercel/kv':
+        optional: true
+      idb-keyval:
         optional: true
     dependencies:
       anymatch: 3.1.3
