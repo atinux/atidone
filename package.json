@@ -25,10 +25,11 @@
     "@nuxt/devtools": "^0.7.5",
     "@nuxt/eslint-config": "^0.1.1",
     "eslint": "^8.46.0",
-    "nuxt": "npm:nuxt3@3.7.0-28187089.b702adc2",
+    "nuxt": "npm:nuxt3@latest",
     "typescript": "5.1.6"
   },
   "resolutions": {
-    "nitropack": "npm:nitropack-edge@latest"
+    "nitropack": "npm:nitropack-edge@latest",
+    "h3": "npm:h3-nightly@latest"
   }
 }
