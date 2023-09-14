@@ -9,27 +9,22 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@iconify-json/simple-icons": "^1.1.65",
-    "@libsql/client": "^0.3.1",
-    "@nuxthq/ui": "^2.7.0",
-    "better-sqlite3": "^8.5.0",
+    "@iconify-json/simple-icons": "^1.1.70",
+    "@libsql/client": "^0.3.4",
+    "@nuxt/ui": "^2.8.1",
+    "better-sqlite3": "^8.6.0",
     "bufferutil": "^4.0.7",
-    "drizzle-kit": "^0.19.12",
-    "drizzle-orm": "^0.28.1",
-    "h3": "1.8.0-rc.3",
+    "drizzle-kit": "^0.19.13",
+    "drizzle-orm": "^0.28.6",
     "h3-zod": "^0.5.1",
+    "nuxt": "^3.7.3",
     "utf-8-validate": "^6.0.3",
-    "zod": "^3.21.4"
+    "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.7.5",
-    "@nuxt/eslint-config": "^0.1.1",
-    "eslint": "^8.46.0",
-    "nuxt": "npm:nuxt3@latest",
-    "typescript": "5.1.6"
-  },
-  "resolutions": {
-    "nitropack": "npm:nitropack-edge@latest",
-    "h3": "npm:h3-nightly@latest"
+    "@nuxt/devtools": "^0.8.3",
+    "@nuxt/eslint-config": "^0.2.0",
+    "eslint": "^8.49.0",
+    "typescript": "5.2.2"
   }
 }

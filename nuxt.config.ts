@@ -5,7 +5,7 @@ const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   modules: [
     '@nuxt/devtools',
-    '@nuxthq/ui'
+    '@nuxt/ui'
   ],
   colorMode: {
     preference: 'light'
