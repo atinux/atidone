@@ -16,7 +16,7 @@ https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-
 ## Features
 
 - Server-Side Rendering on the [Edge](https://workers.cloudflare.com/)
-- Authentication backed-in
+- Authentication backed-in using [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils)
 - Leverage SQLite as database with migrations
 
 ## Stack
@@ -42,8 +42,8 @@ Create a [GitHub Oauth Application](https://github.com/settings/applications/new
 Add the variables in the `.env` file:
 
 ```bash
-NUXT_GITHUB_CLIENT_ID="my-github-oauth-app-id"
-NUXT_GITHUB_CLIENT_SECRET="my-github-oauth-app-secret"
+NUXT_OAUTH_GITHUB_CLIENT_ID="my-github-oauth-app-id"
+NUXT_OAUTH_GITHUB_CLIENT_SECRET="my-github-oauth-app-secret"
 ```
 
 To create sealed sessions, you also need to add `NUXT_SESSION_SECRET` in the `.env` with at least 32 characters:
@@ -67,8 +67,8 @@ Create a CF pages deployment linked to your GitHub repository. Make sure to sele
 ### Environment variables
 
 ```bash
-NUXT_GITHUB_CLIENT_ID=...
-NUXT_GITHUB_CLIENT_SECRET=...
+NUXT_OAUTH_GITHUB_CLIENT_ID=...
+NUXT_OAUTH_GITHUB_CLIENT_SECRET=...
 NUXT_SESSION_PASSWORD=...
 ```
 

@@ -3,9 +3,10 @@ import { createResolver } from 'nuxt/kit'
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
+  devtools: { enabled: true },
   modules: [
-    '@nuxt/devtools',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    'nuxt-auth-utils'
   ],
   colorMode: {
     preference: 'light'
