@@ -2,7 +2,11 @@
 
 A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using SQLite in production.
 
-https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
+## Features
+
+- [Server-Side Rendering on the Edge](https://nuxt.com/blog/nuxt-on-the-edge)
+- Authentication backed-in using [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils)
+- Leverage SQLite as database with migrations using [drizzle ORM](https://orm.drizzle.team/)
 
 ## Live demos
 
@@ -13,11 +17,7 @@ https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-
 - Netlify Edge + Turso: https://nuxt-todos-edge.netlify.app
 - Deno Deploy + Turso: https://nuxt-todos-edge.deno.dev
 
-## Features
-
-- [Server-Side Rendering on the Edge](https://nuxt.com/blog/nuxt-on-the-edge)
-- Authentication backed-in using [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils)
-- Leverage SQLite as database with migrations using [drizzle ORM](https://orm.drizzle.team/)
+https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
 
 ## Setup
 
