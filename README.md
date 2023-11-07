@@ -7,6 +7,7 @@ A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the
 - [Server-Side Rendering on the Edge](https://nuxt.com/blog/nuxt-on-the-edge)
 - Authentication backed-in using [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils)
 - Leverage SQLite as database with migrations using [drizzle ORM](https://orm.drizzle.team/)
+- User interface made with [Nuxt UI](https://ui.nuxt.com)
 
 ## Live demos
 
