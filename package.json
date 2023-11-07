@@ -9,22 +9,23 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@iconify-json/simple-icons": "^1.1.70",
-    "@libsql/client": "^0.3.4",
-    "@nuxt/ui": "^2.8.1",
-    "better-sqlite3": "^8.6.0",
-    "bufferutil": "^4.0.7",
+    "@iconify-json/simple-icons": "^1.1.77",
+    "@libsql/client": "^0.3.6",
+    "@nuxt/ui": "^2.10.0",
+    "better-sqlite3": "^9.0.0",
+    "bufferutil": "^4.0.8",
     "drizzle-kit": "^0.19.13",
     "drizzle-orm": "^0.28.6",
-    "h3-zod": "^0.5.1",
-    "nuxt": "^3.7.3",
+    "h3-zod": "^0.5.2",
+    "nuxt": "^3.8.1",
+    "nuxt-auth-utils": "^0.0.3",
     "utf-8-validate": "^6.0.3",
-    "zod": "^3.22.2"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.8.3",
+    "@nuxt/devtools": "^1.0.0",
     "@nuxt/eslint-config": "^0.2.0",
-    "eslint": "^8.49.0",
+    "eslint": "^8.53.0",
     "typescript": "5.2.2"
   }
 }
