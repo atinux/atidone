@@ -18,7 +18,7 @@
     "drizzle-orm": "^0.28.6",
     "h3-zod": "^0.5.2",
     "nuxt": "^3.8.1",
-    "nuxt-auth-utils": "^0.0.3",
+    "nuxt-auth-utils": "^0.0.4",
     "utf-8-validate": "^6.0.3",
     "zod": "^3.22.4"
   },
