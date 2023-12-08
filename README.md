@@ -62,6 +62,8 @@ npm run studio
 
 Then, open the Nuxt DevTools and click on the Drizzle Studio tab.
 
+https://github.com/Atinux/nuxt-todos-edge/assets/904724/7ece3f10-aa6f-43d8-a941-7ca549bc208b
+
 ## Deploy on CloudFlare Pages
 
 Create a CF pages deployment linked to your GitHub repository. Make sure to select Version 2 (Beta) as the build system version.
