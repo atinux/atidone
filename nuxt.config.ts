@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     icons: ['heroicons', 'simple-icons']
   },
   runtimeConfig: {
-    dbDir: resolve('./server/db'),
     github: {
       clientId: '',
       clientSecret: ''

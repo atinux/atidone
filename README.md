@@ -8,6 +8,7 @@ A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the
 - Authentication backed-in using [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils)
 - Leverage SQLite as database with migrations using [drizzle ORM](https://orm.drizzle.team/)
 - User interface made with [Nuxt UI](https://ui.nuxt.com)
+- Embed [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview/) in the [Nuxt DevTools](https://devtools.nuxt.com)
 
 ## Live demos
 
@@ -53,6 +54,14 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
+To start Drizzle Studio, run in another terminal:
+
+```bash
+npm run studio
+```
+
+Then, open the Nuxt DevTools and click on the Drizzle Studio tab.
+
 ## Deploy on CloudFlare Pages
 
 Create a CF pages deployment linked to your GitHub repository. Make sure to select Version 2 (Beta) as the build system version.
@@ -81,7 +90,7 @@ Lastly, in the project settings -> Functions, add the binding between your D1 da
 
 ![d1-binding](https://user-images.githubusercontent.com/904724/236021974-d77dfda6-4eb7-4094-ae36-479be73ec35f.png)
 
-Copy the contents from `server/db/migrations/0000_sloppy_starfox.sql` into the D1 console to seed the database.
+Copy the contents from `server/database/migrations/0000_heavy_xorn.sql` into the D1 console to seed the database.
 
 ### Turso Database
 
