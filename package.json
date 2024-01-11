@@ -5,7 +5,6 @@
     "build": "nuxi build",
     "preview": "nuxt preview",
     "migrate": "drizzle-kit generate:sqlite",
-    "studio": "drizzle-kit studio",
     "lint": "eslint .",
     "postinstall": "nuxt prepare"
   },

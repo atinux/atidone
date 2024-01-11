@@ -54,13 +54,7 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-To start Drizzle Studio, run in another terminal:
-
-```bash
-npm run studio
-```
-
-Then, open the Nuxt DevTools and click on the Drizzle Studio tab.
+In the Nuxt DevTools, you can see your tables by clicking on the Drizzle Studio tab:
 
 https://github.com/Atinux/nuxt-todos-edge/assets/904724/7ece3f10-aa6f-43d8-a941-7ca549bc208b
 

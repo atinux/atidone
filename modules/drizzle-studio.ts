@@ -5,7 +5,10 @@ export default defineNuxtModule({
   meta: {
     name: 'drizzle-studio'
   },
-  setup () {
+  setup (_options, nuxt) {
+    if (!nuxt.options.dev) {
+      return
+    }
 
     startSubprocess(
       {
