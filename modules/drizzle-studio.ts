@@ -1,11 +1,23 @@
 import { defineNuxtModule } from 'nuxt/kit'
-import { addCustomTab } from '@nuxt/devtools-kit'
+import { addCustomTab, startSubprocess } from '@nuxt/devtools-kit'
 
 export default defineNuxtModule({
   meta: {
     name: 'drizzle-studio'
   },
-  setup () {
+  async setup () {
+
+    startSubprocess(
+      {
+        command: 'npx',
+        args: ['drizzle-kit', 'studio'],
+      },
+      {
+        id: 'nuxt-drizzle-kit--studio',
+        name: 'Drizzle Studio',
+      },
+    )
+
     addCustomTab({
       name: 'dizzle-studio',
       title: 'Drizzle Studio',
