@@ -5,7 +5,7 @@ export default defineNuxtModule({
   meta: {
     name: 'drizzle-studio'
   },
-  async setup () {
+  setup () {
 
     startSubprocess(
       {
