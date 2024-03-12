@@ -8,7 +8,7 @@ const newTodoInput = ref(null)
 
 const toast = useToast()
 const { user, clear } = useUserSession()
-const { data: todos } = await useFetch('/api/todos')
+const { data: todos, refresh } = await useFetch('/api/todos')
 
 async function addTodo () {
   if (!newTodo.value.trim()) { return }
@@ -24,6 +24,7 @@ async function addTodo () {
       }
     })
     todos.value.push(todo)
+    await refresh()
     toast.add({ title: `Todo "${todo.title}" created.` })
     newTodo.value = ''
     nextTick(() => {
@@ -46,11 +47,13 @@ async function toggleTodo (todo) {
       completed: todo.completed
     }
   })
+  await refresh()
 }
 
 async function deleteTodo (todo) {
   await useFetch(`/api/todos/${todo.id}`, { method: 'DELETE' })
   todos.value = todos.value.filter(t => t.id !== todo.id)
+  await refresh()
   toast.add({ title: `Todo "${todo.title}" deleted.` })
 }
 
