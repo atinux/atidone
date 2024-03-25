@@ -10,14 +10,9 @@ A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the
 - User interface made with [Nuxt UI](https://ui.nuxt.com)
 - Embed [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview/) in the [Nuxt DevTools](https://devtools.nuxt.com)
 
-## Live demos
+## Live demo
 
-- CloudFlare Pages + D1: https://nuxt-todos-edge.pages.dev
-- CloudFlare Pages + Turso: https://nuxt-todos-turso.pages.dev
-- Lagon.app + Turso: https://nuxt-todos.lagon.dev
-- Vercel Edge + Turso: https://nuxt-todos-edge.vercel.app
-- Netlify Edge + Turso: https://nuxt-todos-edge.netlify.app
-- Deno Deploy + Turso: https://nuxt-todos-edge.deno.dev
+https://todos.nuxt.dev
 
 https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
 
@@ -54,50 +49,19 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-In the Nuxt DevTools, you can see your tables by clicking on the Drizzle Studio tab:
+In the Nuxt DevTools, you can see your tables by clicking on the Hub Database tab:
 
 https://github.com/Atinux/nuxt-todos-edge/assets/904724/7ece3f10-aa6f-43d8-a941-7ca549bc208b
 
-## Deploy on CloudFlare Pages
+## Deploy
 
-Create a CF pages deployment linked to your GitHub repository. Make sure to select Version 2 (Beta) as the build system version.
-
-### Environment variables
+You can deploy this project on your Cloudflare account for free and with zero configuration using [NuxtHub](https://hub.nuxt.com).
 
 ```bash
-NUXT_OAUTH_GITHUB_CLIENT_ID=...
-NUXT_OAUTH_GITHUB_CLIENT_SECRET=...
-NUXT_SESSION_PASSWORD=...
+npx nuxthub deploy
 ```
 
-### Build command
-
-Set the build command to:
-
-```bash
-npm run build
-```
-
-And the output directory to `dist/`
-
-### D1 Database
-
-Lastly, in the project settings -> Functions, add the binding between your D1 database and the `DB` variable:
-
-![d1-binding](https://user-images.githubusercontent.com/904724/236021974-d77dfda6-4eb7-4094-ae36-479be73ec35f.png)
-
-Copy the contents from `server/database/migrations/0000_heavy_xorn.sql` into the D1 console to seed the database.
-
-### Turso Database
-
-You can also use [Turso](https://turso.tech/) database instead of CloudFlare D1 by creating a database and adding the following env variables:
-
-```
-TURSO_DB_URL=...
-TURSO_DB_TOKEN=...
-```
-
-You can see a live demo using Turso on https://nuxt-todos-turso.pages.dev
+It's also possible to leverage Cloudflare Pages CI for deploying, learn more about the different options on https://hub.nuxt.com/docs/getting-started/deploy
 
 ## License
 
