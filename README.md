@@ -55,7 +55,7 @@ https://github.com/Atinux/nuxt-todos-edge/assets/904724/7ece3f10-aa6f-43d8-a941-
 
 ## Deploy
 
-You can deploy this project on your Cloudflare account with zero configuration with [NuxtHub](https://hub.nuxt.com).
+You can deploy this project on your Cloudflare account for free and with zero configuration using [NuxtHub](https://hub.nuxt.com).
 
 ```bash
 npx nuxthub deploy
