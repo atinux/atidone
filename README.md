@@ -63,6 +63,16 @@ npx nuxthub deploy
 
 It's also possible to leverage Cloudflare Pages CI for deploying, learn more about the different options on https://hub.nuxt.com/docs/getting-started/deploy
 
+## Remote Storage
+
+Once you deployed your project, you can connect to your remote database locally running:
+  
+```bash
+pnpm dev --remote
+```
+
+Learn more about remote storage on https://hub.nuxt.com/docs/getting-started/remote-storage
+
 ## License
 
 [MIT License](./LICENSE)
