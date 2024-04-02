@@ -1,12 +1,12 @@
 # Nuxt Todo List on the Edge
 
-A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using SQLite in production.
+A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using [Cloudflare D1](https://developers.cloudflare.com/d1/).
 
 ## Features
 
 - [Server-Side Rendering on the Edge](https://nuxt.com/blog/nuxt-on-the-edge)
 - Authentication backed-in using [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils)
-- Leverage SQLite as database with migrations using [drizzle ORM](https://orm.drizzle.team/)
+- Leverage [Cloudflare D1](https://developers.cloudflare.com/d1/) as database and [drizzle ORM](https://orm.drizzle.team/)
 - User interface made with [Nuxt UI](https://ui.nuxt.com)
 - Embed [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview/) in the [Nuxt DevTools](https://devtools.nuxt.com)
 
