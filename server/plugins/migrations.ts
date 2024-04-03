@@ -28,7 +28,7 @@ export default defineNitroPlugin(async () => {
       consola.info(`Applying database migrations from ${file}...`)
       const migration = (await migrationsStorage.getItem<string>(file)) || ''
       const statements = migration.split('--> statement-breakpoint')
-      for (let stmt of statements) {
+      for (const stmt of statements) {
         await database.prepare(stmt.trim()).run()
       }
       appliedMigrationsStmts.push(database.prepare('INSERT INTO _hub_migrations (name, created_at) VALUES (?, ?)').bind(file, Date.now()))

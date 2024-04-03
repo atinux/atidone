@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  extends: ['@nuxthub/core'],
   modules: [
+    '@nuxthub/core',
     '@nuxt/ui',
     'nuxt-auth-utils'
   ],

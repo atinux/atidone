@@ -10,20 +10,20 @@
   },
   "dependencies": {
     "@iconify-json/simple-icons": "^1.1.97",
-    "@nuxt/ui": "^2.14.2",
-    "@nuxthub/core": "^0.3.10",
+    "@nuxt/ui": "^2.15.1",
+    "@nuxthub/core": "^0.4.0",
     "drizzle-kit": "^0.20.14",
-    "drizzle-orm": "^0.30.4",
+    "drizzle-orm": "^0.30.7",
     "h3-zod": "^0.5.3",
     "nuxt": "^3.11.1",
-    "nuxt-auth-utils": "^0.0.21",
+    "nuxt-auth-utils": "^0.0.22",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.1.3",
+    "@nuxt/devtools": "^1.1.5",
     "@nuxt/eslint-config": "^0.2.0",
     "eslint": "^8.57.0",
     "typescript": "5.4.3",
-    "wrangler": "^3.37.0"
+    "wrangler": "^3.44.0"
   }
 }
