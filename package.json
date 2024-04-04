@@ -13,7 +13,7 @@
     "@nuxt/ui": "^2.15.1",
     "@nuxthub/core": "^0.4.0",
     "drizzle-kit": "^0.20.14",
-    "drizzle-orm": "0.30.7-ddf43d6",
+    "drizzle-orm": "0.30.7-94e7af5",
     "h3-zod": "^0.5.3",
     "nuxt": "^3.11.1",
     "nuxt-auth-utils": "^0.0.22",
