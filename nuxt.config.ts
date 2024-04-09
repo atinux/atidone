@@ -5,6 +5,9 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-auth-utils'
   ],
+  hub: {
+    database: true
+  },
   ui: {
     icons: ['heroicons', 'simple-icons']
   }
