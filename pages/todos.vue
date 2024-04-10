@@ -41,7 +41,7 @@ async function addTodo () {
 
 async function toggleTodo (todo) {
   todo.completed = Number(!todo.completed)
-  await useFetch(`/api/todos/${todo.id}`, {
+  await $fetch(`/api/todos/${todo.id}`, {
     method: 'PATCH',
     body: {
       completed: todo.completed
@@ -51,7 +51,7 @@ async function toggleTodo (todo) {
 }
 
 async function deleteTodo (todo) {
-  await useFetch(`/api/todos/${todo.id}`, { method: 'DELETE' })
+  await $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' })
   todos.value = todos.value.filter(t => t.id !== todo.id)
   await refresh()
   toast.add({ title: `Todo "${todo.title}" deleted.` })
