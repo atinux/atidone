@@ -11,7 +11,7 @@
   "dependencies": {
     "@iconify-json/simple-icons": "^1.1.99",
     "@nuxt/ui": "^2.15.1",
-    "@nuxthub/core": "^0.5.3",
+    "@nuxthub/core": "^0.5.4",
     "drizzle-kit": "^0.20.14",
     "drizzle-orm": "0.30.8",
     "h3-zod": "^0.5.3",

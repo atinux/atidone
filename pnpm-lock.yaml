@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.15.1
     version: 2.15.1(nuxt@3.11.2)(vite@5.2.8)(vue@3.4.21)
   '@nuxthub/core':
-    specifier: ^0.5.3
-    version: 0.5.3(nuxt@3.11.2)(vite@5.2.8)
+    specifier: ^0.5.4
+    version: 0.5.4(nuxt@3.11.2)(vite@5.2.8)
   drizzle-kit:
     specifier: ^0.20.14
     version: 0.20.14
@@ -1893,8 +1893,8 @@ packages:
       - vti
       - vue-tsc
 
-  /@nuxthub/core@0.5.3(nuxt@3.11.2)(vite@5.2.8):
-    resolution: {integrity: sha512-aeLoT6d9cO2+MyiunPSgbDdQMBXFRFR0qAnsxrR22zdE68N7n9n7DORB7Zn095N/t+DUM6bSC56hGrdFBmwU0A==}
+  /@nuxthub/core@0.5.4(nuxt@3.11.2)(vite@5.2.8):
+    resolution: {integrity: sha512-hlfjLL9jSAWl24rAuiq5/6jC+TLug1sQlK5+FsBQZUrzd5g7nkM+4sTR3SCP/Vpln9A9rMaH7/2+Q2UhH32eTQ==}
     dependencies:
       '@cloudflare/workers-types': 4.20240405.0
       '@nuxt/devtools-kit': 1.1.5(nuxt@3.11.2)(vite@5.2.8)
