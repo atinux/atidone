@@ -11,7 +11,7 @@
   "dependencies": {
     "@iconify-json/simple-icons": "^1.1.99",
     "@nuxt/ui": "^2.15.1",
-    "@nuxthub/core": "^0.5.0",
+    "@nuxthub/core": "^0.5.3",
     "drizzle-kit": "^0.20.14",
     "drizzle-orm": "0.30.8",
     "h3-zod": "^0.5.3",
@@ -23,7 +23,7 @@
     "@nuxt/devtools": "^1.1.5",
     "@nuxt/eslint-config": "^0.2.0",
     "eslint": "^8.57.0",
-    "typescript": "5.4.4",
-    "wrangler": "^3.48.0"
+    "typescript": "5.4.3",
+    "wrangler": "^3.50.0"
   }
 }
