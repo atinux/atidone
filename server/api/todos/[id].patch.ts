@@ -17,6 +17,6 @@ export default eventHandler(async (event) => {
     eq(tables.todos.id, id),
     eq(tables.todos.userId, session.user.id)
   )).returning().get()
-  
+
   return todo
 })

@@ -10,8 +10,8 @@ const toast = useToast()
 const { user, clear } = useUserSession()
 const { data: todos, refresh } = await useFetch('/api/todos')
 
-async function addTodo () {
-  if (!newTodo.value.trim()) { return }
+async function addTodo() {
+  if (!newTodo.value.trim()) return
 
   loading.value = true
 
@@ -30,7 +30,8 @@ async function addTodo () {
     nextTick(() => {
       newTodoInput.value?.input?.focus()
     })
-  } catch (err) {
+  }
+  catch (err) {
     if (err.data?.data?.issues) {
       const title = err.data.data.issues.map(issue => issue.message).join('\n')
       toast.add({ title, color: 'red' })
@@ -39,7 +40,7 @@ async function addTodo () {
   loading.value = false
 }
 
-async function toggleTodo (todo) {
+async function toggleTodo(todo) {
   todo.completed = Number(!todo.completed)
   await $fetch(`/api/todos/${todo.id}`, {
     method: 'PATCH',
@@ -50,7 +51,7 @@ async function toggleTodo (todo) {
   await refresh()
 }
 
-async function deleteTodo (todo) {
+async function deleteTodo(todo) {
   await $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' })
   todos.value = todos.value.filter(t => t.id !== todo.id)
   await refresh()
@@ -73,9 +74,19 @@ const items = [[{
         </NuxtLink>
       </h3>
 
-      <UDropdown v-if="user" :items="items">
-        <UButton color="white" trailing-icon="i-heroicons-chevron-down-20-solid">
-          <UAvatar :src="`https://github.com/${user.login}.png`" :alt="user.login" size="3xs" />
+      <UDropdown
+        v-if="user"
+        :items="items"
+      >
+        <UButton
+          color="white"
+          trailing-icon="i-heroicons-chevron-down-20-solid"
+        >
+          <UAvatar
+            :src="`https://github.com/${user.login}.png`"
+            :alt="user.login"
+            size="3xs"
+          />
           {{ user.login }}
         </UButton>
       </UDropdown>
@@ -94,7 +105,12 @@ const items = [[{
         :ui="{ wrapper: 'flex-1' }"
       />
 
-      <UButton type="submit" icon="i-heroicons-plus-20-solid" :loading="loading" :disabled="newTodo.trim().length === 0" />
+      <UButton
+        type="submit"
+        icon="i-heroicons-plus-20-solid"
+        :loading="loading"
+        :disabled="newTodo.trim().length === 0"
+      />
     </div>
 
     <ul class="divide-y divide-gray-200 dark:divide-gray-800">
@@ -103,9 +119,15 @@ const items = [[{
         :key="todo.id"
         class="flex items-center gap-4 py-2"
       >
-        <span class="flex-1 font-medium" :class="[todo.completed ? 'line-through text-gray-500' : '']">{{ todo.title }}</span>
+        <span
+          class="flex-1 font-medium"
+          :class="[todo.completed ? 'line-through text-gray-500' : '']"
+        >{{ todo.title }}</span>
 
-        <UToggle :model-value="Boolean(todo.completed)" @update:model-value="toggleTodo(todo)" />
+        <UToggle
+          :model-value="Boolean(todo.completed)"
+          @update:model-value="toggleTodo(todo)"
+        />
 
         <UButton
           color="red"

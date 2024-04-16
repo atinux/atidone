@@ -28,7 +28,17 @@ const { loggedIn } = useUserSession()
       Welcome to Nuxt Todos Edge.
     </p>
     <p>
-      A <a href="https://nuxt.com" target="_blank" class="text-primary-500" rel="noopener">Nuxt</a> demo hosted on <a href="https://pages.cloudflare.com" target="_blank" rel="noopener" class="text-primary-500">Cloudflare Pages</a> with server-side rendering on the edge and using <NuxtLink
+      A <a
+        href="https://nuxt.com"
+        target="_blank"
+        class="text-primary-500"
+        rel="noopener"
+      >Nuxt</a> demo hosted on <a
+        href="https://pages.cloudflare.com"
+        target="_blank"
+        rel="noopener"
+        class="text-primary-500"
+      >Cloudflare Pages</a> with server-side rendering on the edge and using <NuxtLink
         href="https://developers.cloudflare.com/d1/"
         target="_blank"
         rel="noopener"

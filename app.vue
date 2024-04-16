@@ -14,7 +14,7 @@ function toggleColorMode() {
 
 useHead({
   htmlAttrs: { lang: 'en' },
-  link: [{ rel: 'icon', href: '/icon.png' }],
+  link: [{ rel: 'icon', href: '/icon.png' }]
 })
 
 useSeoMeta({
@@ -24,7 +24,7 @@ useSeoMeta({
     'A Nuxt demo hosted with Edge-side rendering, authentication and queyring a SQLite database',
   ogImage: '/social-image.png',
   twitterImage: '/social-image.png',
-  twitterCard: 'summary_large_image',
+  twitterCard: 'summary_large_image'
 })
 </script>
 
