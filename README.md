@@ -38,7 +38,7 @@ NUXT_OAUTH_GITHUB_CLIENT_SECRET="my-github-oauth-app-secret"
 To create sealed sessions, you also need to add `NUXT_SESSION_SECRET` in the `.env` with at least 32 characters:
 
 ```bash
-NUXT_SESSION_SECRET=your-super-long-secret-for-session-encryption
+NUXT_SESSION_SECRET="your-super-long-secret-for-session-encryption"
 ```
 
 ## Development
