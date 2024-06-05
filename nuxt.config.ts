@@ -1,12 +1,17 @@
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  modules: ['@nuxthub/core', '@nuxt/ui', 'nuxt-auth-utils', '@nuxt/eslint'],
+  modules: [
+    '@nuxthub/core',
+    '@nuxt/ui',
+    'nuxt-auth-utils',
+    '@nuxt/eslint'
+  ],
   hub: {
     database: true
   },
   ui: {
     icons: ['heroicons', 'simple-icons']
   },
+  // Development config
   eslint: {
     config: {
       stylistic: {
@@ -14,5 +19,8 @@ export default defineNuxtConfig({
         commaDangle: 'never'
       }
     }
+  },
+  devtools: {
+    enabled: true
   }
 })
