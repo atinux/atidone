@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  future: { compatibilityVersion: 4 },
   modules: [
     '@nuxthub/core',
     '@nuxt/ui',
