@@ -2,6 +2,8 @@
 
 A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using [Cloudflare D1](https://developers.cloudflare.com/d1/).
 
+[![Deploy to NuxtHub](https://hub.nuxt.com/button.svg)](https://admin.hub.nuxt.com/new?template=todos)
+
 ## Features
 
 - [Server-Side Rendering on the Edge](https://nuxt.com/blog/nuxt-on-the-edge)
