@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  compatibilityDate: '2024-07-30',
   future: { compatibilityVersion: 4 },
   modules: [
     '@nuxthub/core',
@@ -8,9 +9,6 @@ export default defineNuxtConfig({
   ],
   hub: {
     database: true
-  },
-  ui: {
-    icons: ['heroicons', 'simple-icons']
   },
   // Development config
   eslint: {
