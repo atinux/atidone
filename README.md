@@ -1,4 +1,4 @@
-# Nuxt Todo List on the Edge
+# Manage your Todos with Atidone ☑️
 
 A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using [Cloudflare D1](https://developers.cloudflare.com/d1/).
 
@@ -16,7 +16,7 @@ A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the
 
 https://todos.nuxt.dev
 
-https://github.com/Atinux/nuxt-todos-edge/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
+https://github.com/atinux/atidone/assets/904724/5f3bee55-dbae-4329-8057-7d0e16e92f81
 
 ## Setup
 
