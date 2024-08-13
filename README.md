@@ -7,7 +7,7 @@ A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the
 ## Features
 
 - [Server-Side Rendering on the Edge](https://nuxt.com/blog/nuxt-on-the-edge)
-- Authentication backed-in using [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils)
+- Authentication backed-in using [nuxt-auth-utils](https://github.com/atinux/nuxt-auth-utils)
 - Leverage [Cloudflare D1](https://developers.cloudflare.com/d1/) as database and [drizzle ORM](https://orm.drizzle.team/)
 - User interface made with [Nuxt UI](https://ui.nuxt.com)
 - Embed [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview/) in the [Nuxt DevTools](https://devtools.nuxt.com)
@@ -53,7 +53,7 @@ npm run dev
 
 In the Nuxt DevTools, you can see your tables by clicking on the Hub Database tab:
 
-https://github.com/Atinux/nuxt-todos-edge/assets/904724/7ece3f10-aa6f-43d8-a941-7ca549bc208b
+https://github.com/atinux/atidone/assets/904724/7ece3f10-aa6f-43d8-a941-7ca549bc208b
 
 ## Deploy
 
