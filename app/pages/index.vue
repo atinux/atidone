@@ -25,7 +25,7 @@ const { loggedIn } = useUserSession()
       />
     </template>
     <p class="font-medium">
-      Welcome to Nuxt Todos Edge.
+      Welcome to Atidone.
     </p>
     <p>
       A <a
@@ -44,8 +44,14 @@ const { loggedIn } = useUserSession()
         rel="noopener"
         class="text-primary-500"
       >
-        D1 database
+        Cloudflare D1 database
       </NuxtLink>.
+    </p>
+    <p>
+      It is made using <a
+        href="https://hub.nuxt.com"
+        class="text-primary-500"
+      >NuxtHub</a> for a zero-config development & deployment experience on Cloudflare.
     </p>
     <hr class="dark:border-gray-700">
     <p class="text-sm text-gray-700 dark:text-gray-300 italic">
