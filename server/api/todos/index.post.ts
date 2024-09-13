@@ -6,7 +6,7 @@ export default eventHandler(async (event) => {
   })
   const { user } = await requireUserSession(event)
 
-  // List todos for the current user
+  // Insert todo for the current user
   const todo = await useDB().insert(tables.todos).values({
     userId: user.id,
     title,
