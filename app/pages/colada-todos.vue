@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useMutation, useQuery, useQueryCache } from '@pinia/colada'
-// FIXME: should be the serialized version returned by the API instead
-import type { TodoSelectSchema } from '~~/server/database/schema'
 
 definePageMeta({
   middleware: 'auth'
@@ -16,18 +14,16 @@ const queryCache = useQueryCache()
 // using $fetch directly doesn't avoid the round trip to the server
 // when doing SSR
 // https://github.com/nuxt/nuxt/issues/24813
-const $rfetch = useRequestFetch()
 const { data: todos } = useQuery({
   key: ['todos'],
-  // NOTE: the cast sometimes avoids an "Excessive depth check" TS error
-  query: () => $rfetch('/api/todos') as Promise<TodoSelectSchema[]>
+  query: () => useRequestFetch()('/api/todos')
 })
 
 const { mutate: addTodo, isLoading: loading } = useMutation({
   mutation: (title: string) => {
     if (!title.trim()) throw new Error('Title is required')
 
-    return $rfetch('/api/todos', {
+    return $fetch('/api/todos', {
       method: 'POST',
       body: {
         title,
@@ -69,7 +65,7 @@ const { mutate: addTodo, isLoading: loading } = useMutation({
 
 const { mutate: toggleTodo } = useMutation({
   mutation: (todo: TodoSelectSchema) =>
-    $rfetch(`/api/todos/${todo.id}`, {
+    $fetch(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       body: {
         completed: Number(!todo.completed)
@@ -82,8 +78,8 @@ const { mutate: toggleTodo } = useMutation({
 })
 
 const { mutate: deleteTodo } = useMutation({
-  mutation: (todo: TodoSelectSchema) =>
-    $rfetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
+  mutation: (todo: Todo) =>
+    $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
 
   async onSuccess(_result, todo) {
     await queryCache.invalidateQueries({ key: ['todos'] })
