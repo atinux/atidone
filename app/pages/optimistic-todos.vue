@@ -35,30 +35,31 @@ const { mutate: addTodo } = useMutation({
     })
   },
 
-  async onMutate(title) {
+  onMutate(title) {
     // let the user enter new todos right away!
     newTodo.value = ''
     const oldTodos
       = queryCache.getQueryData<TodoSelectSchema[]>(['todos']) || []
-    queryCache.setQueryData(
-      ['todos'],
-      [
-        ...oldTodos,
-        {
-          title,
-          completed: 0,
-          // a negative id to differentiate them from the server ones
-          id: -Date.now(),
-          createdAt: new Date(),
-          userId: user.value!.id
-        } satisfies TodoSelectSchema
-      ]
-    )
+    // we use newTodos to check for the cache consistency
+    // a better way would be to save the entry time
+    // const when = queryCache.getEntries({ key: ['todos'], exact: true }).at(0)?.when
+    const newTodos = [
+      ...oldTodos,
+      {
+        title,
+        completed: 0,
+        // a negative id to differentiate them from the server ones
+        id: -Date.now(),
+        createdAt: new Date(),
+        userId: user.value!.id
+      } satisfies TodoSelectSchema
+    ]
+    queryCache.setQueryData(['todos'], newTodo)
 
-    return { oldTodos }
+    return { oldTodos, newTodos }
   },
 
-  async onSuccess(todo) {
+  onSuccess(todo) {
     toast.add({ title: `Todo "${todo.title}" created.` })
   },
 
@@ -67,9 +68,11 @@ const { mutate: addTodo } = useMutation({
     queryCache.invalidateQueries({ key: ['todos'] })
   },
 
-  onError(err, _title, { oldTodos }) {
+  onError(err, _title, { oldTodos, newTodos }) {
     // oldTodos can be undefined if onMutate errors
-    if (oldTodos) {
+    // we also want to check if the oldTodos are still in the cache
+    // because the cache could have been updated by another query
+    if (newTodos != null && newTodos === queryCache.getQueryData(['todos'])) {
       queryCache.setQueryData(['todos'], oldTodos)
     }
 
