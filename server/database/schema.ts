@@ -1,4 +1,5 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core'
+import type { InferSelectModel } from 'drizzle-orm'
 
 export const todos = sqliteTable('todos', {
   id: integer('id').primaryKey(),
@@ -7,3 +8,5 @@ export const todos = sqliteTable('todos', {
   completed: integer('completed').notNull().default(0),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull()
 })
+
+export type TodoSelectSchema = InferSelectModel<typeof todos>

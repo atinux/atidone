@@ -1,20 +1,25 @@
 <script setup lang="ts">
 import { useMutation, useQuery, useQueryCache } from '@pinia/colada'
+import type { TodoSelectSchema } from '~~/server/database/schema'
 
 definePageMeta({
   middleware: 'auth'
 })
 const newTodo = ref('')
-const newTodoInput = ref(null)
+const newTodoInput = useTemplateRef('todo-input')
 
 const toast = useToast()
 const { user, clear } = useUserSession()
 const queryCache = useQueryCache()
 
+// using $fetch directly doesn't avoid the round trip to the server
+// when doing SSR
+// https://github.com/nuxt/nuxt/issues/24813
 const $rfetch = useRequestFetch()
 const { data: todos } = useQuery({
   key: ['todos'],
-  query: () => $rfetch('/api/todos')
+  // NOTE: the cast sometimes avoids an "Excessive depth check" TS error
+  query: () => $rfetch('/api/todos') as Promise<TodoSelectSchema[]>
 })
 
 const { mutate: addTodo, isLoading: loading } = useMutation({
@@ -37,6 +42,8 @@ const { mutate: addTodo, isLoading: loading } = useMutation({
   },
 
   onSettled() {
+    // nextTick allows the form to get out of its disabled state which is controlled by `loading`. If we don't do this,
+    // the input is disabled and cannot be focused
     nextTick(() => {
       if (!newTodoInput.value?.input) {
         console.error('Input not found')
@@ -52,11 +59,15 @@ const { mutate: addTodo, isLoading: loading } = useMutation({
         .join('\n')
       toast.add({ title, color: 'red' })
     }
+    else {
+      console.error(err)
+      toast.add({ title: 'Unexpected Error', color: 'red' })
+    }
   }
 })
 
 const { mutate: toggleTodo } = useMutation({
-  mutation: todo =>
+  mutation: (todo: TodoSelectSchema) =>
     $rfetch(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       body: {
@@ -70,7 +81,8 @@ const { mutate: toggleTodo } = useMutation({
 })
 
 const { mutate: deleteTodo } = useMutation({
-  mutation: todo => $rfetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
+  mutation: (todo: TodoSelectSchema) =>
+    $rfetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
 
   async onSuccess(_result, todo) {
     await queryCache.invalidateQueries({ key: ['todos'] })
@@ -118,7 +130,7 @@ const items = [
 
     <div class="flex items-center gap-2">
       <UInput
-        ref="newTodoInput"
+        ref="todo-input"
         v-model="newTodo"
         name="todo"
         :disabled="loading"
