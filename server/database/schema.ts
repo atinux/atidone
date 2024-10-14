@@ -9,4 +9,5 @@ export const todos = sqliteTable('todos', {
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull()
 })
 
+// TODO: it would be more useful to have the serialized type sent by the API
 export type TodoSelectSchema = InferSelectModel<typeof todos>
