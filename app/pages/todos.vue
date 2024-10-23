@@ -4,7 +4,7 @@ definePageMeta({
 })
 const loading = ref(false)
 const newTodo = ref('')
-const newTodoInput = ref(null)
+const newTodoInput = useTemplateRef('new-todo')
 
 const toast = useToast()
 const { user, clear } = useUserSession()
@@ -94,7 +94,7 @@ const items = [[{
 
     <div class="flex items-center gap-2">
       <UInput
-        ref="newTodoInput"
+        ref="new-todo"
         v-model="newTodo"
         name="todo"
         :disabled="loading"
