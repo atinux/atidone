@@ -6,5 +6,5 @@ export default eventHandler(async (event) => {
   // List todos for the current user
   const todos = await useDB().select().from(tables.todos).where(eq(tables.todos.userId, user.id)).all()
 
-  return todos
+  return todos as Todo[]
 })

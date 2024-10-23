@@ -23,7 +23,7 @@ async function addTodo() {
         completed: 0
       }
     })
-    todos.value.push(todo)
+    todos.value?.push(todo)
     await refresh()
     toast.add({ title: `Todo "${todo.title}" created.` })
     newTodo.value = ''
@@ -31,10 +31,13 @@ async function addTodo() {
       newTodoInput.value?.input?.focus()
     })
   }
-  catch (err) {
+  // TODO: use a type guard with the actual error type.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  catch (err: any) {
     if (err.data?.data?.issues) {
       const title = err.data.data.issues
-        .map(issue => issue.message)
+      // TODO: remove once the any type is removed
+        .map((issue: { message: string }) => issue.message)
         .join('\n')
       toast.add({ title, color: 'red' })
     }
@@ -42,7 +45,8 @@ async function addTodo() {
   loading.value = false
 }
 
-async function toggleTodo(todo) {
+// TODO: the Pick can be removed once the type of `todos` becomes `Todo[]` instead of `Serialized<Todo>[]`
+async function toggleTodo(todo: Pick<Todo, 'id' | 'completed'>) {
   todo.completed = Number(!todo.completed)
   await $fetch(`/api/todos/${todo.id}`, {
     method: 'PATCH',
@@ -53,9 +57,9 @@ async function toggleTodo(todo) {
   await refresh()
 }
 
-async function deleteTodo(todo) {
+async function deleteTodo(todo: Pick<Todo, 'id' | 'title'>) {
   await $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' })
-  todos.value = todos.value.filter(t => t.id !== todo.id)
+  todos.value = todos.value?.filter(t => t.id !== todo.id)
   await refresh()
   toast.add({ title: `Todo "${todo.title}" deleted.` })
 }
