@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   middleware: 'auth'
 })
@@ -33,7 +33,9 @@ async function addTodo() {
   }
   catch (err) {
     if (err.data?.data?.issues) {
-      const title = err.data.data.issues.map(issue => issue.message).join('\n')
+      const title = err.data.data.issues
+        .map(issue => issue.message)
+        .join('\n')
       toast.add({ title, color: 'red' })
     }
   }
