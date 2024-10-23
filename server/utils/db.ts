@@ -8,3 +8,5 @@ export const tables = schema
 export function useDB() {
   return drizzle(hubDatabase(), { schema })
 }
+
+export type Todo = typeof tables.todos.$inferSelect
