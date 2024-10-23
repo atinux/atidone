@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useMutation, useQuery, useQueryCache } from '@pinia/colada'
-import type { TodoSelectSchema } from '~~/server/database/schema'
 
 definePageMeta({
   middleware: 'auth'
@@ -18,8 +17,7 @@ const $rfetch = useRequestFetch()
 const { data: todos } = useQuery({
   key: ['todos'],
   // NOTE: the cast sometimes avoids an "Excessive depth check" TS error
-  query: ({ signal }) =>
-    $rfetch('/api/todos', { signal }) as Promise<TodoSelectSchema[]>
+  query: ({ signal }) => $rfetch('/api/todos', { signal }) as Promise<Todo[]>
 })
 
 const { mutate: addTodo } = useMutation({
@@ -38,8 +36,7 @@ const { mutate: addTodo } = useMutation({
   onMutate(title) {
     // let the user enter new todos right away!
     newTodo.value = ''
-    const oldTodos
-      = queryCache.getQueryData<TodoSelectSchema[]>(['todos']) || []
+    const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
     // we use newTodos to check for the cache consistency
     // a better way would be to save the entry time
     // const when = queryCache.getEntries({ key: ['todos'], exact: true }).at(0)?.when
@@ -52,7 +49,7 @@ const { mutate: addTodo } = useMutation({
         id: -Date.now(),
         createdAt: new Date(),
         userId: user.value!.id
-      } satisfies TodoSelectSchema
+      } satisfies Todo
     ]
     queryCache.setQueryData(['todos'], newTodo)
 
@@ -76,9 +73,12 @@ const { mutate: addTodo } = useMutation({
       queryCache.setQueryData(['todos'], oldTodos)
     }
 
-    if (err.data?.data?.issues) {
-      const title = err.data.data.issues
-        .map(issue => issue.message)
+    // FIXME: use an actual error guard
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((err as any).data?.data?.issues) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const title = (err as any).data.data.issues
+        .map((issue: { message: string }) => issue.message)
         .join('\n')
       toast.add({ title, color: 'red' })
     }
@@ -90,7 +90,7 @@ const { mutate: addTodo } = useMutation({
 })
 
 const { mutate: toggleTodo } = useMutation({
-  mutation: (todo: TodoSelectSchema) =>
+  mutation: (todo: Todo) =>
     $rfetch(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       body: {
@@ -99,8 +99,7 @@ const { mutate: toggleTodo } = useMutation({
     }),
 
   onMutate(todo) {
-    const oldTodos
-      = queryCache.getQueryData<TodoSelectSchema[]>(['todos']) || []
+    const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
     const todoIndex = oldTodos.findIndex(t => t.id === todo.id)
     if (todoIndex >= 0) {
       const updatedTodos = oldTodos.toSpliced(todoIndex, 1, {
@@ -130,8 +129,7 @@ const { mutate: toggleTodo } = useMutation({
 })
 
 const { mutate: deleteTodo } = useMutation({
-  mutation: (todo: TodoSelectSchema) =>
-    $rfetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
+  mutation: (todo: Todo) => $rfetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
 
   async onSuccess(_result, todo) {
     await queryCache.invalidateQueries({ key: ['todos'] })
@@ -139,8 +137,7 @@ const { mutate: deleteTodo } = useMutation({
   },
 
   onMutate(todo) {
-    const oldTodos
-      = queryCache.getQueryData<TodoSelectSchema[]>(['todos']) || []
+    const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
     const todoIndex = oldTodos.findIndex(t => t.id === todo.id)
     if (todoIndex >= 0) {
       const updatedTodos = oldTodos.toSpliced(todoIndex, 1)
