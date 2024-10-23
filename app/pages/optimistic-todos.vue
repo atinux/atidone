@@ -51,7 +51,10 @@ const { mutate: addTodo } = useMutation({
         userId: user.value!.id
       } satisfies Todo
     ]
-    queryCache.setQueryData(['todos'], newTodo)
+    queryCache.setQueryData(['todos'], newTodos)
+
+    // since we know any ongoing queries are no longer returning an up to date data, we can cancel them
+    queryCache.getEntries({ key: ['todos'], exact: true }).forEach(entry => queryCache.cancelQuery(entry))
 
     return { oldTodos, newTodos }
   },
@@ -101,15 +104,19 @@ const { mutate: toggleTodo } = useMutation({
   onMutate(todo) {
     const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
     const todoIndex = oldTodos.findIndex(t => t.id === todo.id)
+    let newTodos = oldTodos
     if (todoIndex >= 0) {
-      const updatedTodos = oldTodos.toSpliced(todoIndex, 1, {
+      newTodos = oldTodos.toSpliced(todoIndex, 1, {
         ...todo,
         completed: Number(!todo.completed)
       })
-      queryCache.setQueryData(['todos'], updatedTodos)
+      queryCache.setQueryData(['todos'], newTodos)
     }
 
-    return { oldTodos }
+    // since we know any ongoing queries are no longer returning an up to date data, we can cancel them
+    queryCache.getEntries({ key: ['todos'], exact: true }).forEach(entry => queryCache.cancelQuery(entry))
+
+    return { oldTodos, newTodos }
   },
 
   onSettled() {
@@ -117,9 +124,9 @@ const { mutate: toggleTodo } = useMutation({
     queryCache.invalidateQueries({ key: ['todos'], exact: true })
   },
 
-  onError(err, todo, { oldTodos }) {
+  onError(err, todo, { oldTodos, newTodos }) {
     // oldTodos can be undefined if onMutate errors
-    if (oldTodos) {
+    if (newTodos != null && newTodos === queryCache.getQueryData(['todos'])) {
       queryCache.setQueryData(['todos'], oldTodos)
     }
 
@@ -139,12 +146,16 @@ const { mutate: deleteTodo } = useMutation({
   onMutate(todo) {
     const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
     const todoIndex = oldTodos.findIndex(t => t.id === todo.id)
+    let newTodos = oldTodos
     if (todoIndex >= 0) {
-      const updatedTodos = oldTodos.toSpliced(todoIndex, 1)
-      queryCache.setQueryData(['todos'], updatedTodos)
+      newTodos = oldTodos.toSpliced(todoIndex, 1)
+      queryCache.setQueryData(['todos'], newTodos)
     }
 
-    return { oldTodos }
+    // since we know any ongoing queries are no longer returning an up to date data, we can cancel them
+    queryCache.getEntries({ key: ['todos'], exact: true }).forEach(entry => queryCache.cancelQuery(entry))
+
+    return { oldTodos, newTodos }
   },
 
   onSettled() {
@@ -152,9 +163,9 @@ const { mutate: deleteTodo } = useMutation({
     queryCache.invalidateQueries({ key: ['todos'], exact: true })
   },
 
-  onError(err, todo, { oldTodos }) {
+  onError(err, todo, { oldTodos, newTodos }) {
     // oldTodos can be undefined if onMutate errors
-    if (oldTodos) {
+    if (newTodos != null && newTodos === queryCache.getQueryData(['todos'])) {
       queryCache.setQueryData(['todos'], oldTodos)
     }
 
@@ -232,12 +243,6 @@ const items = [
             'line-through': todo.completed
           }"
         >{{ todo.title }}</span>
-
-        <UIcon
-          v-if="todo.id < 0"
-          name="i-heroicons-arrow-path-20-solid"
-          class="animate-spin"
-        />
 
         <UToggle
           :model-value="Boolean(todo.completed)"
