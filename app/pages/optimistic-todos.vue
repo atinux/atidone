@@ -30,36 +30,45 @@ const { mutate: addTodo } = useMutation({
         title,
         completed: 0
       }
-    })
+    }) as Promise<Todo>
   },
 
   onMutate(title) {
     // let the user enter new todos right away!
     newTodo.value = ''
     const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const newTodoItem = {
+      title,
+      completed: 0,
+      // a negative id to differentiate them from the server ones
+      id: -Date.now(),
+      createdAt: new Date(),
+      userId: user.value!.id
+    } satisfies Todo
     // we use newTodos to check for the cache consistency
     // a better way would be to save the entry time
     // const when = queryCache.getEntries({ key: ['todos'], exact: true }).at(0)?.when
     const newTodos = [
       ...oldTodos,
-      {
-        title,
-        completed: 0,
-        // a negative id to differentiate them from the server ones
-        id: -Date.now(),
-        createdAt: new Date(),
-        userId: user.value!.id
-      } satisfies Todo
+      newTodoItem
     ]
     queryCache.setQueryData(['todos'], newTodos)
 
     // since we know any ongoing queries are no longer returning an up to date data, we can cancel them
     queryCache.getEntries({ key: ['todos'], exact: true }).forEach(entry => queryCache.cancelQuery(entry))
 
-    return { oldTodos, newTodos }
+    return { oldTodos, newTodos, newTodoItem }
   },
 
-  onSuccess(todo) {
+  onSuccess(todo, _, { newTodoItem }) {
+    // update the todo with the information from the server
+    // since we are invalidating queries, this allows us to progressively
+    // update the todo list even if the user is adding a lot very quickly
+    const todoList = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const todoIndex = todoList.findIndex(t => t.id === newTodoItem.id)
+    if (todoIndex >= 0) {
+      queryCache.setQueryData(['todos'], todoList.toSpliced(todoIndex, 1, todo))
+    }
     toast.add({ title: `Todo "${todo.title}" created.` })
   },
 
@@ -79,7 +88,7 @@ const { mutate: addTodo } = useMutation({
     // FIXME: use an actual error guard
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((err as any).data?.data?.issues) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const title = (err as any).data.data.issues
         .map((issue: { message: string }) => issue.message)
         .join('\n')
