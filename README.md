@@ -1,6 +1,6 @@
 # Manage your Todos with Atidone ☑️
 
-A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using [Cloudflare D1](https://developers.cloudflare.com/d1/).
+A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using [Cloudflare D1](https://developers.cloudflare.com/d1/) with [Drizzle ORM](https://orm.drizzle.team/).
 
 [![Deploy to NuxtHub](https://hub.nuxt.com/button.svg)](https://admin.hub.nuxt.com/new?template=todos)
 
@@ -9,6 +9,7 @@ A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the
 - [Server-Side Rendering on the Edge](https://nuxt.com/blog/nuxt-on-the-edge)
 - Authentication backed-in using [nuxt-auth-utils](https://github.com/atinux/nuxt-auth-utils)
 - Leverage [Cloudflare D1](https://developers.cloudflare.com/d1/) as database and [drizzle ORM](https://orm.drizzle.team/) using [`hubDatabase()`](https://hub.nuxt.com/docs/storage/database)
+- Automatic database migrations using Drizzle Kit + NuxtHub
 - User interface made with [Nuxt UI](https://ui.nuxt.com)
 - Embed [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview/) in the [Nuxt DevTools](https://devtools.nuxt.com)
 
