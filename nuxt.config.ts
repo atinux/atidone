@@ -4,7 +4,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-auth-utils',
     '@nuxt/eslint',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@pinia/colada-nuxt'
   ],
   devtools: {
     enabled: true

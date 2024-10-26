@@ -14,6 +14,7 @@
     "@nuxt/ui": "^2.18.7",
     "@nuxthub/core": "^0.8.3",
     "@pinia/colada": "^0.10.0",
+    "@pinia/colada-nuxt": "^0.0.1",
     "@pinia/nuxt": "^0.5.5",
     "drizzle-kit": "^0.26.2",
     "drizzle-orm": "0.35.3",
