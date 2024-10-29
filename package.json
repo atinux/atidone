@@ -9,10 +9,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@iconify-json/simple-icons": "^1.2.9",
-    "@nuxt/eslint": "^0.6.0",
+    "@iconify-json/simple-icons": "^1.2.10",
+    "@nuxt/eslint": "^0.6.1",
     "@nuxt/ui": "^2.18.7",
-    "@nuxthub/core": "^0.8.2",
+    "@nuxthub/core": "^0.8.3",
     "drizzle-kit": "^0.26.2",
     "drizzle-orm": "0.35.3",
     "h3-zod": "^0.5.3",
@@ -22,10 +22,10 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.6.0",
-    "@nuxt/eslint-config": "^0.6.0",
+    "@nuxt/eslint-config": "^0.6.1",
     "eslint": "^9.13.0",
     "typescript": "5.6.3",
     "wrangler": "^3.83.0"
   },
-  "packageManager": "pnpm@9.12.2"
+  "packageManager": "pnpm@9.12.3"
 }
