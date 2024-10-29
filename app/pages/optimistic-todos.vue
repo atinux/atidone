@@ -52,8 +52,7 @@ const { mutate: addTodo } = useMutation({
     ]
     queryCache.setQueryData(['todos'], newTodos)
 
-    // since we know any ongoing queries are no longer returning an up to date data, we can cancel them
-    queryCache.getEntries({ key: ['todos'], exact: true }).forEach(entry => queryCache.cancelQuery(entry))
+    queryCache.cancelQueries({ key: ['todos'], exact: true })
 
     return { oldTodos, newTodos, newTodoItem }
   },
@@ -120,8 +119,7 @@ const { mutate: toggleTodo } = useMutation({
       queryCache.setQueryData(['todos'], newTodos)
     }
 
-    // since we know any ongoing queries are no longer returning an up to date data, we can cancel them
-    queryCache.getEntries({ key: ['todos'], exact: true }).forEach(entry => queryCache.cancelQuery(entry))
+    queryCache.cancelQueries({ key: ['todos'], exact: true })
 
     return { oldTodos, newTodos }
   },
@@ -159,8 +157,7 @@ const { mutate: deleteTodo } = useMutation({
       queryCache.setQueryData(['todos'], newTodos)
     }
 
-    // since we know any ongoing queries are no longer returning an up to date data, we can cancel them
-    queryCache.getEntries({ key: ['todos'], exact: true }).forEach(entry => queryCache.cancelQuery(entry))
+    queryCache.cancelQueries({ key: ['todos'], exact: true })
 
     return { oldTodos, newTodos }
   },
