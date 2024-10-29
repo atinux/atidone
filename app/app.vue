@@ -29,7 +29,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <UContainer class="min-h-screen flex flex-col ">
+  <UContainer class="min-h-screen flex flex-col my-4">
     <div class="mb-2 text-right">
       <UButton
         square
