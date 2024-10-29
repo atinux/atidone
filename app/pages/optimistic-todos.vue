@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useMutation, useQuery, useQueryCache } from '@pinia/colada'
-
 definePageMeta({
   middleware: 'auth'
 })

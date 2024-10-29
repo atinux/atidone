@@ -1,5 +1,4 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core'
-import type { InferSelectModel } from 'drizzle-orm'
 
 export const todos = sqliteTable('todos', {
   id: integer('id').primaryKey(),
