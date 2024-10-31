@@ -18,7 +18,7 @@ const { loggedIn } = useUserSession()
       />
       <div
         v-else
-        class="flex flex-wrap gap-x-2"
+        class="flex flex-wrap gap-2"
       >
         <UButton
           to="/todos"
