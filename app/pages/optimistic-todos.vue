@@ -8,14 +8,13 @@ const toast = useToast()
 const { user, clear } = useUserSession()
 const queryCache = useQueryCache()
 
-// using $fetch directly doesn't avoid the round trip to the server
-// when doing SSR
-// https://github.com/nuxt/nuxt/issues/24813
-const $rfetch = useRequestFetch()
 const { data: todos } = useQuery({
   key: ['todos'],
+  // using $fetch directly doesn't avoid the round trip to the server
+  // when doing SSR
+  // https://github.com/nuxt/nuxt/issues/24813
   // NOTE: the cast sometimes avoids an "Excessive depth check" TS error
-  query: ({ signal }) => $rfetch('/api/todos', { signal }) as Promise<Todo[]>
+  query: ({ signal }) => useRequestFetch()('/api/todos', { signal }) as Promise<Todo[]>
 })
 
 const { mutate: addTodo } = useMutation({
