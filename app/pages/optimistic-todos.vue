@@ -193,7 +193,7 @@ const items = [
     <template #header>
       <h3 class="text-lg font-semibold leading-6">
         <NuxtLink to="/">
-          Todo List
+          Optimistic Todo List
         </NuxtLink>
       </h3>
 
