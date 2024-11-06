@@ -1,39 +1,5 @@
-<script setup lang="ts">
-const { loggedIn } = useUserSession()
-</script>
-
 <template>
-  <UCard>
-    <template #header>
-      <h3 class="text-lg font-semibold leading-6 mr-4">
-        Todo List
-      </h3>
-      <UButton
-        v-if="!loggedIn"
-        to="/api/auth/github"
-        icon="i-simple-icons-github"
-        label="Login with GitHub"
-        color="black"
-        external
-      />
-      <div
-        v-else
-        class="flex flex-wrap gap-2"
-      >
-        <UButton
-          to="/todos"
-          icon="i-heroicons-list-bullet"
-          label="Go to Todos"
-          color="black"
-        />
-        <UButton
-          to="/optimistic-todos"
-          icon="i-heroicons-sparkles"
-          label="Go to Optimistic Todos"
-          color="black"
-        />
-      </div>
-    </template>
+  <div>
     <p class="font-medium">
       Welcome to Atidone.
     </p>
@@ -68,5 +34,5 @@ const { loggedIn } = useUserSession()
       No personal information regarding your GitHub account are stored in database.<br>
       We store only the todos created linked with your GitHub ID.
     </p>
-  </UCard>
+  </div>
 </template>

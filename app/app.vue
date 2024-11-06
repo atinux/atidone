@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { loggedIn } = useUserSession()
+import type { DropdownItem } from '#ui/types'
+
+const { loggedIn, user, clear } = useUserSession()
 const colorMode = useColorMode()
 
 watch(loggedIn, () => {
@@ -26,6 +28,16 @@ useSeoMeta({
   twitterImage: '/social-image.png',
   twitterCard: 'summary_large_image'
 })
+
+const items = [
+  [
+    {
+      label: 'Logout',
+      icon: 'i-heroicons-arrow-left-on-rectangle',
+      click: clear
+    }
+  ]
+] satisfies DropdownItem[][]
 </script>
 
 <template>
@@ -40,7 +52,61 @@ useSeoMeta({
       />
     </div>
 
-    <NuxtPage />
+    <UCard>
+      <template #header>
+        <h3 class="text-lg font-semibold leading-6">
+          <NuxtLink to="/">
+            Atidone
+          </NuxtLink>
+        </h3>
+        <UButton
+          v-if="!loggedIn"
+          to="/api/auth/github"
+          icon="i-simple-icons-github"
+          label="Login with GitHub"
+          color="black"
+          size="xs"
+          external
+        />
+        <div
+          v-else
+          class="flex flex-wrap -mx-2 sm:mx-0"
+        >
+          <UButton
+            to="/todos"
+            icon="i-heroicons-list-bullet"
+            label="Todos"
+            :color="$route.path === '/todos' ? 'primary' : 'gray'"
+            variant="ghost"
+          />
+          <UButton
+            to="/optimistic-todos"
+            icon="i-heroicons-sparkles"
+            label="Optimistic Todos"
+            :color="$route.path === '/optimistic-todos' ? 'primary' : 'gray'"
+            variant="ghost"
+          />
+          <UDropdown
+            v-if="user"
+            :items="items"
+          >
+            <UButton
+              color="gray"
+              variant="ghost"
+              trailing-icon="i-heroicons-chevron-down-20-solid"
+            >
+              <UAvatar
+                :src="`https://github.com/${user.login}.png`"
+                :alt="user.login"
+                size="3xs"
+              />
+              {{ user.login }}
+            </UButton>
+          </UDropdown>
+        </div>
+      </template>
+      <NuxtPage />
+    </UCard>
 
     <footer class="text-center mt-2">
       <NuxtLink

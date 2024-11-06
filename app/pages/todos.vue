@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { DropdownItem } from '#ui/types'
-
 definePageMeta({
   middleware: 'auth'
 })
@@ -8,7 +6,6 @@ const newTodo = ref('')
 const newTodoInput = useTemplateRef('new-todo')
 
 const toast = useToast()
-const { user, clear } = useUserSession()
 const queryCache = useQueryCache()
 
 const { data: todos } = useQuery({
@@ -89,45 +86,13 @@ const { mutate: deleteTodo } = useMutation({
     toast.add({ title: `Todo "${todo.title}" deleted.` })
   }
 })
-
-const items = [
-  [
-    {
-      label: 'Logout',
-      icon: 'i-heroicons-arrow-left-on-rectangle',
-      click: clear
-    }
-  ]
-] satisfies DropdownItem[][]
 </script>
 
 <template>
-  <UCard @submit.prevent="addTodo(newTodo)">
-    <template #header>
-      <h3 class="text-lg font-semibold leading-6">
-        <NuxtLink to="/">
-          Todo List
-        </NuxtLink>
-      </h3>
-
-      <UDropdown
-        v-if="user"
-        :items="items"
-      >
-        <UButton
-          color="white"
-          trailing-icon="i-heroicons-chevron-down-20-solid"
-        >
-          <UAvatar
-            :src="`https://github.com/${user.login}.png`"
-            :alt="user.login"
-            size="3xs"
-          />
-          {{ user.login }}
-        </UButton>
-      </UDropdown>
-    </template>
-
+  <form
+    class="flex flex-col gap-4"
+    @submit.prevent="addTodo(newTodo)"
+  >
     <div class="flex items-center gap-2">
       <UInput
         ref="new-todo"
@@ -174,5 +139,5 @@ const items = [
         />
       </li>
     </ul>
-  </UCard>
+  </form>
 </template>

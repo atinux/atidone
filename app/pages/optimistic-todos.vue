@@ -5,7 +5,7 @@ definePageMeta({
 const newTodo = ref('')
 
 const toast = useToast()
-const { user, clear } = useUserSession()
+const { user } = useUserSession()
 const queryCache = useQueryCache()
 
 const { data: todos } = useQuery({
@@ -176,45 +176,13 @@ const { mutate: deleteTodo } = useMutation({
     toast.add({ title: 'Unexpected Error', color: 'red' })
   }
 })
-
-const items = [
-  [
-    {
-      label: 'Logout',
-      icon: 'i-heroicons-arrow-left-on-rectangle',
-      click: clear
-    }
-  ]
-]
 </script>
 
 <template>
-  <UCard @submit.prevent="addTodo(newTodo)">
-    <template #header>
-      <h3 class="text-lg font-semibold leading-6">
-        <NuxtLink to="/">
-          Optimistic Todo List
-        </NuxtLink>
-      </h3>
-
-      <UDropdown
-        v-if="user"
-        :items="items"
-      >
-        <UButton
-          color="white"
-          trailing-icon="i-heroicons-chevron-down-20-solid"
-        >
-          <UAvatar
-            :src="`https://github.com/${user.login}.png`"
-            :alt="user.login"
-            size="3xs"
-          />
-          {{ user.login }}
-        </UButton>
-      </UDropdown>
-    </template>
-
+  <form
+    class="flex flex-col gap-4"
+    @submit.prevent="addTodo(newTodo)"
+  >
     <div class="flex items-center gap-2">
       <UInput
         v-model="newTodo"
@@ -263,5 +231,5 @@ const items = [
         />
       </li>
     </ul>
-  </UCard>
+  </form>
 </template>
