@@ -12,24 +12,24 @@
     "@iconify-json/simple-icons": "^1.2.10",
     "@nuxt/eslint": "^0.6.1",
     "@nuxt/ui": "^2.18.7",
-    "@nuxthub/core": "^0.8.3",
+    "@nuxthub/core": "^0.8.5",
     "@pinia/colada": "^0.11.1",
     "@pinia/colada-nuxt": "^0.0.2",
     "@pinia/nuxt": "^0.7.0",
-    "drizzle-kit": "^0.26.2",
-    "drizzle-orm": "0.35.3",
+    "drizzle-kit": "^0.27.1",
+    "drizzle-orm": "0.36.0",
     "h3-zod": "^0.5.3",
-    "nuxt": "^3.13.2",
-    "nuxt-auth-utils": "^0.5.0",
+    "nuxt": "^3.14.0",
+    "nuxt-auth-utils": "^0.5.1",
     "pinia": "^2.2.6",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.6.0",
     "@nuxt/eslint-config": "^0.6.1",
-    "eslint": "^9.13.0",
+    "eslint": "^9.14.0",
     "typescript": "5.6.3",
-    "wrangler": "^3.83.0"
+    "wrangler": "^3.84.1"
   },
   "packageManager": "pnpm@9.12.3"
 }
