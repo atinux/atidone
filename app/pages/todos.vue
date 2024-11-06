@@ -46,10 +46,6 @@ const { mutate: addTodo, isLoading: loading } = useMutation({
     nextTick()
       .then(() => nextTick())
       .then(() => {
-        console.log('loading', loading.value, !!newTodoInput.value?.input)
-        if (!newTodoInput.value?.input) {
-          console.error('Input not found')
-        }
         newTodoInput.value?.input?.focus()
       })
   },
