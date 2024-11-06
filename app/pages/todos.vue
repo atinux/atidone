@@ -1,78 +1,108 @@
 <script setup lang="ts">
+import type { DropdownItem } from '#ui/types'
+
 definePageMeta({
   middleware: 'auth'
 })
-const loading = ref(false)
 const newTodo = ref('')
 const newTodoInput = useTemplateRef('new-todo')
 
 const toast = useToast()
 const { user, clear } = useUserSession()
-const { data: todos, refresh } = await useFetch('/api/todos')
+const queryCache = useQueryCache()
 
-async function addTodo() {
-  if (!newTodo.value.trim()) return
+const { data: todos } = useQuery({
+  key: ['todos'],
+  // NOTE: the cast sometimes avoids an "Excessive depth check" TS error
+  // using $fetch directly doesn't avoid the round trip to the server
+  // when doing SSR
+  // https://github.com/nuxt/nuxt/issues/24813
+  query: () => useRequestFetch()('/api/todos') as Promise<Todo[]>
+})
 
-  loading.value = true
+const { mutate: addTodo, isLoading: loading } = useMutation({
+  mutation: (title: string) => {
+    if (!title.trim()) throw new Error('Title is required')
 
-  try {
-    const todo = await $fetch('/api/todos', {
+    return $fetch('/api/todos', {
       method: 'POST',
       body: {
-        title: newTodo.value,
+        title,
         completed: 0
       }
     })
-    todos.value?.push(todo)
-    await refresh()
+  },
+
+  async onSuccess(todo) {
+    await queryCache.invalidateQueries({ key: ['todos'] })
     toast.add({ title: `Todo "${todo.title}" created.` })
+  },
+
+  onSettled() {
     newTodo.value = ''
-    nextTick(() => {
-      newTodoInput.value?.input?.focus()
-    })
-  }
-  // TODO: use a type guard with the actual error type.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  catch (err: any) {
-    if (err.data?.data?.issues) {
-      const title = err.data.data.issues
-      // TODO: remove once the any type is removed
-        .map((issue: { message: string }) => issue.message)
+    // the first nextTick allows loading to become false and re enable the input
+    // the second nextTick allows the input to be rendered again so it can be focused
+    // a better solution would be to use a custom `v-focus` directive or a more elaborated focus management solution
+    nextTick()
+      .then(() => nextTick())
+      .then(() => {
+        newTodoInput.value?.input?.focus()
+      })
+  },
+
+  onError(err) {
+    if (isNuxtZodError(err)) {
+      const title = err.data?.data.issues
+        .map(issue => issue.message)
         .join('\n')
-      toast.add({ title, color: 'red' })
+      if (title) {
+        toast.add({ title, color: 'red' })
+      }
+    }
+    else {
+      console.error(err)
+      toast.add({ title: 'Unexpected Error', color: 'red' })
     }
   }
-  loading.value = false
-}
+})
 
-// TODO: the Pick can be removed once the type of `todos` becomes `Todo[]` instead of `Serialized<Todo>[]`
-async function toggleTodo(todo: Pick<Todo, 'id' | 'completed'>) {
-  todo.completed = Number(!todo.completed)
-  await $fetch(`/api/todos/${todo.id}`, {
-    method: 'PATCH',
-    body: {
-      completed: todo.completed
+const { mutate: toggleTodo } = useMutation({
+  mutation: (todo: Todo) =>
+    $fetch(`/api/todos/${todo.id}`, {
+      method: 'PATCH',
+      body: {
+        completed: Number(!todo.completed)
+      }
+    }),
+
+  async onSuccess() {
+    await queryCache.invalidateQueries({ key: ['todos'] })
+  }
+})
+
+const { mutate: deleteTodo } = useMutation({
+  mutation: (todo: Todo) =>
+    $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
+
+  async onSuccess(_result, todo) {
+    await queryCache.invalidateQueries({ key: ['todos'] })
+    toast.add({ title: `Todo "${todo.title}" deleted.` })
+  }
+})
+
+const items = [
+  [
+    {
+      label: 'Logout',
+      icon: 'i-heroicons-arrow-left-on-rectangle',
+      click: clear
     }
-  })
-  await refresh()
-}
-
-async function deleteTodo(todo: Pick<Todo, 'id' | 'title'>) {
-  await $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' })
-  todos.value = todos.value?.filter(t => t.id !== todo.id)
-  await refresh()
-  toast.add({ title: `Todo "${todo.title}" deleted.` })
-}
-
-const items = [[{
-  label: 'Logout',
-  icon: 'i-heroicons-arrow-left-on-rectangle',
-  click: clear
-}]]
+  ]
+] satisfies DropdownItem[][]
 </script>
 
 <template>
-  <UCard @submit.prevent="addTodo">
+  <UCard @submit.prevent="addTodo(newTodo)">
     <template #header>
       <h3 class="text-lg font-semibold leading-6">
         <NuxtLink to="/">
