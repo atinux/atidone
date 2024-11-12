@@ -81,9 +81,7 @@ const { mutate: addTodo } = useMutation({
       queryCache.setQueryData(['todos'], oldTodos)
     }
 
-    // FIXME: use an actual error guard
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((err as any).data?.data?.issues) {
+    if (isNuxtZodError(err)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const title = (err as any).data.data.issues
         .map((issue: { message: string }) => issue.message)
@@ -142,8 +140,7 @@ const { mutate: toggleTodo } = useMutation({
 const { mutate: deleteTodo } = useMutation({
   mutation: (todo: Todo) => $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
 
-  async onSuccess(_result, todo) {
-    await queryCache.invalidateQueries({ key: ['todos'] })
+  onSuccess(_result, todo) {
     toast.add({ title: `Todo "${todo.title}" deleted.` })
   },
 
