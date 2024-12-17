@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm'
 
-export default eventHandler(async (event) => {
+export default defineTracedEventHandler(async (event) => {
   const { user } = await requireUserSession(event)
 
   // List todos for the current user

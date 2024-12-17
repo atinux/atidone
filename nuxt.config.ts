@@ -7,11 +7,21 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia/colada-nuxt'
   ],
+  $production: {
+    nitro: {
+      otel: {
+        preset: { name: 'baselime-cf-worker' }
+      }
+    }
+  },
   devtools: {
     enabled: true
   },
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-07-30',
+  nitro: {
+    modules: ['nitro-opentelemetry']
+  },
   hub: {
     database: true
   },
