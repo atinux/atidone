@@ -10,9 +10,11 @@ watch(loggedIn, () => {
   }
 })
 
-function toggleColorMode() {
-  colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
-}
+const isDarkMode = computed({
+  get: () => colorMode.preference === 'dark',
+  set: () =>
+    (colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark')
+})
 
 useHead({
   htmlAttrs: { lang: 'en' },
@@ -47,8 +49,12 @@ const items = [
         square
         variant="ghost"
         color="black"
-        :icon="$colorMode.preference === 'dark' ? 'i-heroicons-moon' : 'i-heroicons-sun'"
-        @click="toggleColorMode"
+        :icon="
+          $colorMode.preference === 'dark' || $colorMode.preference === 'system'
+            ? 'i-heroicons-moon'
+            : 'i-heroicons-sun'
+        "
+        @click="isDarkMode = !isDarkMode"
       />
     </div>
 
