@@ -31,5 +31,9 @@
     "typescript": "5.7.3",
     "wrangler": "^3.107.3"
   },
+  "resolutions": {
+    "nitropack": "npm:nitropack-nightly@latest",
+    "h3": "^1.15.0"
+  },
   "packageManager": "pnpm@10.2.1"
 }
