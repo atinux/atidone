@@ -1,0 +1,31 @@
+diff --git a/dist/presets/cloudflare/runtime/cloudflare-durable.mjs b/dist/presets/cloudflare/runtime/cloudflare-durable.mjs
+index 32ccfbbc6b0fef89fcbe8a15d73fba81fdada553..cdcd4650c86fc4dc7b871a40330e93fe3e6d1bf0 100644
+--- a/dist/presets/cloudflare/runtime/cloudflare-durable.mjs
++++ b/dist/presets/cloudflare/runtime/cloudflare-durable.mjs
+@@ -8,6 +8,8 @@ const nitroApp = useNitroApp();
+ const ws = import.meta._websocket ? wsAdapter(nitroApp.h3App.websocket) : void 0;
+ export default createHandler({
+   fetch(request, env, context, url) {
++    context.passThroughOnException();
++
+     if (env.ASSETS && isPublicAssetURL(url.pathname)) {
+       return env.ASSETS.fetch(request);
+     }
+@@ -29,12 +31,16 @@ export class $DurableObject extends DurableObject {
+       ws.handleDurableInit(this, state, env);
+     }
+   }
+-  fetch(request) {
++  async fetch(request) {
+     if (import.meta._websocket) {
+       return ws.handleDurableUpgrade(this, request);
+     }
+     return new Response("404", { status: 404 });
+   }
++  publish(topic, data) {
++    console.log('publish', topic, data)
++    ws.publish(topic, typeof data !== 'string' ? JSON.stringify(data) : data)
++  }
+   alarm() {
+     this.ctx.waitUntil(
+       nitroApp.hooks.callHook("cloudflare:durable:alarm", this)

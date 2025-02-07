@@ -13,5 +13,8 @@ export default eventHandler(async (event) => {
     createdAt: new Date()
   }).returning().get()
 
+  // event.waitUntil(hooks.callHook('todo:created', todo))
+  await webSocketPublish(`${user.id}`, { event: 'todo:created', data: todo })
+
   return todo
 })

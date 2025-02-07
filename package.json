@@ -9,27 +9,35 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@iconify-json/simple-icons": "^1.2.20",
-    "@nuxt/eslint": "^0.7.5",
+    "@iconify-json/simple-icons": "^1.2.22",
+    "@nuxt/eslint": "^0.7.6",
     "@nuxt/ui": "^2.21.0",
-    "@nuxthub/core": "^0.8.11",
+    "@nuxthub/core": "^0.8.15",
     "@pinia/colada": "^0.13.3",
     "@pinia/colada-nuxt": "^0.0.4",
     "@pinia/nuxt": "^0.9.0",
-    "drizzle-kit": "^0.30.1",
-    "drizzle-orm": "0.38.3",
+    "@vueuse/core": "^12.5.0",
+    "@vueuse/nuxt": "12.5.0",
+    "drizzle-kit": "^0.30.4",
+    "drizzle-orm": "0.39.0",
     "h3-zod": "^0.5.3",
-    "nuxt": "^3.15.2",
-    "nuxt-auth-utils": "^0.5.7",
-    "pinia": "^2.3.0",
+    "hookable": "^5.5.3",
+    "nuxt": "^3.15.4",
+    "nuxt-auth-utils": "^0.5.10",
+    "pinia": "^2.3.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.7.0",
-    "@nuxt/eslint-config": "^0.7.5",
-    "eslint": "^9.18.0",
+    "@nuxt/eslint-config": "^0.7.6",
+    "eslint": "^9.19.0",
     "typescript": "5.7.3",
-    "wrangler": "^3.102.0"
+    "wrangler": "^3.106.0"
   },
-  "packageManager": "pnpm@9.15.4"
+  "packageManager": "pnpm@9.15.4",
+  "pnpm": {
+    "patchedDependencies": {
+      "nitropack": "patches/nitropack.patch"
+    }
+  }
 }

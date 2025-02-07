@@ -5,13 +5,20 @@ export default defineNuxtConfig({
     'nuxt-auth-utils',
     '@nuxt/eslint',
     '@pinia/nuxt',
-    '@pinia/colada-nuxt'
+    '@pinia/colada-nuxt',
+    '@vueuse/nuxt'
   ],
   devtools: {
     enabled: true
   },
   future: { compatibilityVersion: 4 },
-  compatibilityDate: '2024-07-30',
+  compatibilityDate: '2025-01-29',
+  nitro: {
+    preset: 'cloudflare_durable',
+    experimental: {
+      websocket: true
+    }
+  },
   hub: {
     database: true
   },
