@@ -12,7 +12,7 @@
     "@iconify-json/simple-icons": "^1.2.27",
     "@nuxt/eslint": "^1.1.0",
     "@nuxt/ui": "^2.21.0",
-    "@nuxthub/core": "^0.8.17",
+    "@nuxthub/core": "^0.8.18",
     "@pinia/colada": "^0.13.7",
     "@pinia/colada-nuxt": "^0.0.6",
     "@pinia/nuxt": "^0.10.1",
