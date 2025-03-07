@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "preview": "nuxt preview",
+    "preview": "npx nuxthub preview",
     "db:generate": "drizzle-kit generate",
     "lint": "eslint .",
     "postinstall": "nuxt prepare"
