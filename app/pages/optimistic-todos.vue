@@ -65,7 +65,6 @@ const { mutate: addTodo } = useMutation({
     if (todoIndex >= 0) {
       queryCache.setQueryData(['todos'], todoList.toSpliced(todoIndex, 1, todo))
     }
-    toast.add({ title: `Todo "${todo.title}" created.` })
   },
 
   onSettled() {
@@ -86,11 +85,11 @@ const { mutate: addTodo } = useMutation({
       const title = (err as any).data.data.issues
         .map((issue: { message: string }) => issue.message)
         .join('\n')
-      toast.add({ title, color: 'red' })
+      toast.add({ title, color: 'error' })
     }
     else {
       console.error(err)
-      toast.add({ title: 'Unexpected Error', color: 'red' })
+      toast.add({ title: 'Unexpected Error', color: 'error' })
     }
   }
 })
@@ -133,16 +132,12 @@ const { mutate: toggleTodo } = useMutation({
     }
 
     console.error(err)
-    toast.add({ title: 'Unexpected Error', color: 'red' })
+    toast.add({ title: 'Unexpected Error', color: 'error' })
   }
 })
 
 const { mutate: deleteTodo } = useMutation({
   mutation: (todo: Todo) => $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
-
-  onSuccess(_result, todo) {
-    toast.add({ title: `Todo "${todo.title}" deleted.` })
-  },
 
   onMutate(todo) {
     const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
@@ -170,7 +165,7 @@ const { mutate: deleteTodo } = useMutation({
     }
 
     console.error(err)
-    toast.add({ title: 'Unexpected Error', color: 'red' })
+    toast.add({ title: 'Unexpected Error', color: 'error' })
   }
 })
 </script>
@@ -193,7 +188,7 @@ const { mutate: deleteTodo } = useMutation({
 
       <UButton
         type="submit"
-        icon="i-heroicons-plus-20-solid"
+        icon="i-lucide-plus"
         :disabled="newTodo.trim().length === 0"
       />
     </div>
@@ -212,17 +207,17 @@ const { mutate: deleteTodo } = useMutation({
           }"
         >{{ todo.title }}</span>
 
-        <UToggle
+        <USwitch
           :model-value="Boolean(todo.completed)"
           :disabled="todo.id < 0"
           @update:model-value="toggleTodo(todo)"
         />
 
         <UButton
-          color="red"
+          color="error"
           variant="soft"
-          size="2xs"
-          icon="i-heroicons-x-mark-20-solid"
+          size="xs"
+          icon="i-lucide-x"
           :disabled="todo.id < 0"
           @click="deleteTodo(todo)"
         />

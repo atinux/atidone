@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DropdownItem } from '#ui/types'
+import type { DropdownMenuItem } from '#ui/types'
 
 const { loggedIn, user, clear } = useUserSession()
 const colorMode = useColorMode()
@@ -35,108 +35,109 @@ const items = [
   [
     {
       label: 'Logout',
-      icon: 'i-heroicons-arrow-left-on-rectangle',
-      click: clear
+      icon: 'i-lucide-log-out',
+      onSelect: clear
     }
   ]
-] satisfies DropdownItem[][]
+] satisfies DropdownMenuItem[][]
 </script>
 
 <template>
-  <UContainer class="min-h-screen flex flex-col my-4">
-    <div class="mb-2 text-right">
-      <UButton
-        square
-        variant="ghost"
-        color="black"
-        :icon="
-          $colorMode.preference === 'dark' || $colorMode.preference === 'system'
-            ? 'i-heroicons-moon'
-            : 'i-heroicons-sun'
-        "
-        @click="isDarkMode = !isDarkMode"
-      />
-    </div>
-
-    <UCard>
-      <template #header>
-        <h3 class="text-lg font-semibold leading-6">
-          <NuxtLink to="/">
-            Atidone
-          </NuxtLink>
-        </h3>
+  <UApp>
+    <UContainer class="min-h-screen flex flex-col my-4">
+      <div class="mb-2 text-right">
         <UButton
-          v-if="!loggedIn"
-          to="/api/auth/github"
-          icon="i-simple-icons-github"
-          label="Login with GitHub"
-          color="black"
-          size="xs"
-          external
+          square
+          variant="ghost"
+          color="neutral"
+          :icon="
+            $colorMode.preference === 'dark' || $colorMode.preference === 'system'
+              ? 'i-lucide-moon'
+              : 'i-lucide-sun'
+          "
+          @click="isDarkMode = !isDarkMode"
         />
-        <div
-          v-else
-          class="flex flex-wrap -mx-2 sm:mx-0"
-        >
+      </div>
+
+      <UCard variant="subtle">
+        <template #header>
+          <h3 class="text-lg font-semibold leading-6">
+            <NuxtLink to="/">
+              Atidone
+            </NuxtLink>
+          </h3>
           <UButton
-            to="/todos"
-            icon="i-heroicons-list-bullet"
-            label="Todos"
-            :color="$route.path === '/todos' ? 'primary' : 'gray'"
-            variant="ghost"
+            v-if="!loggedIn"
+            to="/api/auth/github"
+            icon="i-simple-icons-github"
+            label="Login with GitHub"
+            color="neutral"
+            size="xs"
+            external
           />
-          <UButton
-            to="/optimistic-todos"
-            icon="i-heroicons-sparkles"
-            label="Optimistic Todos"
-            :color="$route.path === '/optimistic-todos' ? 'primary' : 'gray'"
-            variant="ghost"
-          />
-          <UDropdown
-            v-if="user"
-            :items="items"
+          <div
+            v-else
+            class="flex flex-wrap -mx-2 sm:mx-0"
           >
             <UButton
-              color="gray"
+              to="/todos"
+              icon="i-lucide-list"
+              label="Todos"
+              :color="$route.path === '/todos' ? 'primary' : 'neutral'"
               variant="ghost"
-              trailing-icon="i-heroicons-chevron-down-20-solid"
+            />
+            <UButton
+              to="/optimistic-todos"
+              icon="i-lucide-sparkles"
+              label="Optimistic Todos"
+              :color="$route.path === '/optimistic-todos' ? 'primary' : 'neutral'"
+              variant="ghost"
+            />
+            <UDropdownMenu
+              v-if="user"
+              :items="items"
             >
-              <UAvatar
-                :src="`https://github.com/${user.login}.png`"
-                :alt="user.login"
-                size="3xs"
-              />
-              {{ user.login }}
-            </UButton>
-          </UDropdown>
-        </div>
-      </template>
-      <NuxtPage />
-    </UCard>
+              <UButton
+                color="neutral"
+                variant="ghost"
+                trailing-icon="i-lucide-chevron-down"
+              >
+                <UAvatar
+                  :src="`https://github.com/${user.login}.png`"
+                  :alt="user.login"
+                  size="3xs"
+                />
+                {{ user.login }}
+              </UButton>
+            </UDropdownMenu>
+          </div>
+        </template>
+        <NuxtPage />
+      </UCard>
 
-    <footer class="text-center mt-2">
-      <NuxtLink
-        href="https://github.com/atinux/atidone"
-        target="_blank"
-        class="text-sm text-gray-500 hover:text-gray-700"
-      >
-        GitHub
-      </NuxtLink>
-      ·
-      <NuxtLink
-        href="https://twitter.com/atinux"
-        target="_blank"
-        class="text-sm text-gray-500 hover:text-gray-700"
-      >
-        Twitter
-      </NuxtLink>
-    </footer>
-  </UContainer>
-  <UNotifications />
+      <footer class="text-center mt-2">
+        <NuxtLink
+          href="https://github.com/atinux/atidone"
+          target="_blank"
+          class="text-sm text-neutral-500 hover:text-neutral-700"
+        >
+          GitHub
+        </NuxtLink>
+        ·
+        <NuxtLink
+          href="https://twitter.com/atinux"
+          target="_blank"
+          class="text-sm text-neutral-500 hover:text-neutral-700"
+        >
+          Twitter
+        </NuxtLink>
+      </footer>
+    </UContainer>
+  </UApp>
 </template>
 
 <style lang="postcss">
 body {
-  @apply font-sans text-gray-950 bg-gray-50 dark:bg-gray-950 dark:text-gray-50;
+  @apply font-sans text-neutral-950 bg-neutral-50 dark:bg-neutral-950 dark:text-neutral-50;
 }
 </style>

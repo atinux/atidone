@@ -1,17 +1,18 @@
 export default defineNuxtConfig({
   modules: [
-    '@nuxthub/core',
     '@nuxt/ui',
-    'nuxt-auth-utils',
     '@nuxt/eslint',
+    '@nuxthub/core',
+    'nuxt-auth-utils',
     '@pinia/nuxt',
     '@pinia/colada-nuxt'
   ],
   devtools: {
     enabled: true
   },
+  css: ['~/assets/main.css'],
   future: { compatibilityVersion: 4 },
-  compatibilityDate: '2024-07-30',
+  compatibilityDate: '2025-04-02',
   hub: {
     database: true
   },

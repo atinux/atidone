@@ -108,7 +108,7 @@ const { mutate: deleteTodo } = useMutation({
 
       <UButton
         type="submit"
-        icon="i-heroicons-plus-20-solid"
+        icon="i-lucide-plus"
         :loading="loading"
         :disabled="newTodo.trim().length === 0"
       />
@@ -125,16 +125,16 @@ const { mutate: deleteTodo } = useMutation({
           :class="[todo.completed ? 'line-through text-gray-500' : '']"
         >{{ todo.title }}</span>
 
-        <UToggle
+        <USwitch
           :model-value="Boolean(todo.completed)"
           @update:model-value="toggleTodo(todo)"
         />
 
         <UButton
-          color="red"
+          color="error"
           variant="soft"
-          size="2xs"
-          icon="i-heroicons-x-mark-20-solid"
+          size="xs"
+          icon="i-lucide-x"
           @click="deleteTodo(todo)"
         />
       </li>
