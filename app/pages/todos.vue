@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { todosQuery } from '~/queries/todos'
+
 definePageMeta({
   middleware: 'auth'
 })
@@ -8,14 +10,7 @@ const newTodoInput = useTemplateRef('new-todo')
 const toast = useToast()
 const queryCache = useQueryCache()
 
-const { data: todos } = useQuery({
-  key: ['todos'],
-  // NOTE: the cast sometimes avoids an "Excessive depth check" TS error
-  // using $fetch directly doesn't avoid the round trip to the server
-  // when doing SSR
-  // https://github.com/nuxt/nuxt/issues/24813
-  query: () => useRequestFetch()('/api/todos') as Promise<Todo[]>
-})
+const { data: todos } = useQuery(todosQuery)
 
 const { mutate: addTodo, isLoading: loading } = useMutation({
   mutation: (title: string) => {
@@ -31,7 +26,7 @@ const { mutate: addTodo, isLoading: loading } = useMutation({
   },
 
   async onSuccess(todo) {
-    await queryCache.invalidateQueries({ key: ['todos'] })
+    await queryCache.invalidateQueries(todosQuery)
     toast.add({ title: `Todo "${todo.title}" created.` })
   },
 
@@ -73,7 +68,7 @@ const { mutate: toggleTodo } = useMutation({
     }),
 
   async onSuccess() {
-    await queryCache.invalidateQueries({ key: ['todos'] })
+    await queryCache.invalidateQueries(todosQuery)
   }
 })
 
@@ -82,7 +77,7 @@ const { mutate: deleteTodo } = useMutation({
     $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
 
   async onSuccess(_result, todo) {
-    await queryCache.invalidateQueries({ key: ['todos'] })
+    await queryCache.invalidateQueries(todosQuery)
     toast.add({ title: `Todo "${todo.title}" deleted.` })
   }
 })
