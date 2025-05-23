@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { todosQuery } from '~/queries/todos'
+
 definePageMeta({
   middleware: 'auth'
 })
@@ -8,14 +10,7 @@ const toast = useToast()
 const { user } = useUserSession()
 const queryCache = useQueryCache()
 
-const { data: todos } = useQuery({
-  key: ['todos'],
-  // using $fetch directly doesn't avoid the round trip to the server
-  // when doing SSR
-  // https://github.com/nuxt/nuxt/issues/24813
-  // NOTE: the cast sometimes avoids an "Excessive depth check" TS error
-  query: ({ signal }) => useRequestFetch()('/api/todos', { signal }) as Promise<Todo[]>
-})
+const { data: todos } = useQuery(todosQuery)
 
 const { mutate: addTodo } = useMutation({
   mutation: (title: string) => {
@@ -33,7 +28,7 @@ const { mutate: addTodo } = useMutation({
   onMutate(title) {
     // let the user enter new todos right away!
     newTodo.value = ''
-    const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const oldTodos = queryCache.getQueryData(todosQuery.key) || []
     const newTodoItem = {
       title,
       completed: 0,
@@ -45,13 +40,10 @@ const { mutate: addTodo } = useMutation({
     // we use newTodos to check for the cache consistency
     // a better way would be to save the entry time
     // const when = queryCache.getEntries({ key: ['todos'], exact: true }).at(0)?.when
-    const newTodos = [
-      ...oldTodos,
-      newTodoItem
-    ]
-    queryCache.setQueryData(['todos'], newTodos)
+    const newTodos = [...oldTodos, newTodoItem]
+    queryCache.setQueryData(todosQuery.key, newTodos)
 
-    queryCache.cancelQueries({ key: ['todos'], exact: true })
+    queryCache.cancelQueries({ key: todosQuery.key, exact: true })
 
     return { oldTodos, newTodos, newTodoItem }
   },
@@ -60,24 +52,30 @@ const { mutate: addTodo } = useMutation({
     // update the todo with the information from the server
     // since we are invalidating queries, this allows us to progressively
     // update the todo list even if the user is adding a lot very quickly
-    const todoList = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const todoList = queryCache.getQueryData(todosQuery.key) || []
     const todoIndex = todoList.findIndex(t => t.id === newTodoItem.id)
     if (todoIndex >= 0) {
-      queryCache.setQueryData(['todos'], todoList.toSpliced(todoIndex, 1, todo))
+      queryCache.setQueryData(
+        todosQuery.key,
+        todoList.toSpliced(todoIndex, 1, todo)
+      )
     }
   },
 
   onSettled() {
     // always refetch the todos after a mutation
-    queryCache.invalidateQueries({ key: ['todos'] })
+    queryCache.invalidateQueries({ key: todosQuery.key })
   },
 
   onError(err, _title, { oldTodos, newTodos }) {
     // oldTodos can be undefined if onMutate errors
     // we also want to check if the oldTodos are still in the cache
     // because the cache could have been updated by another query
-    if (newTodos != null && newTodos === queryCache.getQueryData(['todos'])) {
-      queryCache.setQueryData(['todos'], oldTodos)
+    if (
+      newTodos != null
+      && newTodos === queryCache.getQueryData(todosQuery.key)
+    ) {
+      queryCache.setQueryData(todosQuery.key, oldTodos)
     }
 
     if (isNuxtZodError(err)) {
@@ -104,7 +102,7 @@ const { mutate: toggleTodo } = useMutation({
     }),
 
   onMutate(todo) {
-    const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const oldTodos = queryCache.getQueryData(todosQuery.key) || []
     const todoIndex = oldTodos.findIndex(t => t.id === todo.id)
     let newTodos = oldTodos
     if (todoIndex >= 0) {
@@ -112,23 +110,26 @@ const { mutate: toggleTodo } = useMutation({
         ...todo,
         completed: Number(!todo.completed)
       })
-      queryCache.setQueryData(['todos'], newTodos)
+      queryCache.setQueryData(todosQuery.key, newTodos)
     }
 
-    queryCache.cancelQueries({ key: ['todos'], exact: true })
+    queryCache.cancelQueries({ key: todosQuery.key, exact: true })
 
     return { oldTodos, newTodos }
   },
 
   onSettled() {
     // always refetch the todos after a mutation
-    queryCache.invalidateQueries({ key: ['todos'], exact: true })
+    queryCache.invalidateQueries({ key: todosQuery.key, exact: true })
   },
 
   onError(err, todo, { oldTodos, newTodos }) {
     // oldTodos can be undefined if onMutate errors
-    if (newTodos != null && newTodos === queryCache.getQueryData(['todos'])) {
-      queryCache.setQueryData(['todos'], oldTodos)
+    if (
+      newTodos != null
+      && newTodos === queryCache.getQueryData(todosQuery.key)
+    ) {
+      queryCache.setQueryData(todosQuery.key, oldTodos)
     }
 
     console.error(err)
@@ -140,28 +141,28 @@ const { mutate: deleteTodo } = useMutation({
   mutation: (todo: Todo) => $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
 
   onMutate(todo) {
-    const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const oldTodos = queryCache.getQueryData(todosQuery.key) || []
     const todoIndex = oldTodos.findIndex(t => t.id === todo.id)
     let newTodos = oldTodos
     if (todoIndex >= 0) {
       newTodos = oldTodos.toSpliced(todoIndex, 1)
-      queryCache.setQueryData(['todos'], newTodos)
+      queryCache.setQueryData(todosQuery.key, newTodos)
     }
 
-    queryCache.cancelQueries({ key: ['todos'], exact: true })
+    queryCache.cancelQueries({ key: todosQuery.key, exact: true })
 
     return { oldTodos, newTodos }
   },
 
   onSettled() {
     // always refetch the todos after a mutation
-    queryCache.invalidateQueries({ key: ['todos'], exact: true })
+    queryCache.invalidateQueries({ key: todosQuery.key, exact: true })
   },
 
   onError(err, todo, { oldTodos, newTodos }) {
     // oldTodos can be undefined if onMutate errors
-    if (newTodos != null && newTodos === queryCache.getQueryData(['todos'])) {
-      queryCache.setQueryData(['todos'], oldTodos)
+    if (newTodos != null && newTodos === queryCache.getQueryData(todosQuery.key)) {
+      queryCache.setQueryData(todosQuery.key, oldTodos)
     }
 
     console.error(err)

@@ -13,8 +13,8 @@
     "@iconify-json/simple-icons": "^1.2.31",
     "@nuxt/ui": "^3.0.2",
     "@nuxthub/core": "^0.8.24",
-    "@pinia/colada": "^0.14.2",
-    "@pinia/colada-nuxt": "^0.1.1",
+    "@pinia/colada": "^0.16.1",
+    "@pinia/colada-nuxt": "^0.2.0",
     "@pinia/nuxt": "^0.11.0",
     "drizzle-kit": "^0.30.6",
     "drizzle-orm": "0.41.0",
@@ -34,7 +34,9 @@
   "packageManager": "pnpm@10.8.0",
   "pnpm": {
     "onlyBuiltDependencies": [
+      "esbuild",
       "sharp",
+      "vue-demi",
       "workerd"
     ]
   }
