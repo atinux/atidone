@@ -1,18 +1,21 @@
-import { eq, and } from 'drizzle-orm'
-import { useValidatedParams, zh } from 'h3-zod'
+import { z } from 'zod'
+
+const ParamsSchema = z.object({
+  id: z.coerce.number().int()
+})
 
 export default eventHandler(async (event) => {
-  const { id } = await useValidatedParams(event, {
-    id: zh.intAsString
-  })
+  const { id } = await getValidatedRouterParams(event, ParamsSchema.parse)
   const { user } = await requireUserSession(event)
 
-  // List todos for the current user
-  const deletedTodo = await useDB().delete(tables.todos).where(and(
+  // Delete todo for the current user
+  const db = await useDB()
+  const deletedTodos = await db.delete(tables.todos).where(and(
     eq(tables.todos.id, id),
     eq(tables.todos.userId, user.id)
-  )).returning().get()
+  )).returning()
 
+  const deletedTodo = deletedTodos[0]
   if (!deletedTodo) {
     throw createError({
       statusCode: 404,

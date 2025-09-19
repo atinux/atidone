@@ -63,7 +63,7 @@ const { mutate: toggleTodo } = useMutation({
     $fetch(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       body: {
-        completed: Number(!todo.completed)
+        completed: !todo.completed
       }
     }),
 
