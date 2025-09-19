@@ -13,7 +13,7 @@
     "@iconify-json/lucide": "^1.2.68",
     "@iconify-json/simple-icons": "^1.2.52",
     "@nuxt/ui": "^3.3.4",
-    "@nuxthub/core": "^0.9.0",
+    "@nuxthub/core-nightly": "1.0.0-20250919-003421-88c4eed",
     "@pinia/colada": "^0.17.5",
     "@pinia/colada-nuxt": "^0.2.2",
     "@pinia/nuxt": "^0.11.2",

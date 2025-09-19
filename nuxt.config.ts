@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
     '@nuxt/eslint',
-    '@nuxthub/core',
+    '@nuxthub/core-nightly',
     'nuxt-auth-utils',
     '@pinia/nuxt',
     '@pinia/colada-nuxt'
@@ -12,9 +12,9 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/main.css'],
   future: { compatibilityVersion: 4 },
-  compatibilityDate: '2025-04-02',
+  compatibilityDate: '2025-08-07',
   hub: {
-    database: true
+    database: 'postgresql'
   },
   // Development config
   eslint: {
