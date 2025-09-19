@@ -2,7 +2,7 @@
 
 A demonstration using [Nuxt](https://nuxt.com) with server-side rendering on the edge, authentication and database querying using [Cloudflare D1](https://developers.cloudflare.com/d1/) with [Drizzle ORM](https://orm.drizzle.team/).
 
-[![Deploy to NuxtHub](https://hub.nuxt.com/button.svg)](https://admin.hub.nuxt.com/new?template=todos)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fatinux%2Fatidone%2Ftree%2Fnuxthub-v1&env=NUXT_OAUTH_GITHUB_CLIENT_ID,NUXT_OAUTH_GITHUB_CLIENT_SECRET,NUXT_SESSION_PASSWORD&envDescription=GitHub%20OAuth%20App%20client%20ID%20and%20secret.%20Generate%20a%20random%20session%20password%20min%2032%20chars%20using%20%60openssl%20rand%20-hex%2032%60.&project-name=todos&repository-name=todos&demo-title=Atidone&demo-description=A%20Nuxt%20demo%20hosted%20with%20edge-side%20rendering%2C%20authentication%20and%20querying%20a%20PostgreSQL%20database&demo-url=https%3A%2F%2Ftodos.nuxt.dev%2F&demo-image=https%3A%2F%2Ftodos.nuxt.dev%2Fsocial-image.png&skippable-integrations=1&products=%5B%7B%22type%22%3A%22integration%22%2C%22protocol%22%3A%22storage%22%2C%22group%22%3A%22postgres%22%7D%5D)
 
 ## Features
 
@@ -72,7 +72,7 @@ It's also possible to leverage Cloudflare Pages CI for deploying, learn more abo
 ## Remote Storage
 
 Once you deployed your project, you can connect to your remote database locally running:
-  
+
 ```bash
 pnpm dev --remote
 ```
