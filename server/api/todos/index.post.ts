@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { db, schema } from 'hub:db'
 
 const BodySchema = z.object({
   title: z.string().min(1).max(100)
@@ -9,8 +10,7 @@ export default eventHandler(async (event) => {
   const { user } = await requireUserSession(event)
 
   // Insert todo for the current user
-  const db = await useDB()
-  const todos = await db.insert(tables.todos).values({
+  const todos = await db.insert(schema.todos).values({
     userId: user.id,
     title,
     createdAt: new Date()

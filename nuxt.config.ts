@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
     '@nuxt/eslint',
-    '@nuxthub/core-nightly',
+    '@nuxthub/core',
     'nuxt-auth-utils',
     '@pinia/nuxt',
     '@pinia/colada-nuxt'
@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2025-08-07',
   hub: {
-    database: 'postgresql'
+    db: 'sqlite'
   },
   // Development config
   eslint: {

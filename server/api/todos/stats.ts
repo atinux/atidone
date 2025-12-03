@@ -1,10 +1,12 @@
+import { db, schema } from 'hub:db'
+import { sql } from 'drizzle-orm'
+
 export default eventHandler(async () => {
   // Count the total number of todos
-  const db = await useDB()
   const result = await db.select({
     todos: sql<number>`count(*)`,
-    users: sql<number>`count(distinct(${tables.todos.userId}))`
-  }).from(tables.todos)
+    users: sql<number>`count(distinct(${schema.todos.userId}))`
+  }).from(schema.todos)
 
   return result[0]
 })
