@@ -1,7 +1,8 @@
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: 'emerald'
+      primary: 'amber',
+      neutral: 'zinc'
     },
     container: {
       base: 'max-w-2xl'

@@ -12,9 +12,9 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/main.css'],
   future: { compatibilityVersion: 4 },
-  compatibilityDate: '2025-04-02',
+  compatibilityDate: '2025-08-07',
   hub: {
-    database: true
+    db: 'sqlite'
   },
   // Development config
   eslint: {

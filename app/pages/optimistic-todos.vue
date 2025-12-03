@@ -20,7 +20,7 @@ const { mutate: addTodo } = useMutation({
       method: 'POST',
       body: {
         title,
-        completed: 0
+        completed: false
       }
     }) as Promise<Todo>
   },
@@ -31,7 +31,7 @@ const { mutate: addTodo } = useMutation({
     const oldTodos = queryCache.getQueryData(todosQuery.key) || []
     const newTodoItem = {
       title,
-      completed: 0,
+      completed: false,
       // a negative id to differentiate them from the server ones
       id: -Date.now(),
       createdAt: new Date(),
@@ -97,7 +97,7 @@ const { mutate: toggleTodo } = useMutation({
     $fetch(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       body: {
-        completed: Number(!todo.completed)
+        completed: !todo.completed
       }
     }),
 
@@ -108,7 +108,7 @@ const { mutate: toggleTodo } = useMutation({
     if (todoIndex >= 0) {
       newTodos = oldTodos.toSpliced(todoIndex, 1, {
         ...todo,
-        completed: Number(!todo.completed)
+        completed: !todo.completed
       })
       queryCache.setQueryData(todosQuery.key, newTodos)
     }
