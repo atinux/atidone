@@ -20,7 +20,7 @@ const { mutate: addTodo } = useMutation({
       method: 'POST',
       body: {
         title,
-        completed: false
+        completed: 0
       }
     }) as Promise<Todo>
   },
@@ -31,7 +31,7 @@ const { mutate: addTodo } = useMutation({
     const oldTodos = queryCache.getQueryData(todosQuery.key) || []
     const newTodoItem = {
       title,
-      completed: false,
+      completed: 0,
       // a negative id to differentiate them from the server ones
       id: -Date.now(),
       createdAt: new Date(),
@@ -108,7 +108,7 @@ const { mutate: toggleTodo } = useMutation({
     if (todoIndex >= 0) {
       newTodos = oldTodos.toSpliced(todoIndex, 1, {
         ...todo,
-        completed: !todo.completed
+        completed: todo.completed ? 0 : 1
       })
       queryCache.setQueryData(todosQuery.key, newTodos)
     }
@@ -184,7 +184,7 @@ const { mutate: deleteTodo } = useMutation({
         placeholder="Make a Nuxt demo"
         autocomplete="off"
         autofocus
-        :ui="{ wrapper: 'flex-1' }"
+        :ui="{ base: 'flex-1' }"
       />
 
       <UButton

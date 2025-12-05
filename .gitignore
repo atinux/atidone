@@ -12,3 +12,4 @@ dist
 db.sqlite-*
 .data
 .wrangler
+.env*.local

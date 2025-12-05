@@ -15,13 +15,9 @@ export default eventHandler(async (event) => {
   const { completed } = await readValidatedBody(event, BodySchema.parse)
   const { user } = await requireUserSession(event)
 
-  // SQlite:
-  // const isCompleted = completed ? 1 : 0
-  const isCompleted = completed
-
   // Update todo for the current user
   const updatedTodos = await db.update(schema.todos).set({
-    completed: isCompleted
+    completed: completed ? 1 : 0
   }).where(and(
     eq(schema.todos.id, id),
     eq(schema.todos.userId, user.id)

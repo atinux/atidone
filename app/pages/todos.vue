@@ -27,7 +27,7 @@ const { mutate: addTodo, isLoading: loading } = useMutation({
 
   async onSuccess(todo) {
     await queryCache.invalidateQueries(todosQuery)
-    toast.add({ title: `Todo "${todo.title}" created.` })
+    toast.add({ title: `Todo "${todo!.title}" created.` })
   },
 
   onSettled() {
@@ -38,7 +38,7 @@ const { mutate: addTodo, isLoading: loading } = useMutation({
     nextTick()
       .then(() => nextTick())
       .then(() => {
-        newTodoInput.value?.input?.focus()
+        newTodoInput.value?.inputRef?.focus()
       })
   },
 
@@ -48,12 +48,12 @@ const { mutate: addTodo, isLoading: loading } = useMutation({
         .map(issue => issue.message)
         .join('\n')
       if (title) {
-        toast.add({ title, color: 'red' })
+        toast.add({ title, color: 'error' })
       }
     }
     else {
       console.error(err)
-      toast.add({ title: 'Unexpected Error', color: 'red' })
+      toast.add({ title: 'Unexpected Error', color: 'error' })
     }
   }
 })
@@ -98,7 +98,7 @@ const { mutate: deleteTodo } = useMutation({
         placeholder="Make a Nuxt demo"
         autocomplete="off"
         autofocus
-        :ui="{ wrapper: 'flex-1' }"
+        :ui="{ base: 'flex-1' }"
       />
 
       <UButton

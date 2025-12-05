@@ -115,22 +115,23 @@ const items = [
         <NuxtPage />
       </UCard>
 
-      <footer class="text-center mt-2">
-        <NuxtLink
+      <footer class="flex items-center justify-center gap-2 mt-4">
+        <UButton
           href="https://github.com/atinux/atidone"
           target="_blank"
-          class="text-sm text-neutral-500 hover:text-neutral-700"
-        >
-          GitHub
-        </NuxtLink>
-        ·
-        <NuxtLink
-          href="https://twitter.com/atinux"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          icon="i-simple-icons-github"
+        />
+        <UButton
+          href="https://x.com/atinux"
           target="_blank"
-          class="text-sm text-neutral-500 hover:text-neutral-700"
-        >
-          Twitter
-        </NuxtLink>
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          icon="i-simple-icons-x"
+        />
       </footer>
     </UContainer>
   </UApp>

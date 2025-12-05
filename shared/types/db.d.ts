@@ -1,3 +1,3 @@
-import { schema } from 'hub:db'
+import type { schema } from 'hub:db'
 
-export const Todo = schema.todos.$inferSelect
+export type Todo = typeof schema.todos.$inferSelect
