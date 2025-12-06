@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "nuxt prepare",
-    "test:types": "nuxi typecheck"
+    "typecheck": "nuxi typecheck"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.77",
