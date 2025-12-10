@@ -15,7 +15,7 @@
     "@iconify-json/simple-icons": "^1.2.61",
     "@libsql/client": "^0.15.15",
     "@nuxt/ui": "^4.2.1",
-    "@nuxthub/core": "npm:@nuxthub/core-nightly@0.10.0-20251206-094240-e4af3d9",
+    "@nuxthub/core": "^0.10.0",
     "@pinia/colada": "^0.18.0",
     "@pinia/colada-nuxt": "^0.2.4",
     "@pinia/nuxt": "^0.11.3",
