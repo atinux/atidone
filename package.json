@@ -35,7 +35,7 @@
     "baseline-browser-mapping": "^2.11.35",
     "eslint": "^10.14.0",
     "golar": "^0.1.11",
-    "typescript": "npm:@typescript/typescript6@^6.0.2"
+    "typescript": "~6.0.3"
   },
   "packageManager": "pnpm@12.16.1"
 }
