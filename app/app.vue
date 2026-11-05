@@ -4,6 +4,9 @@ import type { DropdownMenuItem } from '#ui/types'
 const { loggedIn, user, clear } = useUserSession()
 const colorMode = useColorMode()
 
+// `user` is nullable and the `v-if` does not narrow it inside the dropdown slot
+const login = computed(() => user.value?.login ?? '')
+
 watch(loggedIn, () => {
   if (!loggedIn.value) {
     navigateTo('/')
@@ -103,11 +106,11 @@ const items = [
                 trailing-icon="i-lucide-chevron-down"
               >
                 <UAvatar
-                  :src="`https://github.com/${user.login}.png`"
-                  :alt="user.login"
+                  :src="`https://github.com/${login}.png`"
+                  :alt="login"
                   size="3xs"
                 />
-                {{ user.login }}
+                {{ login }}
               </UButton>
             </UDropdownMenu>
           </div>

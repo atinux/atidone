@@ -11,28 +11,28 @@
     "typecheck": "nuxi typecheck"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.92",
-    "@iconify-json/simple-icons": "^1.2.71",
-    "@libsql/client": "^0.17.0",
-    "@nuxt/ui": "^4.4.0",
-    "@nuxthub/core": "^0.10.6",
-    "@pinia/colada": "^0.21.4",
-    "@pinia/colada-nuxt": "^0.3.1",
-    "@pinia/nuxt": "^0.11.3",
-    "drizzle-kit": "^0.31.9",
-    "drizzle-orm": "0.45.1",
-    "nuxt": "^4.3.1",
-    "nuxt-auth-utils": "^0.5.29",
-    "pinia": "^3.0.4",
-    "zod": "^4.3.6"
+    "@iconify-json/lucide": "^1.2.151",
+    "@iconify-json/simple-icons": "^1.2.101",
+    "@libsql/client": "^0.18.0",
+    "@nuxt/ui": "^4.12.0",
+    "@nuxthub/core": "^0.10.12",
+    "@pinia/colada": "^1.4.9",
+    "@pinia/colada-nuxt": "^1.2.1",
+    "@pinia/nuxt": "^1.0.3",
+    "drizzle-kit": "^0.31.11",
+    "drizzle-orm": "0.45.4",
+    "nuxt": "^4.6.4",
+    "nuxt-auth-utils": "^0.6.1",
+    "pinia": "^4.1.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^3.2.1",
-    "@nuxt/eslint": "^1.15.1",
-    "baseline-browser-mapping": "^2.10.0",
-    "eslint": "^10.0.0",
-    "typescript": "^5.9.3",
-    "vue-tsc": "^3.2.4"
+    "@nuxt/devtools": "^4.1.0",
+    "@nuxt/eslint": "^1.17.0",
+    "baseline-browser-mapping": "^2.11.35",
+    "eslint": "^10.14.0",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.14"
   },
   "packageManager": "pnpm@10.30.1",
   "pnpm": {
