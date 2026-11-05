@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "nuxt prepare",
-    "typecheck": "nuxi typecheck --checker golar"
+    "typecheck": "nuxi typecheck"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.151",
@@ -28,14 +28,12 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@golar/vue": "^0.1.11",
     "@nuxt/devtools": "^4.1.0",
     "@nuxt/eslint": "^1.17.0",
-    "@typescript/native": "npm:typescript@^7.0.2",
     "baseline-browser-mapping": "^2.11.35",
     "eslint": "^10.14.0",
-    "golar": "^0.1.11",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "vue-tsc": "^3.3.14"
   },
   "packageManager": "pnpm@12.16.1"
 }

@@ -1,3 +1,8 @@
+overrides:
+  # TypeScript 7's engine behind the classic TypeScript API, so vue-tsc,
+  # typescript-eslint and tsserver keep working while the checker runs on tsgo.
+  typescript: npm:typescript-native-bridge@6.0.3-bridge.19.tsgo.7.0.2
+
 allowBuilds:
   '@parcel/watcher': true
   '@tailwindcss/oxide': true
@@ -8,5 +13,6 @@ allowBuilds:
   unrs-resolver: true
   vue-demi: true
   workerd: true
+
 minimumReleaseAgeExclude:
   - nuxt-auth-utils@0.6.1
