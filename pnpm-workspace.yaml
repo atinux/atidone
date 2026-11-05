@@ -13,6 +13,3 @@ allowBuilds:
   unrs-resolver: true
   vue-demi: true
   workerd: true
-
-minimumReleaseAgeExclude:
-  - nuxt-auth-utils@0.6.1
