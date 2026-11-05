@@ -1,5 +1,6 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -34,18 +35,5 @@
     "typescript": "~6.0.3",
     "vue-tsc": "^3.3.14"
   },
-  "packageManager": "pnpm@10.30.1",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "@tailwindcss/oxide",
-      "better-sqlite3",
-      "esbuild",
-      "libpq",
-      "sharp",
-      "unrs-resolver",
-      "vue-demi",
-      "workerd"
-    ]
-  }
+  "packageManager": "pnpm@12.16.1"
 }

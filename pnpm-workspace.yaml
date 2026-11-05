@@ -1,0 +1,12 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@tailwindcss/oxide': true
+  better-sqlite3: true
+  esbuild: true
+  libpq: true
+  sharp: true
+  unrs-resolver: true
+  vue-demi: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - nuxt-auth-utils@0.6.1
