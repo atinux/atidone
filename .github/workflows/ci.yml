@@ -16,12 +16,14 @@ jobs:
         uses: actions/checkout@v7
 
       # Reads `packageManager` for the pnpm version and installs the
-      # dependencies, so there is no separate setup-node or install step.
+      # dependencies with `--frozen-lockfile`, failing when the lockfile is
+      # missing, so there is no separate setup-node or install step.
       - name: Install pnpm, Node.js and dependencies
         uses: pnpm/setup@v3
         with:
           runtime: node@${{ matrix.node }}
           cache: true
+          require-lockfile: true
 
       - name: Lint
         run: pnpm run lint
