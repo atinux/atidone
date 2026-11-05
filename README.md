@@ -42,10 +42,10 @@ NUXT_OAUTH_GITHUB_CLIENT_ID="my-github-oauth-app-id"
 NUXT_OAUTH_GITHUB_CLIENT_SECRET="my-github-oauth-app-secret"
 ```
 
-To create sealed sessions, you also need to add `NUXT_APP_SECRET` in the `.env`:
+To create sealed sessions, you also need to add `NUXT_APP_SECRET` in the `.env`, set to the output of:
 
 ```bash
-NUXT_APP_SECRET="$(openssl rand -base64 32)"
+openssl rand -base64 32
 ```
 
 ## Development

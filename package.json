@@ -31,7 +31,7 @@
     "@nuxt/eslint": "^1.17.0",
     "baseline-browser-mapping": "^2.11.35",
     "eslint": "^10.14.0",
-    "typescript": "^6.0.3",
+    "typescript": "~6.0.3",
     "vue-tsc": "^3.3.14"
   },
   "packageManager": "pnpm@10.30.1",

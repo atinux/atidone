@@ -64,7 +64,7 @@ importers:
         specifier: ^10.14.0
         version: 10.14.0(jiti@2.7.0)
       typescript:
-        specifier: ^6.0.3
+        specifier: ~6.0.3
         version: 6.0.3
       vue-tsc:
         specifier: ^3.3.14
