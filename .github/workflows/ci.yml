@@ -9,23 +9,21 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [22]
+        node: [24]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Install node
-        uses: actions/setup-node@v5
+      # Reads `packageManager` for the pnpm version and installs the
+      # dependencies with `--frozen-lockfile`, failing when the lockfile is
+      # missing, so there is no separate setup-node or install step.
+      - name: Install pnpm, Node.js and dependencies
+        uses: pnpm/setup@v3
         with:
-          node-version: ${{ matrix.node }}
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install
+          runtime: node@${{ matrix.node }}
+          cache: true
+          require-lockfile: true
 
       - name: Lint
         run: pnpm run lint

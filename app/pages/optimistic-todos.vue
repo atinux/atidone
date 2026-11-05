@@ -16,13 +16,13 @@ const { mutate: addTodo } = useMutation({
   mutation: (title: string) => {
     if (!title.trim()) throw new Error('Title is required')
 
-    return $fetch('/api/todos', {
+    return $fetch<Todo>('/api/todos', {
       method: 'POST',
       body: {
         title,
         completed: 0
       }
-    }) as Promise<Todo>
+    })
   },
 
   onMutate(title) {
@@ -94,7 +94,7 @@ const { mutate: addTodo } = useMutation({
 
 const { mutate: toggleTodo } = useMutation({
   mutation: (todo: Todo) =>
-    $fetch(`/api/todos/${todo.id}`, {
+    $fetch<Todo>(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       body: {
         completed: !todo.completed
@@ -138,7 +138,7 @@ const { mutate: toggleTodo } = useMutation({
 })
 
 const { mutate: deleteTodo } = useMutation({
-  mutation: (todo: Todo) => $fetch(`/api/todos/${todo.id}`, { method: 'DELETE' }),
+  mutation: (todo: Todo) => $fetch<Todo>(`/api/todos/${todo.id}`, { method: 'DELETE' }),
 
   onMutate(todo) {
     const oldTodos = queryCache.getQueryData(todosQuery.key) || []

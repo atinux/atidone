@@ -4,7 +4,7 @@ A demonstration using [Nuxt](https://nuxt.com) with server-side rendering, authe
 
 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fatinux%2Fatidone%2Ftree%2Fnuxthub-v1&env=NUXT_OAUTH_GITHUB_CLIENT_ID,NUXT_OAUTH_GITHUB_CLIENT_SECRET,NUXT_SESSION_PASSWORD&envDescription=GitHub%20OAuth%20App%20client%20ID%20and%20secret.%20Generate%20a%20random%20session%20password%20min%2032%20chars%20using%20%60openssl%20rand%20-hex%2032%60.&project-name=todos&repository-name=todos&demo-title=Atidone&demo-description=A%20demonstration%20using%20Nuxt%20with%20server-side%20rendering%2C%20authentication%20and%20database%20querying%20using%20Turso%20with%20Drizzle%20ORM&demo-url=https%3A%2F%2Ftodos.nuxt.dev%2F&demo-image=https%3A%2F%2Ftodos.nuxt.dev%2Fsocial-image.png&products=%255B%257B%2522type%2522%253A%2522integration%2522%252C%2522protocol%2522%253A%2522storage%2522%252C%2522productSlug%2522%253A%2522database%2522%252C%2522integrationSlug%2522%253A%2522tursocloud%2522%257D%255D)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fatinux%2Fatidone%2Ftree%2Fnuxthub-v1&env=NUXT_OAUTH_GITHUB_CLIENT_ID,NUXT_OAUTH_GITHUB_CLIENT_SECRET,NUXT_APP_SECRET&envDescription=GitHub%20OAuth%20App%20client%20ID%20and%20secret.%20Generate%20a%20random%20app%20secret%20using%20%60openssl%20rand%20-base64%2032%60.&project-name=todos&repository-name=todos&demo-title=Atidone&demo-description=A%20demonstration%20using%20Nuxt%20with%20server-side%20rendering%2C%20authentication%20and%20database%20querying%20using%20Turso%20with%20Drizzle%20ORM&demo-url=https%3A%2F%2Ftodos.nuxt.dev%2F&demo-image=https%3A%2F%2Ftodos.nuxt.dev%2Fsocial-image.png&products=%255B%257B%2522type%2522%253A%2522integration%2522%252C%2522protocol%2522%253A%2522storage%2522%252C%2522productSlug%2522%253A%2522database%2522%252C%2522integrationSlug%2522%253A%2522tursocloud%2522%257D%255D)
 
 ## Features
 
@@ -42,10 +42,10 @@ NUXT_OAUTH_GITHUB_CLIENT_ID="my-github-oauth-app-id"
 NUXT_OAUTH_GITHUB_CLIENT_SECRET="my-github-oauth-app-secret"
 ```
 
-To create sealed sessions, you also need to add `NUXT_SESSION_PASSWORD` in the `.env` with at least 32 characters:
+To create sealed sessions, you also need to add `NUXT_APP_SECRET` in the `.env`, set to the output of:
 
 ```bash
-NUXT_SESSION_PASSWORD="your-super-long-secret-for-session-encryption"
+openssl rand -base64 32
 ```
 
 ## Development
